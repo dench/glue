@@ -81,7 +81,7 @@ AdminAsset::register($this);
             </div>
             <div class="col-md-4 text-center">
                 <div class="copyright">
-                    © БЕНЗА 2017
+                    © <?= Yii::$app->name ?> 2017
                 </div>
             </div>
             <div class="col-md-4">
