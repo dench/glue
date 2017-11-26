@@ -12,10 +12,10 @@ $this->params['breadcrumbs'][] = $page->name;
 ?>
 <h1><?= $page->h1 ?></h1>
 
-<div class="row">
+<div class="row categories">
     <?php foreach (Category::findAll(['enabled' => 1]) as $category) : ?>
         <div class="col-lg-4 mb-3">
-            <div class="card">
+            <div class="card block-link">
                 <?php if ($category->image) { ?>
                     <img src="<?= ImageHelper::thumb($category->image->id, 'category') ?>" class="card-img-top" alt="<?= $category->image->alt ? $category->image->alt : $category->name ?>" title="<?= $category->title ?>">
                 <?php } else { ?>

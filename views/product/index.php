@@ -10,6 +10,16 @@ echo $this->render('_breadcrumbs', [
     'model' => $model,
 ]);
 
+$js = <<<JS
+$('.card').on('hidden.bs.collapse', function () {
+  $(this).find('.fa').removeClass('fa-minus-square').addClass('fa-plus-square');
+}).on('shown.bs.collapse', function () {
+  $(this).find('.fa').removeClass('fa-plus-square').addClass('fa-minus-square');
+})
+JS;
+
+$this->registerJs($js);
+
 ?>
 <h1><?= $model->h1 ?></h1>
 <div class="row">
@@ -36,7 +46,7 @@ echo $this->render('_breadcrumbs', [
 
 <div class="card my-3">
     <a class="card-header bg-dark text-white" id="headingDoc" data-toggle="collapse" href="#collapseDoc" aria-expanded="true" aria-controls="collapseText">
-        <?= Yii::t('app', 'Documents') ?>
+        <i class="fa fa-minus-square"></i><?= Yii::t('app', 'Documents') ?>
     </a>
     <div id="collapseDoc" class="collapse show" aria-labelledby="headingDoc" data-parent="#accordion">
         <div class="card-body">
@@ -47,7 +57,7 @@ echo $this->render('_breadcrumbs', [
 
 <div class="card my-3">
     <a class="card-header bg-dark text-white" id="headingTips" data-toggle="collapse" href="#collapseTips" aria-expanded="true" aria-controls="collapseText">
-        <?= Yii::t('app', 'Tips for use') ?>
+        <i class="fa fa-minus-square"></i><?= Yii::t('app', 'Tips for use') ?>
     </a>
     <div id="collapseTips" class="collapse show" aria-labelledby="headingTips" data-parent="#accordion">
         <div class="card-body">

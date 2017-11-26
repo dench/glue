@@ -1,1 +1,144 @@
 @import "bootstrap";
+
+header {
+  position: relative;
+}
+
+#navbar-top {
+  .nav-link {
+    padding-top: $navbar-nav-link-padding-y;
+    padding-bottom: $navbar-nav-link-padding-y;
+    @include media-breakpoint-down(sm) {
+      padding-left: $nav-link-padding-x;
+      padding-right: $nav-link-padding-x;
+    }
+  }
+}
+
+.navbar-toggler {
+  i {
+    display: block;
+    background: $yellow;
+    width: 40px;
+    height: 5px;
+    border-radius: $border-radius;
+    margin: 6px;
+  }
+}
+
+.nav-left {
+  .nav-link {
+    margin-bottom: -$nav-left-border-width;
+    background-color: $nav-left-bg;
+    border: $nav-left-border-width solid $nav-left-border-color;
+    color: $nav-left-color;
+    &:hover {
+      color: $nav-left-hover-color;
+    }
+    &:first-child {
+      @include border-top-radius($list-group-border-radius);
+    }
+    &:last-child {
+      margin-bottom: 0;
+      @include border-bottom-radius($list-group-border-radius);
+    }
+  }
+}
+
+.logo {
+  max-height: 60px;
+}
+
+.bg-gradient-secondary {
+  .form-control {
+    border: none;
+  }
+}
+
+.phones {
+  font-size: $phone-font-size;
+  a {
+    display: block;
+    color: $white;
+    font-weight: $phone-font-weight;
+    span, i {
+      color: $yellow;
+    }
+  }
+}
+
+.breadcrumb {
+  font-size: $breadcrumb-font-size;
+}
+
+.categories {
+  .card {
+    box-shadow: 0 0 10px rgba(0,0,0,.05);
+    cursor: pointer;
+    border: 0;
+    &-footer {
+      height: 54px;
+    }
+    &:hover {
+      box-shadow: 0 0 20px rgba(0,0,0,.15);
+    }
+  }
+}
+
+.card {
+  &-header {
+    .fa {
+      margin-right: 10px;
+      opacity: .7;
+    }
+    &:hover {
+      text-decoration: none;
+      .fa {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+footer {
+  a {
+    color: $gray-400;
+    white-space: nowrap;
+    &:hover {
+      color: $gray-200;
+    }
+  }
+}
+
+@include media-breakpoint-up(xs) {}
+@include media-breakpoint-up(sm) {}
+@include media-breakpoint-up(md) {}
+@include media-breakpoint-up(lg) {}
+@include media-breakpoint-up(xl) {}
+
+@include media-breakpoint-down(xs) {}
+@include media-breakpoint-down(sm) {
+  .phones {
+    font-size: $phone-font-size-sm;
+  }
+  .search {
+    position: absolute;
+    right: 0;
+    top: 56px;
+  }
+  .logo {
+    max-height: 40px;
+  }
+  .navbar-dark {
+    background: transparent !important;
+  }
+  .nav-item {
+    text-align: left !important;
+  }
+}
+@include media-breakpoint-down(md) {}
+@include media-breakpoint-down(lg) {
+  .container {
+    max-width: 100%;
+  }
+}

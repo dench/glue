@@ -14,7 +14,7 @@ use app\widgets\FeaturesTable;
 <?php if (@$model->variants[0]->values) : ?>
     <div class="card my-3">
         <a class="card-header bg-dark text-white" id="headingFeatures" data-toggle="collapse" href="#collapseFeatures" aria-expanded="true" aria-controls="collapseFeatures">
-            <?= Yii::t('app', 'Features') ?>
+            <i class="fa fa-minus-square"></i><?= Yii::t('app', 'Features') ?>
         </a>
         <div id="collapseFeatures" class="collapse show" aria-labelledby="headingFeatures" data-parent="#accordion">
             <div class="card-body">

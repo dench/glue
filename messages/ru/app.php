@@ -85,4 +85,10 @@ return [
     'Remove variant' => 'Удалить вариант',
     'Create {0}' => 'Создать {0}',
     'Blocks' => 'Блоки',
+    'Menu' => 'Меню',
+    'Create menu' => 'Создать меню',
+    'Create menu item' => 'Создать пункт меню',
+    'In stock' => 'В наличии',
+    'Not available' => 'Нет в наличии',
+    'Order Now' => 'Заказать',
 ];

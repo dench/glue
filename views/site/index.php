@@ -11,12 +11,10 @@ use yii\helpers\Url;
 ?>
 
 <section>
-    <h1><?= $page->h1 ?></h1>
-
-    <div class="row">
+    <div class="row categories">
         <?php foreach (Category::findAll(['enabled' => 1]) as $category) : ?>
-        <div class="col-lg-4 mb-3">
-            <div class="card">
+        <div class="col-sm-6 col-lg-4 pb-3 px-2">
+            <div class="card block-link">
                 <?php if ($category->image) { ?>
                     <img src="<?= ImageHelper::thumb($category->image->id, 'category') ?>" class="card-img-top" alt="<?= $category->image->alt ? $category->image->alt : $category->name ?>" title="<?= $category->title ?>">
                 <?php } else { ?>
@@ -30,5 +28,6 @@ use yii\helpers\Url;
         <?php endforeach; ?>
     </div>
 
+    <h1><?= $page->h1 ?></h1>
     <?= $page->text ?>
 </section>

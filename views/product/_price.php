@@ -14,17 +14,11 @@
         <div class="col-sm-12">
             <?= $model->description ?>
             <table class="table table-sm table-striped table-hover table-condensed table-default my-3">
-                <thead>
-                <tr>
-                    <th><?= Yii::t('app', 'Model') ?></th>
-                    <th><?= Yii::t('app', 'Price, UAH') ?></th>
-                </tr>
-                </thead>
                 <tbody>
                 <?php foreach ($model->variants as $variant) : ?>
                     <tr>
                         <th><?= $variant->name ?></th>
-                        <td><?= $variant->price ?></td>
+                        <td><?= $variant->currency->before ?><?= $variant->price ?><?= $variant->currency->after ?></td>
                     </tr>
                 <?php endforeach; ?>
                 </tbody>
@@ -45,9 +39,7 @@
                     <?php if ($model->price_from) : ?>
                         <?= Yii::t('app', 'from') ?>
                     <?php endif; ?>
-                    <?= $model->variants[0]->currency->before ?>
-                    <?= $model->variants[0]->price ?>
-                    <?= $model->variants[0]->currency->after ?>
+                    <?= $model->variants[0]->currency->before ?><?= $model->variants[0]->price ?><?= $model->variants[0]->currency->after ?>
                 </div>
             </div>
         </div>
