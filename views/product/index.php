@@ -46,7 +46,7 @@ $this->registerJs($js);
 
 <div class="card my-3">
     <a class="card-header bg-dark text-white" id="headingDoc" data-toggle="collapse" href="#collapseDoc" aria-expanded="true" aria-controls="collapseText">
-        <i class="fa fa-minus-square"></i><?= Yii::t('app', 'Documents') ?>
+        <i class="fa fa-minus-square"></i><?= Yii::t('app', 'Documentation') ?>
     </a>
     <div id="collapseDoc" class="collapse show" aria-labelledby="headingDoc" data-parent="#accordion">
         <div class="card-body">
@@ -55,9 +55,10 @@ $this->registerJs($js);
     </div>
 </div>
 
+<?php if ($model->text_tips) : ?>
 <div class="card my-3">
     <a class="card-header bg-dark text-white" id="headingTips" data-toggle="collapse" href="#collapseTips" aria-expanded="true" aria-controls="collapseText">
-        <i class="fa fa-minus-square"></i><?= Yii::t('app', 'Tips for use') ?>
+        <i class="fa fa-minus-square"></i><?= $model->getAttributeLabel('text_tips') ?>
     </a>
     <div id="collapseTips" class="collapse show" aria-labelledby="headingTips" data-parent="#accordion">
         <div class="card-body">
@@ -65,6 +66,46 @@ $this->registerJs($js);
         </div>
     </div>
 </div>
+<?php endif; ?>
+
+<?php if ($model->text_process) : ?>
+    <div class="card my-3">
+        <a class="card-header bg-dark text-white" id="headingProcess" data-toggle="collapse" href="#collapseProcess" aria-expanded="true" aria-controls="collapseText">
+            <i class="fa fa-minus-square"></i><?= $model->getAttributeLabel('text_process') ?>
+        </a>
+        <div id="collapseProcess" class="collapse show" aria-labelledby="headingProcess" data-parent="#accordion">
+            <div class="card-body">
+                <?= $model->text_process ?>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>
+
+<?php if ($model->text_use) : ?>
+    <div class="card my-3">
+        <a class="card-header bg-dark text-white" id="headingUse" data-toggle="collapse" href="#collapseUse" aria-expanded="true" aria-controls="collapseText">
+            <i class="fa fa-minus-square"></i><?= $model->getAttributeLabel('text_use') ?>
+        </a>
+        <div id="collapseUse" class="collapse show" aria-labelledby="headingUse" data-parent="#accordion">
+            <div class="card-body">
+                <?= $model->text_use ?>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>
+
+<?php if ($model->text_storage) : ?>
+    <div class="card my-3">
+        <a class="card-header bg-dark text-white" id="headingStorage" data-toggle="collapse" href="#collapseStorage" aria-expanded="true" aria-controls="collapseText">
+            <i class="fa fa-minus-square"></i><?= $model->getAttributeLabel('text_storage') ?>
+        </a>
+        <div id="collapseStorage" class="collapse show" aria-labelledby="headingStorage" data-parent="#accordion">
+            <div class="card-body">
+                <?= $model->text_storage ?>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>
 
 <?= $this->render('_options', [
     'options' => $model->options,

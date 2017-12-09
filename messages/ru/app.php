@@ -91,4 +91,9 @@ return [
     'In stock' => 'В наличии',
     'Not available' => 'Нет в наличии',
     'Order Now' => 'Заказать',
+    'Tips for use' => 'Советы по использованию',
+    'Process of polymerization' => 'Процесс полимеризации',
+    'Scope of application' => 'Область применения',
+    'Storage conditions' => 'Условия хранения',
+    'Documentation' => 'Документация',
 ];

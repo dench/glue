@@ -13,9 +13,9 @@ use yii\helpers\Url;
 ?>
 <?php if ($options) : ?>
     <div class="product-section">
-        <h2 class="product-section-title"><span class="line"><?= Yii::t('app', 'Additional options') ?></span></h2>
+        <h2 class="product-section-title">Сопутствующие товары</h2>
         <div class="table-responsive">
-            <table class="table table-striped table-hover table-condensed table-default table-width-auto">
+            <table class="table table-condensed table-default table-width-auto">
                 <thead>
                 <tr>
                     <th></th>

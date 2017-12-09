@@ -3,7 +3,9 @@
 /* @var $this \yii\web\View */
 /* @var $content string */
 
+use app\assets\FontAwesomeAsset;
 use app\assets\SiteAsset;
+use app\components\Nav;
 use dench\products\models\Category;
 use luya\bootstrap4\widgets\Breadcrumbs;
 use yii\helpers\Html;
@@ -11,6 +13,7 @@ use yii\helpers\Url;
 use yii\widgets\Menu;
 
 SiteAsset::register($this);
+FontAwesomeAsset::register($this);
 
 $js = <<<JS
 $('.block-link').click(function(){
@@ -62,26 +65,49 @@ $this->registerJs($js);
                 <i></i>
             </button>
             <div class="collapse navbar-collapse" id="navbar-top">
-                <div class="container px-0">
+                <div class="container">
                     <div class="navbar-nav nav-fill">
-                        <a class="nav-item nav-link" href="/">Главная</a>
-                        <a class="nav-item nav-link active bg-gradient-primary" href="<?= Url::to(['/category/index']) ?>">Каталог</a>
-                        <a class="nav-item nav-link" href="#">Подобрать продукт</a>
-                        <a class="nav-item nav-link" href="#">Как заказать</a>
-                        <a class="nav-item nav-link" href="#">Вопросы и ответы</a>
-                        <div class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="infoDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Информация для клиентов
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="infoDropdown">
-                                <a class="dropdown-item" href="#">Информация 1</a>
-                                <a class="dropdown-item" href="#">Информация 2</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Информация 3</a>
-                            </div>
-                        </div>
-                        <a class="nav-item nav-link" href="#">Контакты</a>
-                        <a class="nav-item nav-link" href="#">Отзывы</a>
+                    <?php
+                    $items = [
+                        [
+                            'label' => 'Главная',
+                            'url' => ['/'],
+                            'active' => in_array(Yii::$app->controller->id, ['site']) && in_array(Yii::$app->controller->action->id, ['index']),
+                            /*'linkOptions' => [
+                                'class' => in_array(Yii::$app->controller->id, ['site']) && in_array(Yii::$app->controller->action->id, ['index']) ? 'nav-item nav-link ml-3' : 'nav-item nav-link',
+                            ],*/
+                        ],
+                        [
+                            'label' => 'Каталог',
+                            'url' => ['/category/index'],
+                            'active' => in_array(Yii::$app->controller->id, ['category', 'product']),
+                        ],
+                        ['label' => 'Подобрать продукт', 'url' => ['/podbor/index']],
+                        ['label' => 'Как заказать', 'url' => ['/site/how']],
+                        ['label' => 'Вопросы и ответы', 'url' => ['/site/qa']],
+                        [
+                            'label' => 'Информация для клиентов',
+                            'url' => ['/info/index'],
+                            'items' => [
+                                ['label' => 'Информация 1', 'url' => ['/info/index']],
+                                ['label' => 'Информация 2', 'url' => ['/info/index']],
+                                ['label' => 'Информация 3', 'url' => ['/info/index']],
+                            ],
+                            'dropDownOptions' => [
+                                'class' => '',
+                            ],
+                        ],
+                        ['label' => 'Контакты', 'url' => ['/site/contacts']],
+                        ['label' => 'Отзывы', 'url' => ['/guestbook/index']],
+                    ];
+                    echo Nav::widget([
+                        'items' => $items,
+                        'activeClass' => 'active bg-gradient-primary',
+                        'linkOptions' => [
+                            'class' => 'nav-item nav-link',
+                        ],
+                    ]);
+                    ?>
                     </div>
                 </div>
             </div>
@@ -91,45 +117,67 @@ $this->registerJs($js);
 
 <div class="container my-2 my-md-3">
     <div class="row">
-        <div class="col-sm-6 col-md-4 col-lg-3">
-            <nav class="navbar navbar-expand-md mb-3">
-                <button class="btn btn-dark btn-block d-md-none" type="button" data-toggle="collapse" data-target="#navbar-left" aria-controls="navbar-left" aria-expanded="false" aria-label="Toggle navigation">
-                    Каталог товаров
-                </button>
-                <div class="collapse navbar-collapse" id="navbar-left">
-                    <?php
-                    $items = [];
-                    foreach (Category::findAll(['enabled' => 1]) as $category) {
-                        $slug = '';
-                        $items[$category->id] = [
-                            'label' => $category->name,
-                            'url' => ['category/view', 'slug' => $category->slug],
-                            'options' => [
-                                'tag' => false,
-                            ],
-                        ];
-                        if (Yii::$app->controller->id == 'product') {
-                            $slug = @$this->params['breadcrumbs'][1]['url']['slug'];
-                        } elseif (Yii::$app->controller->id == 'category') {
-                            $slug = Yii::$app->request->get('slug');
-                        } else {
-                            $slug = '';
-                        }
-                        if ($slug == $category->slug) {
-                            $items[$category->id]['template'] = '<a class="nav-link active bg-gradient-primary text-white" href="{url}">{label}</a>';
-                        }
-                    }
-                    echo Menu::widget([
-                        'items' => $items,
-                        'linkTemplate' => '<a class="nav-link" href="{url}">{label}</a>',
-                        'options' => [
-                            'tag' => 'div',
-                            'class' => 'nav nav-left flex-column',
-                        ],
-                    ]);
-                    ?>
+        <div class="col-md-4 col-lg-3">
+            <div class="row">
+                <div class="col-sm-6 col-md-12">
+                    <nav class="navbar navbar-expand-md mb-3">
+                        <button class="btn btn-dark btn-block d-md-none" type="button" data-toggle="collapse" data-target="#navbar-left" aria-controls="navbar-left" aria-expanded="false" aria-label="Toggle navigation">
+                            Каталог товаров
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbar-left">
+                            <?php
+                            $items = [];
+                            foreach (Category::findAll(['enabled' => 1]) as $category) {
+                                $slug = '';
+                                $items[$category->id] = [
+                                    'label' => $category->name,
+                                    'url' => ['category/view', 'slug' => $category->slug],
+                                    'options' => [
+                                        'tag' => false,
+                                    ],
+                                ];
+                                if (Yii::$app->controller->id == 'product') {
+                                    $slug = @$this->params['breadcrumbs'][1]['url']['slug'];
+                                } elseif (Yii::$app->controller->id == 'category') {
+                                    $slug = Yii::$app->request->get('slug');
+                                } else {
+                                    $slug = '';
+                                }
+                                if ($slug == $category->slug) {
+                                    $items[$category->id]['template'] = '<a class="nav-link active bg-gradient-primary text-white" href="{url}">{label}</a>';
+                                }
+                            }
+                            echo Menu::widget([
+                                'items' => $items,
+                                'linkTemplate' => '<a class="nav-link" href="{url}">{label}</a>',
+                                'options' => [
+                                    'tag' => 'div',
+                                    'class' => 'nav nav-left flex-column',
+                                ],
+                            ]);
+                            ?>
+                        </div>
+                    </nav>
+                    <div class="card border border-primary border-strong block-link">
+                        <img class="card-img-top" src="/img/podbor.jpg" alt="Подобрать клей">
+                        <div class="card-body text-center">
+                            <a href="<?= Url::to(['/podbor/index']) ?>" class="card-text h4">Подобрать продукт</a>
+                        </div>
+                    </div>
                 </div>
-            </nav>
+                <div class="col-sm-6 col-md-12">
+                    <a href="#" class="btn btn-primary btn-lg btn-block my-3"><small>Техническая документация</small></a>
+                    <a href="#" class="btn btn-warning btn-lg btn-block my-3"><small>Литература</small></a>
+                    <div class="list-group list-article my-3">
+                        <div class="list-group-item h4">Информация для клиентов</div>
+                        <a href="<?= Url::to(['/info/index']) ?>" class="list-group-item">Статья статья статья</a>
+                        <a href="<?= Url::to(['/info/index']) ?>" class="list-group-item">Статья статья статьястатья статьястатья статья</a>
+                        <a href="<?= Url::to(['/info/index']) ?>" class="list-group-item">Статья статья статья</a>
+                        <a href="<?= Url::to(['/info/index']) ?>" class="list-group-item">Статья статья статья</a>
+                        <a href="<?= Url::to(['/info/index']) ?>" class="list-group-item">Статья статья статьястатья статьястатья статья</a>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="col-md-8 col-lg-9">
             <?php
@@ -151,6 +199,66 @@ $this->registerJs($js);
             <?= $content ?>
         </div>
     </div>
+
+    <?php if (Yii::$app->controller->id == 'site' && Yii::$app->controller->action->id == 'index') : ?>
+
+    <div class="card how mt-3 mb-4">
+        <div class="card-body text-center">
+            <div class="h1">Схема заказа</div>
+            <div class="row">
+                <div class="col-sm-4 px-lg-5">
+                    <div>
+                        <img src="/img/how-1.png" alt="Заказ товара">
+                    </div>
+                    <div class="my-2">
+                        <a href="#" class="h3"><span class="text-primary">1.</span> Заказ товара</a>
+                    </div>
+                    <div class="text-muted">
+                        Описание описание описание описание описание описание описание описание описание описание описание
+                    </div>
+                </div>
+                <div class="col-sm-4 px-lg-5">
+                    <div>
+                        <img src="/img/how-2.png" alt="100% предоплата">
+                    </div>
+                    <div class="my-2">
+                        <a href="#" class="h3"><span class="text-primary">2.</span> 100% предоплата</a>
+                    </div>
+                    <div class="text-muted">
+                        Описание описание описание описание описание описание описание описание описание описание описание
+                    </div>
+                </div>
+                <div class="col-sm-4 px-lg-5">
+                    <div>
+                        <img src="/img/how-3.png" alt="Доставка">
+                    </div>
+                    <div class="my-2">
+                        <a href="#" class="h3"><span class="text-primary">3.</span> Доставка</a>
+                    </div>
+                    <div class="text-muted">
+                        Описание описание описание описание описание описание описание описание описание описание описание
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card how my-4">
+        <div class="card-body">
+            <div class="h1 text-center">Отзывы о компании</div>
+
+        </div>
+    </div>
+
+    <div class="card how my-4">
+        <div class="card-body">
+            <div class="h1 text-center">Оставить отзыв</div>
+
+        </div>
+    </div>
+
+    <?php endif; ?>
+
 </div>
 
 <footer class="bg-gradient-dark">
@@ -169,18 +277,34 @@ $this->registerJs($js);
                 <div class="row">
                     <div class="col-md-6">
                         <nav class="nav flex-column">
-                            <a href="#">Главная</a>
-                            <a href="#">Каталог</a>
-                            <a href="#">Подобрать продукт</a>
-                            <a href="#">Как заказать</a>
+                            <?php
+                            $items = [
+                                ['label' => 'Главная', 'url' => ['/']],
+                                ['label' => 'Каталог', 'url' => ['/category/index']],
+                                ['label' => 'Подобрать продукт', 'url' => ['/podbor/index']],
+                                ['label' => 'Как заказать', 'url' => ['/site/how']],
+                            ];
+                            echo Nav::widget([
+                                'items' => $items,
+                                'activeClass' => '',
+                            ]);
+                            ?>
                         </nav>
                     </div>
                     <div class="col-md-6">
                         <nav class="nav flex-column">
-                            <a href="#">Вопросы и ответы</a>
-                            <a href="#">Информация для клиентов</a>
-                            <a href="#">Контакты</a>
-                            <a href="#">Отзывы</a>
+                            <?php
+                            $items = [
+                                ['label' => 'Вопросы и ответы', 'url' => ['/site/qa']],
+                                ['label' => 'Информация для клиентов', 'url' => ['/info/index']],
+                                ['label' => 'Контакты', 'url' => ['/site/contacts']],
+                                ['label' => 'Отзывы', 'url' => ['/guestbook/index']],
+                            ];
+                            echo Nav::widget([
+                                'items' => $items,
+                                'activeClass' => '',
+                            ]);
+                            ?>
                         </nav>
                     </div>
                 </div>

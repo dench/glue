@@ -18,7 +18,7 @@ use yii\helpers\Url;
                 <?php if ($category->image) { ?>
                     <img src="<?= ImageHelper::thumb($category->image->id, 'category') ?>" class="card-img-top" alt="<?= $category->image->alt ? $category->image->alt : $category->name ?>" title="<?= $category->title ?>">
                 <?php } else { ?>
-                    <img src="<?= Yii::$app->params['image']['none'] ?>" class="card-img-top" alt="">
+                    <img src="<?= Yii::$app->params['image']['size']['category']['none'] ?>" class="card-img-top" alt="">
                 <?php } ?>
                 <div class="card-footer bg-gradient-dark text-center">
                     <a href="<?= Url::to(['category/view', 'slug' => $category->slug]) ?>" class="text-white"><?= $category->name ?></a>
@@ -28,6 +28,6 @@ use yii\helpers\Url;
         <?php endforeach; ?>
     </div>
 
-    <h1><?= $page->h1 ?></h1>
+    <!--<h1><?= $page->h1 ?></h1>-->
     <?= $page->text ?>
 </section>

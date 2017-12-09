@@ -31,7 +31,7 @@ return [
             'x' => 50,
             'y' => 70,
         ],
-        'none' => '/img/photo-default.png?1',
+        'none' => '/img/photo-default.png',
         'size' => [
             'page' => [
                 'width' => 600,
@@ -56,12 +56,13 @@ return [
             ],
             'category' => [
                 'width' => 340,
-                'height' => 340,
+                'height' => 260,
                 'method' => 'fill',
                 'bg' => '#FFFFFF',
                 'watermark' => [
                     'width' => 102,
                 ],
+                'none' => '/img/category-default.png',
             ],
             'big' => [
                 'width' => 1000,

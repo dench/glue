@@ -8,7 +8,7 @@ $sky:         #DFEAFF;
 $light-blue:  #397EFD;
 $blue:        #2930A5;
 $dark-blue:   #000887;
-$yellow:      #ffc107;
+$yellow:      #FFB702;//#ffc107;
 $green:       #28a745;
 $red:         #dc3545;
 
@@ -88,3 +88,9 @@ $breadcrumb-padding-x:      0;
 $breadcrumb-bg:             transparent;
 $breadcrumb-margin-bottom:  .75rem;
 $breadcrumb-font-size:      .9rem;
+
+$list-group-item-padding-y: .5rem;
+$list-group-item-padding-x: 1rem;
+
+$dropdown-min-width: 100%;
+$dropdown-spacer: 0;

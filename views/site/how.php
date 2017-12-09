@@ -6,7 +6,6 @@
 $this->params['breadcrumbs'][] = $page->name;
 ?>
 
-<h1 class="title"><?= $page->h1 ?></h1>
-<div class="page-text">
-    <?= $page->text ?>
-</div>
+<h1><?= $page->h1 ?></h1>
+
+<?= $page->text ?>

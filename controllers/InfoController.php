@@ -8,7 +8,7 @@ use yii\web\NotFoundHttpException;
 
 class InfoController extends \yii\web\Controller
 {
-    private $_id = 5;
+    private $_id = 6;
 
     public function actionIndex()
     {

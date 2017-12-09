@@ -30,7 +30,8 @@
         "wbraganca/yii2-dynamicform": "*",
         "kartik-v/yii2-widget-select2": "@dev",
         "twbs/bootstrap": "4.0.0-beta.2",
-        "luyadev/luya-bootstrap4": "^1.0@dev"
+        "luyadev/luya-bootstrap4": "^1.0@dev",
+        "fortawesome/font-awesome": "~4.7"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

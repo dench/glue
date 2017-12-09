@@ -4,6 +4,10 @@ header {
   position: relative;
 }
 
+h1, h2, h3, h4, .h1, .h2, .h3, .h4 {
+  font-weight: bold;
+}
+
 #navbar-top {
   .nav-link {
     padding-top: $navbar-nav-link-padding-y;
@@ -74,7 +78,6 @@ header {
 .categories {
   .card {
     box-shadow: 0 0 10px rgba(0,0,0,.05);
-    cursor: pointer;
     border: 0;
     &-footer {
       height: 54px;
@@ -98,6 +101,37 @@ header {
       }
     }
   }
+}
+
+.btn {
+  color: $white;
+  text-shadow: 1px 1px 0 rgba(0,0,0,.2);
+  &:hover {
+    color: $white;
+  }
+}
+
+.list-article {
+  a {
+    color: $gray-800;
+    text-decoration: underline;
+    &:hover {
+      color: $gray-600;
+      text-decoration: underline;
+    }
+  }
+}
+
+.how {
+  line-height: 1.5;
+}
+
+.border-strong {
+  border-width: 3px !important;
+}
+
+.block-link {
+  cursor: pointer;
 }
 
 footer {

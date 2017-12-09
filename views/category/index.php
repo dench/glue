@@ -14,12 +14,12 @@ $this->params['breadcrumbs'][] = $page->name;
 
 <div class="row categories">
     <?php foreach (Category::findAll(['enabled' => 1]) as $category) : ?>
-        <div class="col-lg-4 mb-3">
+        <div class="col-sm-6 col-lg-4 pb-3 px-2">
             <div class="card block-link">
                 <?php if ($category->image) { ?>
                     <img src="<?= ImageHelper::thumb($category->image->id, 'category') ?>" class="card-img-top" alt="<?= $category->image->alt ? $category->image->alt : $category->name ?>" title="<?= $category->title ?>">
                 <?php } else { ?>
-                    <img src="<?= Yii::$app->params['image']['none'] ?>" class="card-img-top" alt="">
+                    <img src="<?= Yii::$app->params['image']['size']['category']['none'] ?>" class="card-img-top" alt="">
                 <?php } ?>
                 <div class="card-footer bg-gradient-dark text-center">
                     <a href="<?= Url::to(['category/view', 'slug' => $category->slug]) ?>" class="text-white"><?= $category->name ?></a>

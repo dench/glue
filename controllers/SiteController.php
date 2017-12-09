@@ -46,7 +46,7 @@ class SiteController extends Controller
      */
     public function actionContacts()
     {
-        $page = Page::viewPage(4);
+        $page = Page::viewPage(7);
 
         $model = new ContactForm();
 
@@ -66,11 +66,25 @@ class SiteController extends Controller
      *
      * @return string
      */
-    public function actionAbout()
+    public function actionHow()
     {
-        $page = Page::viewPage(3);
+        $page = Page::viewPage(4);
 
-        return $this->render('about', [
+        return $this->render('how', [
+            'page' => $page,
+        ]);
+    }
+
+    /**
+     * Displays about page.
+     *
+     * @return string
+     */
+    public function actionQa()
+    {
+        $page = Page::viewPage(5);
+
+        return $this->render('qa', [
             'page' => $page,
         ]);
     }
