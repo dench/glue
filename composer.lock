@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "eafdf38b62d8da781a74fab1cafb54a4",
+    "content-hash": "d3b61a248f5fd681ec81b1785156d310",
     "packages": [
         {
             "name": "2amigos/yii2-ckeditor-widget",
@@ -503,12 +503,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dench/yii2-image.git",
-                "reference": "647bcd6476b23e2fef54af10f279bd503ed3c401"
+                "reference": "7402f65ed695504b964507d8f2bf7faeb7a773d4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dench/yii2-image/zipball/647bcd6476b23e2fef54af10f279bd503ed3c401",
-                "reference": "647bcd6476b23e2fef54af10f279bd503ed3c401",
+                "url": "https://api.github.com/repos/dench/yii2-image/zipball/7402f65ed695504b964507d8f2bf7faeb7a773d4",
+                "reference": "7402f65ed695504b964507d8f2bf7faeb7a773d4",
                 "shasum": ""
             },
             "require": {
@@ -538,7 +538,7 @@
                 "image",
                 "yii2"
             ],
-            "time": "2017-11-26T18:45:42+00:00"
+            "time": "2017-12-11T22:02:09+00:00"
         },
         {
             "name": "dench/yii2-language",
@@ -636,12 +636,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dench/yii2-products.git",
-                "reference": "05b387349ae5274136a7ed45f2b6dc1b2dc552bc"
+                "reference": "c9b0f11c4f65c88b3cda5664201c208a2032fa31"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dench/yii2-products/zipball/05b387349ae5274136a7ed45f2b6dc1b2dc552bc",
-                "reference": "05b387349ae5274136a7ed45f2b6dc1b2dc552bc",
+                "url": "https://api.github.com/repos/dench/yii2-products/zipball/c9b0f11c4f65c88b3cda5664201c208a2032fa31",
+                "reference": "c9b0f11c4f65c88b3cda5664201c208a2032fa31",
                 "shasum": ""
             },
             "require": {
@@ -675,7 +675,7 @@
                 "products",
                 "yii2"
             ],
-            "time": "2017-12-09T14:21:03+00:00"
+            "time": "2017-12-11T22:03:02+00:00"
         },
         {
             "name": "dench/yii2-sortable",
@@ -1245,6 +1245,48 @@
                 "yii2"
             ],
             "time": "2016-02-12T10:38:57+00:00"
+        },
+        {
+            "name": "powerkernel/yii2-photoswipe",
+            "version": "1.1.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/powerkernel/yii2-photoswipe.git",
+                "reference": "901c0269bf2ff5728907ceadf3a619d78cfd2ad1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/powerkernel/yii2-photoswipe/zipball/901c0269bf2ff5728907ceadf3a619d78cfd2ad1",
+                "reference": "901c0269bf2ff5728907ceadf3a619d78cfd2ad1",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/photoswipe": "~4.1.0",
+                "yiisoft/yii2": "~2.0.0"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "powerkernel\\photoswipe\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Harry Tang",
+                    "email": "harry@powerkernel.com"
+                }
+            ],
+            "description": "PhotoSwipe extension for Yii2",
+            "keywords": [
+                "extension",
+                "photoswipe",
+                "yii2"
+            ],
+            "time": "2017-12-01T14:03:32+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
