@@ -2,8 +2,8 @@
 /* @var $this yii\web\View */
 /* @var $page dench\page\models\Page */
 
+use app\widgets\Gallery;
 use dench\image\helpers\ImageHelper;
-use powerkernel\photoswipe\Gallery;
 
 $this->params['breadcrumbs'][] = $page->name;
 ?>
@@ -15,14 +15,14 @@ $this->params['breadcrumbs'][] = $page->name;
 $items = [];
 foreach ($photos as $photo) {
     $items[] = [
-        'src' => ImageHelper::thumb($photo->id, 'category'),
-        'width' => 340,
-        'height' => 260,
-        'alt' => 'Title 1',
+        'image' => ImageHelper::thumb($photo->id, 'page'),
+        'thumb' => ImageHelper::thumb($photo->id, 'cover'),
+        'width' => 600,
+        'height' => 450,
+        'title' => 'Title 1',
     ];
 }
 echo Gallery::widget([
-    'selector'=>'.lightbox',
-    'images' => $items,
+    'items' => $items,
 ]);
 ?>
