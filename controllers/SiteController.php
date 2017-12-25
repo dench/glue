@@ -3,7 +3,10 @@
 namespace app\controllers;
 
 use app\models\CallbackForm;
-use dench\products\models\Category;
+use app\models\Question;
+use app\models\QuestionForm;
+use app\models\Review;
+use app\models\ReviewForm;
 use dench\page\models\Page;
 use Yii;
 use yii\data\ActiveDataProvider;
@@ -52,7 +55,6 @@ class SiteController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
             Yii::$app->session->setFlash('contactFormSubmitted');
-
             return $this->redirect(Url::current(['#' => 'feedback']));
         }
         return $this->render('contacts', [
@@ -76,16 +78,66 @@ class SiteController extends Controller
     }
 
     /**
+     * Displays questions page.
+     *
+     * @return string
+     */
+    public function actionQuestions()
+    {
+        $page = Page::viewPage(5);
+
+        $model = new QuestionForm();
+
+        if ($model->load(Yii::$app->request->post()) && $model->send()) {
+            Yii::$app->session->setFlash('questionSubmitted');
+            return $this->redirect(['', '#' => 'card-form']);
+        }
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => Question::find()->where(['status' => Question::STATUS_PUBLISHED]),
+            'sort' => [
+                'defaultOrder' => [
+                    'position' => SORT_DESC
+                ],
+            ],
+        ]);
+
+        return $this->render('questions', [
+            'page' => $page,
+            'model' => $model,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    /**
      * Displays about page.
      *
      * @return string
      */
-    public function actionQa()
+    public function actionReviews()
     {
-        $page = Page::viewPage(5);
+        $page = Page::viewPage(8);
 
-        return $this->render('qa', [
+        $model = new ReviewForm();
+
+        if ($model->load(Yii::$app->request->post()) && $model->send()) {
+            Yii::$app->session->setFlash('reviewSubmitted');
+            return $this->redirect(['', '#' => 'card-form']);
+        }
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => Review::find()->where(['status' => Review::STATUS_PUBLISHED]),
+            'sort' => [
+                'defaultOrder' => [
+                    'position' => SORT_DESC
+                ],
+            ],
+        ]);
+
+        return $this->render('reviews', [
             'page' => $page,
+            'model' => $model,
+            'dataProvider' => $dataProvider,
         ]);
     }
 

@@ -2,6 +2,15 @@
   margin-bottom: 10px;
 }
 
+.badge {
+  &-danger {
+    background-color: #d9534f;
+  }
+  &-success {
+    background-color: #5cb85c;
+  }
+}
+
 footer {
   border-top: 2px solid #eee;
   padding: 30px 0;

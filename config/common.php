@@ -13,6 +13,7 @@ return [
     'sourceLanguage' => 'en',
     'bootstrap' => ['log'],
     'aliases' => [
+        '@admin' => '@app/admin',
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
     ],

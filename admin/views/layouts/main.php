@@ -10,6 +10,8 @@
 /* @var $content string */
 
 use app\assets\AdminAsset;
+use app\models\Question;
+use app\models\Review;
 use app\widgets\Alert;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
@@ -33,20 +35,34 @@ AdminAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => Yii::t('app', 'Admin'),
-        'brandUrl' => ['default/index'],
         'options' => [
             'class' => 'navbar-inverse navbar-static-top',
         ],
     ]);
+
+    if ($unread = Question::unread()) {
+        $unread_question = ' <span class="badge badge-danger">' . $unread . '</span>';
+    } else {
+        $unread_question = '';
+    }
+
+    if ($unread = Review::unread()) {
+        $unread_review = ' <span class="badge badge-danger">' . $unread . '</span>';
+    } else {
+        $unread_review = '';
+    }
+
     echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
+        'options' => ['class' => 'navbar-nav'],
+        'encodeLabels' => false,
         'items' => [
             ['label' => Yii::t('app', 'Categories'), 'url' => ['/admin/products/category/index']],
             ['label' => Yii::t('app', 'Products'), 'url' => ['/admin/products/default/index']],
             ['label' => Yii::t('app', 'Features'), 'url' => ['/admin/products/feature/index']],
             ['label' => Yii::t('app', 'Complectation'), 'url' => ['/admin/products/complect/index']],
             ['label' => Yii::t('app', 'Pages'), 'url' => ['/admin/page/default/index']],
+            ['label' => Yii::t('app', 'Questions') . $unread_question, 'url' => ['/admin/question/index']],
+            ['label' => Yii::t('app', 'Reviews') . $unread_review, 'url' => ['/admin/review/index']],
             ['label' => Yii::t('app', 'Other'), 'url' => '#', 'items' => [
                 ['label' => Yii::t('app', 'Blocks'), 'url' => ['/admin/block/default/index']],
                 ['label' => Yii::t('app', 'Menu'), 'url' => ['/admin/menu/index']],

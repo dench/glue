@@ -84,7 +84,7 @@ $this->registerJs($js);
                         ],
                         ['label' => 'Подобрать продукт', 'url' => ['/podbor/index']],
                         ['label' => 'Как заказать', 'url' => ['/site/how']],
-                        ['label' => 'Вопросы и ответы', 'url' => ['/site/qa']],
+                        ['label' => 'Вопросы и ответы', 'url' => ['/site/questions']],
                         [
                             'label' => 'Информация для клиентов',
                             'url' => ['/info/index'],
@@ -98,7 +98,7 @@ $this->registerJs($js);
                             ],
                         ],
                         ['label' => 'Контакты', 'url' => ['/site/contacts']],
-                        ['label' => 'Отзывы', 'url' => ['/guestbook/index']],
+                        ['label' => 'Отзывы', 'url' => ['/site/reviews']],
                     ];
                     echo Nav::widget([
                         'items' => $items,

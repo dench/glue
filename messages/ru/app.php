@@ -95,5 +95,8 @@ return [
     'Process of polymerization' => 'Процесс полимеризации',
     'Scope of application' => 'Область применения',
     'Storage conditions' => 'Условия хранения',
-    'Documentation' => 'Документация',
+    'Questions' => 'Вопросы',
+    'Create Question' => 'Создать вопрос',
+    'Reviews' => 'Отзывы',
+    'Create Review' => 'Создать отзыв',
 ];

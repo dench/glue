@@ -49,6 +49,20 @@ h1, h2, h3, h4, .h1, .h2, .h3, .h4 {
   }
 }
 
+.question-list,
+.review-list {
+  > .media {
+    border-top: $question-border-width solid $question-border-color;
+    &:first-child {
+      border: none;
+    }
+    .media {
+      background-color: $question-answer-bg;
+      @include border-radius($question-border-radius);
+    }
+  }
+}
+
 .logo {
   max-height: 60px;
 }
@@ -132,6 +146,24 @@ h1, h2, h3, h4, .h1, .h2, .h3, .h4 {
 
 .block-link {
   cursor: pointer;
+}
+
+div.required label.control-label:after {
+  content: " *";
+  color: red;
+}
+
+.has-danger {
+  .invalid-feedback {
+    display: block !important;
+  }
+  .form-control {
+    border-color: $danger;
+  }
+}
+
+textarea.form-control {
+  width: 99%;
 }
 
 footer {

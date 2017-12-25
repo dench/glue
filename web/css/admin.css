@@ -1,13 +1,2 @@
-.nav-tabs {
-  margin-bottom: 10px; }
-
-footer {
-  border-top: 2px solid #eee;
-  padding: 30px 0;
-  margin-top: 30px; }
-
-div.required label.control-label:after {
-  content: " *";
-  color: red; }
-
+.nav-tabs{margin-bottom:10px}.badge-danger{background-color:#d9534f}.badge-success{background-color:#5cb85c}footer{border-top:2px solid #eee;padding:30px 0;margin-top:30px}div.required label.control-label:after{content:" *";color:red}
 /*# sourceMappingURL=admin.css.map */
