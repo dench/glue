@@ -131,7 +131,7 @@
             "version": "v4.1.2",
             "source": {
                 "type": "git",
-                "url": "git@github.com:dimsemenov/PhotoSwipe.git",
+                "url": "https://github.com/dimsemenov/PhotoSwipe.git",
                 "reference": "b6fdb82ed0b5b635c0943098f3046581a02ead77"
             },
             "dist": {
@@ -352,12 +352,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dench/yii2-image.git",
-                "reference": "7402f65ed695504b964507d8f2bf7faeb7a773d4"
+                "reference": "addcbaa293a9ed78525952918359cce596ec5c03"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dench/yii2-image/zipball/7402f65ed695504b964507d8f2bf7faeb7a773d4",
-                "reference": "7402f65ed695504b964507d8f2bf7faeb7a773d4",
+                "url": "https://api.github.com/repos/dench/yii2-image/zipball/addcbaa293a9ed78525952918359cce596ec5c03",
+                "reference": "addcbaa293a9ed78525952918359cce596ec5c03",
                 "shasum": ""
             },
             "require": {
@@ -387,7 +387,7 @@
                 "image",
                 "yii2"
             ],
-            "time": "2017-12-11T22:02:09+00:00"
+            "time": "2018-01-08T17:16:35+00:00"
         },
         {
             "name": "dench/yii2-language",
@@ -485,12 +485,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dench/yii2-products.git",
-                "reference": "c9b0f11c4f65c88b3cda5664201c208a2032fa31"
+                "reference": "c9ae004071eb6d18e53c4c9f720bd39d6f996820"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dench/yii2-products/zipball/c9b0f11c4f65c88b3cda5664201c208a2032fa31",
-                "reference": "c9b0f11c4f65c88b3cda5664201c208a2032fa31",
+                "url": "https://api.github.com/repos/dench/yii2-products/zipball/c9ae004071eb6d18e53c4c9f720bd39d6f996820",
+                "reference": "c9ae004071eb6d18e53c4c9f720bd39d6f996820",
                 "shasum": ""
             },
             "require": {
@@ -524,7 +524,7 @@
                 "products",
                 "yii2"
             ],
-            "time": "2017-12-11T22:03:02+00:00"
+            "time": "2018-01-08T18:13:15+00:00"
         },
         {
             "name": "dench/yii2-sortable",
@@ -987,12 +987,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/luyadev/luya-bootstrap4.git",
-                "reference": "adcddbcb86060da64b689978c07d2c6ef83210c8"
+                "reference": "0978438b78c6943f129d69a298f6e86858537b13"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/luyadev/luya-bootstrap4/zipball/adcddbcb86060da64b689978c07d2c6ef83210c8",
-                "reference": "adcddbcb86060da64b689978c07d2c6ef83210c8",
+                "url": "https://api.github.com/repos/luyadev/luya-bootstrap4/zipball/0978438b78c6943f129d69a298f6e86858537b13",
+                "reference": "0978438b78c6943f129d69a298f6e86858537b13",
                 "shasum": ""
             },
             "require-dev": {
@@ -1045,7 +1045,7 @@
                 "twbs4",
                 "yii2"
             ],
-            "time": "2017-12-25T13:00:58+00:00"
+            "time": "2018-01-08T16:31:21+00:00"
         },
         {
             "name": "omgdef/yii2-multilingual-behavior",
@@ -1193,16 +1193,16 @@
         },
         {
             "name": "symfony/css-selector",
-            "version": "v3.4.2",
+            "version": "v3.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/css-selector.git",
-                "reference": "eac760b414cf1f64362c3dd047b989e4db121332"
+                "reference": "e66394bc7610e69279bfdb3ab11b4fe65403f556"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/css-selector/zipball/eac760b414cf1f64362c3dd047b989e4db121332",
-                "reference": "eac760b414cf1f64362c3dd047b989e4db121332",
+                "url": "https://api.github.com/repos/symfony/css-selector/zipball/e66394bc7610e69279bfdb3ab11b4fe65403f556",
+                "reference": "e66394bc7610e69279bfdb3ab11b4fe65403f556",
                 "shasum": ""
             },
             "require": {
@@ -1242,20 +1242,20 @@
             ],
             "description": "Symfony CssSelector Component",
             "homepage": "https://symfony.com",
-            "time": "2017-12-14T19:40:10+00:00"
+            "time": "2018-01-03T07:37:34+00:00"
         },
         {
             "name": "symfony/dom-crawler",
-            "version": "v3.4.2",
+            "version": "v3.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dom-crawler.git",
-                "reference": "dc847845c66fa68ad4522ed27e62b9b9dd12ab3b"
+                "reference": "09bd97b844b3151fab82f2fdd62db9c464b3910a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/dom-crawler/zipball/dc847845c66fa68ad4522ed27e62b9b9dd12ab3b",
-                "reference": "dc847845c66fa68ad4522ed27e62b9b9dd12ab3b",
+                "url": "https://api.github.com/repos/symfony/dom-crawler/zipball/09bd97b844b3151fab82f2fdd62db9c464b3910a",
+                "reference": "09bd97b844b3151fab82f2fdd62db9c464b3910a",
                 "shasum": ""
             },
             "require": {
@@ -1298,7 +1298,7 @@
             ],
             "description": "Symfony DomCrawler Component",
             "homepage": "https://symfony.com",
-            "time": "2017-12-14T19:40:10+00:00"
+            "time": "2018-01-03T07:37:34+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",

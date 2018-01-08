@@ -44,16 +44,9 @@ $this->registerJs($js);
     'model' => $model,
 ]) ?>
 
-<div class="card my-3">
-    <a class="card-header bg-dark text-white" id="headingDoc" data-toggle="collapse" href="#collapseDoc" aria-expanded="true" aria-controls="collapseText">
-        <i class="fa fa-minus-square"></i><?= Yii::t('app', 'Documentation') ?>
-    </a>
-    <div id="collapseDoc" class="collapse show" aria-labelledby="headingDoc" data-parent="#accordion">
-        <div class="card-body">
-            ...
-        </div>
-    </div>
-</div>
+<?= $this->render('_files', [
+    'model' => $model,
+]) ?>
 
 <?php if ($model->text_tips) : ?>
 <div class="card my-3">

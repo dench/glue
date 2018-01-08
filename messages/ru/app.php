@@ -99,4 +99,6 @@ return [
     'Create Question' => 'Создать вопрос',
     'Reviews' => 'Отзывы',
     'Create Review' => 'Создать отзыв',
+    'Related products' => 'Сопутствующие товары',
+    'Files' => 'Файлы',
 ];

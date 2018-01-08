@@ -14,13 +14,14 @@ return [
     'recaptchaSecretKey' => '',
 
     'file' => [
-        'extensions' => 'png, jpg',
-        'maxSize' => 10*1024*1024,
+        'extensions' => 'png, jpg, pdf, zip, rar, doc, docx',
+        'maxSize' => 100*1024*1024,
         'maxFiles' => 50,
         'path' => dirname(__DIR__) . '/files',
     ],
 
     'image' => [
+        'extensions' => 'png, jpg',
         'path' => 'image',
         'jpeg_quality' => 85,
         'convert' => true,

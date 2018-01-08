@@ -6,6 +6,9 @@
 use app\assets\FontAwesomeAsset;
 use app\assets\SiteAsset;
 use app\components\Nav;
+use app\models\Question;
+use app\models\Review;
+use dench\page\models\Page;
 use dench\products\models\Category;
 use luya\bootstrap4\widgets\Breadcrumbs;
 use yii\helpers\Html;
@@ -68,6 +71,24 @@ $this->registerJs($js);
                 <div class="container">
                     <div class="navbar-nav nav-fill">
                     <?php
+                    $info = Page::find()
+                        ->joinWith('translation')
+                        ->leftJoin('page_parent','page.id = page_parent.page_id')
+                        ->select(['name', 'slug'])
+                        ->andWhere(['parent_id' => 6])
+                        ->orderBy(['page.id' => SORT_DESC])
+                        ->limit(5)
+                        ->all();
+
+                    $info_menu = [];
+
+                    foreach ($info as $item) {
+                        $info_menu[] = [
+                            'label' => $item->name,
+                            'url' => ['/info/view', 'slug' => $item->slug],
+                        ];
+                    }
+
                     $items = [
                         [
                             'label' => 'Главная',
@@ -88,11 +109,7 @@ $this->registerJs($js);
                         [
                             'label' => 'Информация для клиентов',
                             'url' => ['/info/index'],
-                            'items' => [
-                                ['label' => 'Информация 1', 'url' => ['/info/index']],
-                                ['label' => 'Информация 2', 'url' => ['/info/index']],
-                                ['label' => 'Информация 3', 'url' => ['/info/index']],
-                            ],
+                            'items' => $info_menu,
                             'dropDownOptions' => [
                                 'class' => '',
                             ],
@@ -170,11 +187,12 @@ $this->registerJs($js);
                     <a href="#" class="btn btn-warning btn-lg btn-block my-3"><small>Литература</small></a>
                     <div class="list-group list-article my-3">
                         <div class="list-group-item h4">Информация для клиентов</div>
-                        <a href="<?= Url::to(['/info/index']) ?>" class="list-group-item">Статья статья статья</a>
-                        <a href="<?= Url::to(['/info/index']) ?>" class="list-group-item">Статья статья статьястатья статьястатья статья</a>
-                        <a href="<?= Url::to(['/info/index']) ?>" class="list-group-item">Статья статья статья</a>
-                        <a href="<?= Url::to(['/info/index']) ?>" class="list-group-item">Статья статья статья</a>
-                        <a href="<?= Url::to(['/info/index']) ?>" class="list-group-item">Статья статья статьястатья статьястатья статья</a>
+                        <?php
+
+                        foreach ($info as $item) {
+                            echo Html::a($item->name, ['/info/view', 'slug' => $item->slug], ['class' => 'list-group-item']);
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
@@ -245,15 +263,45 @@ $this->registerJs($js);
 
     <div class="card how my-4">
         <div class="card-body">
-            <div class="h1 text-center">Отзывы о компании</div>
-
+            <div class="h1 text-center">Вопросы и ответы</div>
+            <?php
+            $question = Question::find()
+                ->where(['status' => Question::STATUS_PUBLISHED])
+                ->orderBy(['id' => SORT_DESC])
+                ->limit(5)
+                ->all();
+            echo '<div class="question-list">';
+            foreach ($question as $q) {
+                echo '<div class="media">';
+                echo $this->render('../site/_question_item', [
+                    'model' => $q,
+                ]);
+                echo '</div>';
+            }
+            echo '</div>';
+            ?>
         </div>
     </div>
 
     <div class="card how my-4">
         <div class="card-body">
-            <div class="h1 text-center">Оставить отзыв</div>
-
+            <div class="h1 text-center">Отзывы о компании</div>
+            <?php
+            $review = Review::find()
+                ->where(['status' => Review::STATUS_PUBLISHED])
+                ->orderBy(['id' => SORT_DESC])
+                ->limit(5)
+                ->all();
+            echo '<div class="review-list">';
+            foreach ($review as $r) {
+                echo '<div class="media">';
+                echo $this->render('../site/_review_item', [
+                    'model' => $r,
+                ]);
+                echo '</div>';
+            }
+            echo '</div>';
+            ?>
         </div>
     </div>
 

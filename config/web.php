@@ -29,6 +29,7 @@ $config = [
                 '' => 'site/index',
                 '<action:(how|contacts|questions|reviews)>' => 'site/<action>',
                 'image/<size:[0-9a-z\-]+>/<name>.<extension:[a-z]+>' => 'image/default/index',
+                'file/<name>.<extension:[a-z]+>' => 'image/default/file',
                 'products' => 'category/index',
                 'products/<slug:[0-9a-z\-]+>' => 'category/view',
                 'product/<slug:[0-9a-z\-]+>' => 'product/index',
