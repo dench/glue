@@ -438,12 +438,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dench/yii2-modal.git",
-                "reference": "285d9b9a31f5ccb286d3da5a5e7a90733cfccd58"
+                "reference": "4246f203e928550d060faf9df7af287ce053ac4c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dench/yii2-modal/zipball/285d9b9a31f5ccb286d3da5a5e7a90733cfccd58",
-                "reference": "285d9b9a31f5ccb286d3da5a5e7a90733cfccd58",
+                "url": "https://api.github.com/repos/dench/yii2-modal/zipball/4246f203e928550d060faf9df7af287ce053ac4c",
+                "reference": "4246f203e928550d060faf9df7af287ce053ac4c",
                 "shasum": ""
             },
             "require": {
@@ -471,7 +471,7 @@
                 "modal",
                 "yii2"
             ],
-            "time": "2017-12-20T16:17:29+00:00"
+            "time": "2018-01-13T17:54:08+00:00"
         },
         {
             "name": "dench/yii2-page",
