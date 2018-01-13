@@ -27,16 +27,15 @@ $config = [
             'showScriptName' => false,
             'rules' => [
                 '' => 'site/index',
+                '<controller:cart|podbor|info>' => '<controller>/index',
                 '<action:(how|contacts|questions|reviews)>' => 'site/<action>',
                 'image/<size:[0-9a-z\-]+>/<name>.<extension:[a-z]+>' => 'image/default/index',
                 'file/<name>.<extension:[a-z]+>' => 'image/default/file',
                 'products' => 'category/index',
                 'products/<slug:[0-9a-z\-]+>' => 'category/view',
                 'product/<slug:[0-9a-z\-]+>' => 'product/index',
-                'info' => 'info/index',
                 'info/<slug:[0-9a-z\-]+>' => 'info/view',
                 'sitemap.xml' => 'sitemap/index',
-                'podbor' => 'podbor/index',
             ],
         ],
         'reCaptcha' => [

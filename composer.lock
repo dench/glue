@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "46dee053db1fcf554cdaf343ecc7a3eb",
+    "content-hash": "ef3ad827d3df2eb2ddedf88f251928b5",
     "packages": [
         {
             "name": "2amigos/yii2-ckeditor-widget",
@@ -433,6 +433,47 @@
             "time": "2017-08-15T08:04:53+00:00"
         },
         {
+            "name": "dench/yii2-modal",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dench/yii2-modal.git",
+                "reference": "285d9b9a31f5ccb286d3da5a5e7a90733cfccd58"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dench/yii2-modal/zipball/285d9b9a31f5ccb286d3da5a5e7a90733cfccd58",
+                "reference": "285d9b9a31f5ccb286d3da5a5e7a90733cfccd58",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "dench\\modal\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Dench",
+                    "email": "dench@i.ua"
+                }
+            ],
+            "description": "Modal widget for Yii2",
+            "keywords": [
+                "extension",
+                "modal",
+                "yii2"
+            ],
+            "time": "2017-12-20T16:17:29+00:00"
+        },
+        {
             "name": "dench/yii2-page",
             "version": "dev-master",
             "source": {
@@ -485,12 +526,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dench/yii2-products.git",
-                "reference": "c9ae004071eb6d18e53c4c9f720bd39d6f996820"
+                "reference": "4dc0451de098ed99bdf11ccd24414d9541f2c6f1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dench/yii2-products/zipball/c9ae004071eb6d18e53c4c9f720bd39d6f996820",
-                "reference": "c9ae004071eb6d18e53c4c9f720bd39d6f996820",
+                "url": "https://api.github.com/repos/dench/yii2-products/zipball/4dc0451de098ed99bdf11ccd24414d9541f2c6f1",
+                "reference": "4dc0451de098ed99bdf11ccd24414d9541f2c6f1",
                 "shasum": ""
             },
             "require": {
@@ -524,7 +565,7 @@
                 "products",
                 "yii2"
             ],
-            "time": "2018-01-08T18:13:15+00:00"
+            "time": "2018-01-13T11:04:18+00:00"
         },
         {
             "name": "dench/yii2-sortable",
@@ -671,16 +712,16 @@
         },
         {
             "name": "himiklab/yii2-recaptcha-widget",
-            "version": "1.0.7",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/himiklab/yii2-recaptcha-widget.git",
-                "reference": "64daf4d4628c6fa9275f774b927fa2d750e64ae3"
+                "reference": "bc9df57a2b420aa7deaec4f6556ff79d57fa435b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/himiklab/yii2-recaptcha-widget/zipball/64daf4d4628c6fa9275f774b927fa2d750e64ae3",
-                "reference": "64daf4d4628c6fa9275f774b927fa2d750e64ae3",
+                "url": "https://api.github.com/repos/himiklab/yii2-recaptcha-widget/zipball/bc9df57a2b420aa7deaec4f6556ff79d57fa435b",
+                "reference": "bc9df57a2b420aa7deaec4f6556ff79d57fa435b",
                 "shasum": ""
             },
             "require": {
@@ -710,7 +751,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2017-11-08T16:56:06+00:00"
+            "time": "2018-01-10T11:22:28+00:00"
         },
         {
             "name": "imagine/imagine",
@@ -1361,16 +1402,16 @@
         },
         {
             "name": "twbs/bootstrap",
-            "version": "v4.0.0-beta.2",
+            "version": "v4.0.0-beta.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twbs/bootstrap.git",
-                "reference": "fc94de5b8b5b329a298eeeb76174b146ff17af2d"
+                "reference": "ced70da441d487efb8589acbff445d6b5fa68bb9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/fc94de5b8b5b329a298eeeb76174b146ff17af2d",
-                "reference": "fc94de5b8b5b329a298eeeb76174b146ff17af2d",
+                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/ced70da441d487efb8589acbff445d6b5fa68bb9",
+                "reference": "ced70da441d487efb8589acbff445d6b5fa68bb9",
                 "shasum": ""
             },
             "replace": {
@@ -1408,7 +1449,7 @@
                 "sass",
                 "web"
             ],
-            "time": "2017-10-19T19:23:29+00:00"
+            "time": "2017-12-28T17:50:04+00:00"
         },
         {
             "name": "voskobovich/yii2-linker-behavior",
@@ -2075,6 +2116,7 @@
         "dench/yii2-sortable": 20,
         "dench/yii2-block": 20,
         "dench/yii2-products": 20,
+        "dench/yii2-modal": 20,
         "kartik-v/yii2-widget-select2": 20,
         "twbs/bootstrap": 10,
         "luyadev/luya-bootstrap4": 20

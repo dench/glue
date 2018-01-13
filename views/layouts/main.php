@@ -8,6 +8,7 @@ use app\assets\SiteAsset;
 use app\components\Nav;
 use app\models\Question;
 use app\models\Review;
+use dench\modal\Modal;
 use dench\page\models\Page;
 use dench\products\models\Category;
 use luya\bootstrap4\widgets\Breadcrumbs;
@@ -363,6 +364,11 @@ $this->registerJs($js);
         2017 © <a href="/"><?= Yii::$app->name ?></a>
     </div>
 </footer>
+<?= Modal::widget([
+    'titleTag' => 'h3',
+    'center' => true,
+    'size' => 'modal-lg',
+]); ?>
 <?= $this->render('_counters') ?>
 <?php $this->endBody() ?>
 </body>

@@ -22,7 +22,7 @@ use app\widgets\FeaturesTable;
                 <div class="table-responsive">
                     <?= FeaturesTable::widget([
                         'variants' => $model->variants,
-                        'theadText' => Yii::t('app', 'Model'),
+                        'theadText' => '',
                         'options' => [
                             'class' => 'table table-sm table-striped table-hover table-condensed table-default table-head-bg',
                         ],

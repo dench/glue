@@ -117,6 +117,35 @@ h1, h2, h3, h4, .h1, .h2, .h3, .h4 {
   }
 }
 
+.table {
+  &.align-middle {
+    td, th {
+      vertical-align: middle !important;
+    }
+  }
+  &-price {
+    tr {
+      td {
+        cursor: pointer;
+      }
+      td.over {
+        background: rgba($yellow,.1);
+      }
+      td.active {
+        background: rgba($yellow,.1);
+        border: 2px solid $yellow;
+        font-weight: bold;
+      }
+      &:first-child td.active {
+        border-bottom: 1px solid $gray-300;
+      }
+      &:last-child td.active {
+        border-top: 1px solid $gray-300;
+      }
+    }
+  }
+}
+
 .btn {
   color: $white;
   text-shadow: 1px 1px 0 rgba(0,0,0,.2);
