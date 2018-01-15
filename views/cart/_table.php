@@ -61,7 +61,9 @@ $this->registerJs($js);
             <tr id="i<?= $item->id ?>" rel="<?= $item->id ?>">
                 <td><?= $k + 1 ?></td>
                 <td>
+                    <?php if (isset($item->product->image)) : ?>
                     <?= Html::a(Html::img(ImageHelper::thumb($item->product->image->id, 'micro'), ['height' => '70']), ['product/index', 'slug' => $item->product->slug]) ?>
+                    <?php endif; ?>
                 </td>
                 <td class="text-left">
                     <?= Html::a($item->product->name, ['product/index', 'slug' => $item->product->slug]) ?>
