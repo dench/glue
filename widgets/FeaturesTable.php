@@ -29,7 +29,7 @@ class FeaturesTable extends Widget
             }
         }
 
-        if (empty($this->variants)) {
+        if (empty($variants)) {
             return '';
         }
 

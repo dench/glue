@@ -9,12 +9,12 @@ use yii\helpers\Url;
 
 $url_del = Url::to('/cart/del');
 $url_set = Url::to('/cart/set');
+$url_cart = Url::to('/cart/block');
 
 $js = <<<JS
 $('.product-delete').click(function(e){
     e.preventDefault();
     var id = $(this).attr('rel');
-    console.log(id);
     $.get('{$url_del}', { id: id }, function(data){
         if (data) {
             $('#i' + id).fadeOut('normal', function(){
@@ -29,6 +29,11 @@ $('.product-count').keyup(function(){
         calculate();
     });
 });
+function reloadCart() {
+    $.get('{$url_cart}', function(data) {
+        $('#cart').after(data).remove();
+    });
+}
 function calculate() {
     var total = 0;
     $('.product-count').each(function(){
@@ -37,6 +42,7 @@ function calculate() {
         $(this).parents('tr').find('.sum').text(sum);
     });
     $('.total').text(total);
+    reloadCart();
 }
 calculate();
 JS;

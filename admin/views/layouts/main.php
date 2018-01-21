@@ -61,6 +61,7 @@ AdminAsset::register($this);
             ['label' => Yii::t('app', 'Features'), 'url' => ['/admin/products/feature/index']],
             ['label' => Yii::t('app', 'Complectation'), 'url' => ['/admin/products/complect/index']],
             ['label' => Yii::t('app', 'Pages'), 'url' => ['/admin/page/default/index']],
+            ['label' => Yii::t('app', 'Orders'), 'url' => ['/admin/order/index']],
             ['label' => Yii::t('app', 'Questions') . $unread_question, 'url' => ['/admin/question/index']],
             ['label' => Yii::t('app', 'Reviews') . $unread_review, 'url' => ['/admin/review/index']],
             ['label' => Yii::t('app', 'Other'), 'url' => '#', 'items' => [
@@ -71,6 +72,7 @@ AdminAsset::register($this);
                 ['label' => Yii::t('app', 'Units'), 'url' => ['/admin/products/unit/index']],
                 ['label' => Yii::t('app', 'Statuses'), 'url' => ['/admin/products/product-status/index']],
                 ['label' => Yii::t('app', 'Users'), 'url' => ['/admin/user/index']],
+                ['label' => Yii::t('app', 'Buyers'), 'url' => ['/admin/buyer/index']],
                 ['label' => Yii::t('app', 'Settings'), 'url' => ['/admin/setting/index']],
             ]],
             ['label' => Yii::t('app', 'Home'), 'url' => ['/site/index']],

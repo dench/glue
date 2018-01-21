@@ -70,15 +70,15 @@ class ActiveForm extends \yii\widgets\ActiveForm
      */
     protected function provideHorizontalLayout()
     {
-        $this->options = ['class' => 'form-group row'];
+        $this->options = ['class' => 'form-group'];
         $this->fieldConfig = [
             'options' => [
                 'class' => 'form-group row',
             ],
             'labelOptions' => [
-                'class' => 'col-sm-2 col-form-label',
+                'class' => 'col-sm-3 col-form-label',
             ],
-            'template' => "{label}\n<div class=\"col-sm-10\">{input}\n{hint}\n{error}</div>",
+            'template' => "{label}\n<div class=\"col-sm-9\">{input}\n{hint}\n{error}</div>",
         ];
     }
 }

@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+use app\models\OrderForm;
+use app\widgets\Cart;
 use dench\page\models\Page;
 use dench\products\models\Variant;
 use Yii;
@@ -60,6 +62,28 @@ class CartController extends Controller
         ];
 
         return Json::encode($data);
+    }
+
+    public function actionBlock()
+    {
+        return Cart::widget();
+    }
+
+    public function actionOrder()
+    {
+        $page = Page::viewPage('order');
+
+        $model = new OrderForm();
+
+        /*if ($model->load(Yii::$app->request->post()) && $model->send()) {
+            Yii::$app->session->setFlash('orderSubmitted');
+            return $this->redirect(['']);
+        }*/
+
+        return $this->render('order', [
+            'page' => $page,
+            'model' => $model,
+        ]);
     }
 
     public function actionDel($id)

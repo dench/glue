@@ -8,6 +8,7 @@ use app\assets\SiteAsset;
 use app\components\Nav;
 use app\models\Question;
 use app\models\Review;
+use app\widgets\Cart;
 use dench\modal\Modal;
 use dench\page\models\Page;
 use dench\products\models\Category;
@@ -15,6 +16,7 @@ use luya\bootstrap4\widgets\Breadcrumbs;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\Menu;
+use yii\widgets\Pjax;
 
 SiteAsset::register($this);
 FontAwesomeAsset::register($this);
@@ -48,7 +50,7 @@ $this->registerJs($js);
             <div class="search col-10 col-md-4 py-2">
                 <div class="input-group pt-1">
                     <input type="text" class="form-control" placeholder="Search for..." aria-label="Search for...">
-                    <span class="input-group-btn">
+                    <span class="input-group-append">
                         <button class="btn btn-primary" type="button">Найти</button>
                     </span>
                 </div>
@@ -138,6 +140,9 @@ $this->registerJs($js);
         <div class="col-md-4 col-lg-3">
             <div class="row">
                 <div class="col-sm-6 col-md-12">
+
+                    <?= Cart::widget() ?>
+
                     <nav class="navbar navbar-expand-md mb-3">
                         <button class="btn btn-dark btn-block d-md-none" type="button" data-toggle="collapse" data-target="#navbar-left" aria-controls="navbar-left" aria-expanded="false" aria-label="Toggle navigation">
                             Каталог товаров

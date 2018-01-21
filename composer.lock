@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "ef3ad827d3df2eb2ddedf88f251928b5",
+    "content-hash": "5a569104283e14ed0fc507347ec0e944",
     "packages": [
         {
             "name": "2amigos/yii2-ckeditor-widget",
@@ -185,7 +185,7 @@
             "version": "2.0.7.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/yiisoft/jquery-pjax.git",
+                "url": "git@github.com:yiisoft/jquery-pjax.git",
                 "reference": "aef7b953107264f00234902a3880eb50dafc48be"
             },
             "dist": {
@@ -1402,16 +1402,16 @@
         },
         {
             "name": "twbs/bootstrap",
-            "version": "v4.0.0-beta.3",
+            "version": "v4.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twbs/bootstrap.git",
-                "reference": "ced70da441d487efb8589acbff445d6b5fa68bb9"
+                "reference": "8a628b943cf31ca0a002c08af661a95772480225"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/ced70da441d487efb8589acbff445d6b5fa68bb9",
-                "reference": "ced70da441d487efb8589acbff445d6b5fa68bb9",
+                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/8a628b943cf31ca0a002c08af661a95772480225",
+                "reference": "8a628b943cf31ca0a002c08af661a95772480225",
                 "shasum": ""
             },
             "replace": {
@@ -1449,7 +1449,7 @@
                 "sass",
                 "web"
             ],
-            "time": "2017-12-28T17:50:04+00:00"
+            "time": "2018-01-18T18:29:48+00:00"
         },
         {
             "name": "voskobovich/yii2-linker-behavior",
@@ -2118,7 +2118,6 @@
         "dench/yii2-products": 20,
         "dench/yii2-modal": 20,
         "kartik-v/yii2-widget-select2": 20,
-        "twbs/bootstrap": 10,
         "luyadev/luya-bootstrap4": 20
     },
     "prefer-stable": false,

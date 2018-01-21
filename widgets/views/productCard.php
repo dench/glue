@@ -9,6 +9,7 @@
  * @var $link string
  */
 
+use app\widgets\PriceTable;
 use dench\image\helpers\ImageHelper;
 
 $variant = @$model->variants[0];
@@ -30,31 +31,23 @@ $variant = @$model->variants[0];
         <div>
             <?= $model->description ?>
         </div>
+        <?php if ($variant->available > 0): ?>
+            <div class="text-success my-2"><i class="fa fa-check"></i> <?= Yii::t('app', 'In stock') ?></div>
+        <?php else: ?>
+            <div class="text-danger my-2"><i class="fa fa-times"></i> <?= Yii::t('app', 'Not available') ?></div>
+        <?php endif; ?>
         <div class="row mt-2">
-            <div class="col-sm-6">
-                <?php if ($variant->available > 0): ?>
-                    <div class="text-success my-2"><i class="fa fa-check"></i> <?= Yii::t('app', 'In stock') ?></div>
-                <?php else: ?>
-                    <div class="text-danger my-2"><i class="fa fa-times"></i> <?= Yii::t('app', 'Not available') ?></div>
-                <?php endif; ?>
-                <?php if (@$variant->price) : ?>
-                    <div>
-                        <?= Yii::t('app', 'Price') ?>:
-                        <b>
-                        <?php if ($model->price_from) : ?>
-                            <?= Yii::t('app', 'from') ?>
-                        <?php endif; ?>
-                        <span class="h3">
-                            <?= @$variant->currency->before ?>
-                            <?= @$variant->price ?>
-                            <?= @$variant->currency->after ?>
-                        </span>
-                        </b>
-                    </div>
-                <?php endif; ?>
+            <div class="col-sm-9">
+                <?= PriceTable::widget([
+                    'id' => 'price' . $model->id,
+                    'variants' => $model->variants,
+                    'options' => [
+                        'class' => 'table-sm',
+                    ],
+                ]) ?>
             </div>
-            <div class="col-sm-6 text-sm-right pt-2">
-                <a href="#" class="btn btn-primary btn-lg"><?= Yii::t('app', 'Order Now') ?></a>
+            <div class="col-sm-3">
+                <a href="#" class="btn btn-primary btn-block btn-buy" rel="price<?= $model->id ?>"><?= Yii::t('app', 'Buy') ?></a>
             </div>
         </div>
 
