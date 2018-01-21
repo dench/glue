@@ -24,7 +24,7 @@ use app\widgets\FeaturesTable;
                         'variants' => $model->variants,
                         'theadText' => '',
                         'options' => [
-                            'class' => 'table table-sm table-striped table-hover table-condensed table-default table-head-bg',
+                            'class' => 'table table-sm table-striped text-center table-hover table-condensed table-default table-head-bg',
                         ],
                     ]); ?>
                 </div>

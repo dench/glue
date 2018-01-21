@@ -59,7 +59,6 @@ class FeaturesTable extends Widget
         $feature = [];
 
         foreach ($values as $key => $variant) {
-            //$old_var = 0;
             $old_value = 0;
             $marge = 1;
             $feature[$key]['label'] = $labels[$key];
@@ -80,7 +79,6 @@ class FeaturesTable extends Widget
                     'colspan' => $colspan,
                     'value' =>  $value,
                 ];
-                //$old_var = $var;
                 $old_value = $value;
             }
         }
@@ -91,9 +89,11 @@ class FeaturesTable extends Widget
 
         foreach ($feature as $k => $f) {
             $cols = [];
-            $cols[] = Html::tag('th', $f['label']);
+            $cols[] = Html::tag('th', $f['label'], ['class' => 'text-left']);
+            $colspan = 0;
+            if (count($f['cols']) == 1) { $colspan = $count; }
             foreach ($f['cols'] as $col) {
-                $options = ($col['colspan'] > 1) ? ['colspan' => $col['colspan']] : [];
+                $options = ($col['colspan'] > 1 || $colspan) ? ['colspan' => ($colspan) ? $colspan : $col['colspan']] : [];
                 $cols[] = Html::tag('td', $col['value'], $options);
             }
             $rows[$k] = Html::tag('tr', implode("\n", $cols));
