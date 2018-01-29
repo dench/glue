@@ -8,7 +8,7 @@ use app\assets\SiteAsset;
 use app\components\Nav;
 use app\models\Question;
 use app\models\Review;
-use app\widgets\Cart;
+use app\widgets\CartWidget;
 use dench\modal\Modal;
 use dench\page\models\Page;
 use dench\products\models\Category;
@@ -141,7 +141,7 @@ $this->registerJs($js);
             <div class="row">
                 <div class="col-sm-6 col-md-12">
 
-                    <?= Cart::widget() ?>
+                    <?= CartWidget::widget() ?>
 
                     <nav class="navbar navbar-expand-md mb-3">
                         <button class="btn btn-dark btn-block d-md-none" type="button" data-toggle="collapse" data-target="#navbar-left" aria-controls="navbar-left" aria-expanded="false" aria-label="Toggle navigation">

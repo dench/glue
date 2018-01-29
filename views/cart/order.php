@@ -11,6 +11,7 @@
 
 use app\components\ActiveForm;
 use yii\helpers\Html;
+use yii\widgets\MaskedInput;
 
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Cart'), 'url' => ['/cart/index']];
 $this->params['breadcrumbs'][] = $page->name;
@@ -27,14 +28,16 @@ $this->params['breadcrumbs'][] = $page->name;
 
             <?= $form->field($model, 'name')->textInput(['placeholder' => 'Фамилия Имя Отчество']) ?>
 
-            <?= $form->field($model, 'phone')->textInput() ?>
+            <?= $form->field($model, 'phone')->widget(MaskedInput::className(), [
+                'mask' => '+38 (099) 999-99-99',
+            ]) ?>
 
             <div class="row">
                 <div class="col-sm-3">
 
                 </div>
                 <div class="col-sm-9">
-                    <?= Html::activeCheckbox($model, 'policy', ['value' => 1, 'checked' => false, 'required' => true, 'label' => '<span class="text-muted">Я ознакомлен с <a href="#">политикой сайта о конфиденциальности</a> и согласен отправить указанные мной данные на обработку</span>']) ?>
+                    <?= Html::activeCheckbox($model, 'policy', ['value' => 1, 'checked' => false, 'required' => true, 'label' => '<span class="text-muted">Я ознакомлен с <a href="' . \yii\helpers\Url::to(['site/page', 'slug' => 'policy']) . '">политикой сайта о конфиденциальности</a> и согласен отправить указанные мной данные на обработку</span>']) ?>
                 </div>
             </div>
 
@@ -53,7 +56,9 @@ $this->params['breadcrumbs'][] = $page->name;
 
             <?= $form->field($model, 'email')->textInput() ?>
 
-            <?= $form->field($model, 'delivery')->textInput(['placeholder' => 'Выберите номер склада Новой почты']) ?>
+            <?= $form->field($model, 'delivery')->widget(MaskedInput::className(), [
+                'mask' => 'город *{3,20}, отделение новой почты № 9{1,4}',
+            ])->textInput(['placeholder' => 'Введите город и номер отделения Новой почты']) ?>
 
             <?= $form->field($model, 'entity')->radioList([
                 0 => 'Частное лицо ',

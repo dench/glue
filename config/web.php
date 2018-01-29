@@ -36,13 +36,8 @@ $config = [
                 'product/<slug:[0-9a-z\-]+>' => 'product/index',
                 'info/<slug:[0-9a-z\-]+>' => 'info/view',
                 'sitemap.xml' => 'sitemap/index',
+                '<slug:[0-9a-z\-]+>.html' => 'site/page',
             ],
-        ],
-        'reCaptcha' => [
-            'name' => 'reCaptcha',
-            'class' => 'himiklab\yii2\recaptcha\ReCaptcha',
-            'siteKey' => $params['recaptchaSiteKey'],
-            'secret' => $params['recaptchaSecretKey'],
         ],
         'assetManager' => [
             'appendTimestamp' => true,

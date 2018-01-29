@@ -64,7 +64,21 @@ class SiteController extends Controller
     }
 
     /**
-     * Displays about page.
+     * Displays page.
+     *
+     * @return string
+     */
+    public function actionPage($slug)
+    {
+        $page = Page::viewPage($slug);
+
+        return $this->render('page', [
+            'page' => $page,
+        ]);
+    }
+
+    /**
+     * Displays how page.
      *
      * @return string
      */

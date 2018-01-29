@@ -10,8 +10,6 @@ return [
     'phone2' => '',
     'phone3' => '',
     'googleMapsApiKey' => '',
-    'recaptchaSiteKey' => '',
-    'recaptchaSecretKey' => '',
 
     'file' => [
         'extensions' => 'png, jpg, pdf, zip, rar, doc, docx',

@@ -10,6 +10,7 @@
 /* @var $content string */
 
 use app\assets\AdminAsset;
+use app\models\Order;
 use app\models\Question;
 use app\models\Review;
 use app\widgets\Alert;
@@ -52,6 +53,12 @@ AdminAsset::register($this);
         $unread_review = '';
     }
 
+    if ($unread = Order::unread()) {
+        $unread_order = ' <span class="badge badge-danger">' . $unread . '</span>';
+    } else {
+        $unread_order = '';
+    }
+
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav'],
         'encodeLabels' => false,
@@ -61,7 +68,7 @@ AdminAsset::register($this);
             ['label' => Yii::t('app', 'Features'), 'url' => ['/admin/products/feature/index']],
             ['label' => Yii::t('app', 'Complectation'), 'url' => ['/admin/products/complect/index']],
             ['label' => Yii::t('app', 'Pages'), 'url' => ['/admin/page/default/index']],
-            ['label' => Yii::t('app', 'Orders'), 'url' => ['/admin/order/index']],
+            ['label' => Yii::t('app', 'Orders') . $unread_order, 'url' => ['/admin/order/index']],
             ['label' => Yii::t('app', 'Questions') . $unread_question, 'url' => ['/admin/question/index']],
             ['label' => Yii::t('app', 'Reviews') . $unread_review, 'url' => ['/admin/review/index']],
             ['label' => Yii::t('app', 'Other'), 'url' => '#', 'items' => [

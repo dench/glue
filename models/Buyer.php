@@ -78,4 +78,9 @@ class Buyer extends ActiveRecord
     {
         return $this->hasMany(Order::className(), ['buyer_id' => 'id']);
     }
+
+    public static function clearPhone($phone)
+    {
+        return preg_replace('/[^0-9]/','', $phone);
+    }
 }

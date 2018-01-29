@@ -8,6 +8,7 @@
 
 namespace app\models;
 
+use dench\products\models\Variant;
 use himiklab\yii2\recaptcha\ReCaptchaValidator;
 use Yii;
 use yii\base\Model;
@@ -52,24 +53,58 @@ class OrderForm extends Model
 
     public function send()
     {
-        /*$buyer_old = Buyer::findOne(['phone' => $this->phone]);
+        $this->phone = Buyer::clearPhone($this->phone);
 
-        if ($buyer_old) {
-            $buyer = $buyer_old;
-        } else {
+        $buyer = Buyer::findOne(['phone' => $this->phone]);
+
+        if (empty($buyer)) {
             $buyer = new Buyer();
         }
 
-        $order = new Order([
-            'name' => $this->name,
-            'email' => $this->email,
-            'question' => $this->text,
-        ]);
+        $buyer->name = ($this->name && $buyer->name != $this->name) ? $this->name : $buyer->name;
+        $buyer->phone = ($this->phone && $buyer->phone != $this->phone) ? $this->phone : $buyer->phone;
+        $buyer->delivery = ($this->delivery && $buyer->delivery != $this->delivery) ? $this->delivery : $buyer->delivery;
+        $buyer->email = ($this->email && $buyer->email != $this->email) ? $this->email : $buyer->email;
+        $buyer->entity = ($this->entity != null && $buyer->entity != $this->entity) ? $this->entity : $buyer->entity;
 
-        if ($model->save()) {
-            return true;
-        } else {
-            return false;
-        }*/
+        if ($buyer->save()) {
+
+            $cart = Cart::getCart();
+
+            $product_ids = [];
+            $amount = 0;
+
+            $cartItemName = [];
+            $cartItemCount = [];
+            $cartItemPrice = [];
+
+            foreach ($cart as $k => $v) {
+                /** @var $item Variant */
+                $item = Variant::find()->where(['id' => $k, 'enabled' => true])->one();
+                if ($item) {
+                    $cartItemName[$k] = $item->product->name . ', ' . $item->name;
+                    $cartItemCount[$k] = $v;
+                    $cartItemPrice[$k] = $item->price;
+                    $product_ids[] = $item->id;
+                    $amount += $v * $item->price;
+                }
+            }
+
+            $order = new Order([
+                'buyer_id' => $buyer->id,
+                'product_ids' => $product_ids,
+                'amount' => $amount,
+                'cartItemName' => $cartItemName,
+                'cartItemCount' => $cartItemCount,
+                'cartItemPrice' => $cartItemPrice,
+            ]);
+
+            if ($order->save()) {
+                Cart::clearCart();
+                return true;
+            }
+        }
+
+        return false;
     }
 }

@@ -8,6 +8,7 @@
 
 namespace app\widgets;
 
+use app\models\Cart;
 use dench\products\models\Variant;
 use Yii;
 use yii\base\Widget;
@@ -15,7 +16,7 @@ use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\helpers\Url;
 
-class Cart extends Widget
+class CartWidget extends Widget
 {
     public $id = 'cart';
 
@@ -25,7 +26,7 @@ class Cart extends Widget
 
     public function run()
     {
-        $cart = $this->getCart();
+        $cart = Cart::getCart();
         $variant_ids = array_keys($cart);
         $items = Variant::find()->where(['id' => $variant_ids])->andWhere(['enabled' => true])->all();
 
@@ -35,9 +36,9 @@ class Cart extends Widget
 
         $this->registerClientScript();
 
-        $a_head = Html::a(Yii::t('app', 'Items in Cart'), $this->urlCart, ['class' => 'text-white']);
+        $a_head = Html::a(Yii::t('app', 'Items in Cart'), $this->urlCart, ['class' => 'text-white', 'data-modal' => 'cart/modal']);
 
-        $a_icon = Html::a(Html::tag('i', '', ['class' => 'fa fa-cart-arrow-down fa-2x fa-y pull-right']), $this->urlCart);
+        $a_icon = Html::a(Html::tag('i', '', ['class' => 'fa fa-cart-arrow-down fa-2x fa-y pull-right']), $this->urlCart, ['data-modal' => 'cart/modal']);
 
         $cols[] = Html::tag('th', $a_head . $a_icon, ['class' => 'bg-gradient-secondary rounded-top border-0', 'colspan' => 2]);
 
@@ -58,7 +59,7 @@ class Cart extends Widget
 
         $tr[] = Html::tag('tr', Html::tag('td',
             '<b>' . Yii::t('app', 'Amount: {0} grn', $sum) . '</b>'
-            . Html::a(Yii::t('app', 'Place an order'), ['/cart/order'], ['class' => 'btn btn-warning btn-block btn-lg mt-3']),
+            . Html::a(Yii::t('app', 'Place an order'), ['/cart/index'], ['class' => 'btn btn-warning btn-block btn-lg mt-3']),
             [
                 'class' => 'border',
                 'colspan' => 2,
@@ -93,16 +94,5 @@ function reloadCart() {
 }
 JS;
         $this->view->registerJs($js);
-    }
-
-    private function getCart()
-    {
-        $cart = Yii::$app->request->cookies->getValue('cart');
-
-        if (empty($cart)) {
-            return [];
-        } else {
-            return unserialize($cart);
-        }
     }
 }

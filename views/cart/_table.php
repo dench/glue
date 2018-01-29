@@ -25,7 +25,10 @@ $('.product-delete').click(function(e){
     });
 });
 $('.product-count').keyup(function(){
-    $.get('{$url_set}', { id: $(this).attr('data-id'), count: $(this).val()}, function(){
+    var a = $(this).attr('data-id');
+    var b = $(this).val();
+    $.get('{$url_set}', { id: a, count: b}, function(){
+        $('.product-count[data-id="' + a + '"]').val(b);
         calculate();
     });
 });
@@ -35,14 +38,16 @@ function reloadCart() {
     });
 }
 function calculate() {
-    var total = 0;
-    $('.product-count').each(function(){
-        var sum = $(this).val() * $(this).attr('data-price');
-        total += sum;
-        $(this).parents('tr').find('.sum').text(sum);
+    $('.table-cart').each(function(){
+        var total = 0;
+        $(this).find('.product-count').each(function(){
+            var sum = $(this).val() * $(this).attr('data-price');
+            total += sum;
+            $(this).parents('tr').find('.sum').text(sum);
+        });
+        $('.total').text(total);
+        reloadCart();
     });
-    $('.total').text(total);
-    reloadCart();
 }
 calculate();
 JS;
@@ -51,7 +56,7 @@ $this->registerJs($js);
 ?>
 <?php if ($items) : ?>
 <div class="table-responsive">
-    <table class="table table-sm table-bordered bg-white text-center align-middle">
+    <table class="table table-sm table-bordered bg-white text-center align-middle table-cart">
         <tbody>
         <tr class="bg-gradient-secondary text-white">
             <th>№</th>

@@ -1,24 +1,97 @@
 <?php
 /* @var $this yii\web\View */
-
-use yii\helpers\Url;
-
 /* @var $page dench\page\models\Page */
 /* @var $items dench\products\models\Variant[] */
 /* @var $cart array */
+
+use app\components\ActiveForm;
+use yii\helpers\Html;
+use yii\widgets\MaskedInput;
 
 $this->params['breadcrumbs'][] = $page->name;
 ?>
 <h1><?= $page->h1 ?></h1>
 
-<?= $page->text ?>
+<?php if (Yii::$app->session->hasFlash('orderSubmitted')): ?>
 
-<?= $this->render('_table', [
-    'items' => $items,
-    'cart' => $cart,
-]) ?>
+    <div class="alert alert-success">
+        Заказ успешно отправлен. Скоро с вами свяжется наш сотрудник для уточнения информации.
+    </div>
 
-<div class="mt-4">
-    <a href="<?= Url::to(['/cart/order']) ?>" class="btn btn-warning pull-right"><?= Yii::t('app', 'Place an order') ?></a>
-    <!--<a href="#" class="btn btn-primary"><?= Yii::t('app', 'Continue shopping') ?></a>-->
-</div>
+<?php else: ?>
+
+    <?= $page->text ?>
+
+    <?= $this->render('_table', [
+        'items' => $items,
+        'cart' => $cart,
+    ]) ?>
+
+    <?php if ($items) : ?>
+
+        <?php $form = ActiveForm::begin([
+            'layout' => 'horizontal',
+        ]) ?>
+
+        <div class="card my-4">
+            <div class="card-body">
+                <div class="h1 text-center mb-3">Необходимая информация для заказа</div>
+
+                <?= $form->field($model, 'name')->textInput(['placeholder' => 'Фамилия Имя Отчество']) ?>
+
+                <?= $form->field($model, 'phone')->widget(MaskedInput::className(), [
+                    'mask' => '+38 (099) 999-99-99',
+                ]) ?>
+
+                <div class="row">
+                    <div class="col-sm-3">
+
+                    </div>
+                    <div class="col-sm-9">
+                        <?= Html::activeCheckbox($model, 'policy', ['value' => 1, 'checked' => false, 'required' => true, 'label' => '<span class="text-muted">Я ознакомлен с <a href="' . \yii\helpers\Url::to(['site/page', 'slug' => 'policy']) . '">политикой сайта о конфиденциальности</a> и согласен отправить указанные мной данные на обработку</span>']) ?>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-body">
+                <div class="h2 text-center mb-3">Дополнительная информация о себе</div>
+
+                <div class="mb-4">
+                    Если хотите, можете указать дополнительную информацию о себе.
+                    Это позволит нашим сотрудникам быстрее подготовить и отправить
+                    Вам счет на оплату заказанной продукции.
+                </div>
+
+                <?= $form->field($model, 'delivery')->widget(MaskedInput::className(), [
+                    'mask' => 'город *{3,20}, отделение новой почты № 9{1,4}',
+                ])->textInput(['placeholder' => 'Введите город и номер отделения Новой почты']) ?>
+
+                <?= $form->field($model, 'email')->textInput() ?>
+
+                <?= $form->field($model, 'entity')->radioList([
+                    0 => 'Частное лицо ',
+                    1 => 'Организация',
+                ], ['class' => 'pt-2']) ?>
+
+            </div>
+        </div>
+
+
+
+        <div class="text-muted">
+            <b class="text-danger">*</b> - поля являются обязательными для заполнения<br>
+            Просьба указывать дополнительную информацию - это поможет нам быстрее обработать Ваш заказ.
+        </div>
+
+        <div class="text-center mt-4">
+            <?= Html::submitButton('Заказать', ['class' => 'btn btn-primary btn-lg']) ?>
+        </div>
+
+        <?php ActiveForm::end() ?>
+
+    <?php endif; ?>
+
+<?php endif; ?>

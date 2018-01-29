@@ -17,14 +17,26 @@ use yii\db\ActiveRecord;
  * @property string $text
  * @property int $created_at
  * @property int $status
+ * @property array $product_ids
  *
  * @property Buyer $buyer
- * @property OrderProduct[] $orderProducts
+ * @property Variant[] $products
  */
 class Order extends ActiveRecord
 {
+    public $cartItemName = [];
+    public $cartItemCount = [];
+    public $cartItemPrice = [];
+
     const STATUS_NEW = 1;
     const STATUS_OLD = 2;
+
+    public function init()
+    {
+        $this->cartItemName = $this->getCartItemName();
+        $this->cartItemCount = $this->getCartItemCount();
+        $this->cartItemPrice = $this->getCartItemPrice();
+    }
 
     /**
      * @inheritdoc
@@ -47,7 +59,25 @@ class Order extends ActiveRecord
             [
                 'class' => LinkerBehavior::className(),
                 'relations' => [
-                    'product_ids' => ['products'],
+                    'product_ids' => [
+                        'products',
+                        'updater' => [
+                            'viaTableAttributesValue' => [
+                                'name' => function($updater, $relatedPk, $rowCondition) {
+                                    $primaryModel = $updater->getBehavior()->owner;
+                                    return @$primaryModel->cartItemName[$relatedPk];
+                                },
+                                'count' => function($updater, $relatedPk, $rowCondition) {
+                                    $primaryModel = $updater->getBehavior()->owner;
+                                    return @$primaryModel->cartItemCount[$relatedPk];
+                                },
+                                'price' => function($updater, $relatedPk, $rowCondition) {
+                                    $primaryModel = $updater->getBehavior()->owner;
+                                    return @$primaryModel->cartItemPrice[$relatedPk];
+                                },
+                            ],
+                        ],
+                    ],
                 ],
             ],
         ];
@@ -59,7 +89,7 @@ class Order extends ActiveRecord
     public function rules()
     {
         return [
-            [['buyer_id', 'amount'], 'required'],
+            [['buyer_id', 'amount', 'product_ids'], 'required'],
             [['buyer_id', 'amount', 'status'], 'integer'],
             [['text'], 'string'],
             ['status', 'default', 'value' => self::STATUS_NEW],
@@ -97,7 +127,45 @@ class Order extends ActiveRecord
      */
     public function getProducts()
     {
-        return $this->hasMany(OrderProduct::className(), ['order_id' => 'id']);
-        //return $this->hasMany(Order::className(), ['id' => 'order_id'])->viaTable('order_product', ['variant_id' => 'id']);
+        return $this->hasMany(Variant::className(), ['id' => 'variant_id'])->viaTable('order_product', ['order_id' => 'id']);
+    }
+
+    public static function unread()
+    {
+        return self::find()->where(['status' => self::STATUS_NEW])->count();
+    }
+
+    public static function read($id = null)
+    {
+        /** @var $temp Order[] */
+        $temp = self::find()->where(['status' => self::STATUS_NEW])->andFilterWhere(['id' => $id])->all();
+
+        foreach ($temp as $t) {
+            $t->status = self::STATUS_OLD;
+            $t->save();
+        }
+    }
+
+    public function getCartItemName()
+    {
+        return OrderProduct::find()->select(['name'])->indexBy('variant_id')->asArray()->column();
+    }
+
+    public function getCartItemCount()
+    {
+        return OrderProduct::find()->select(['count'])->indexBy('variant_id')->asArray()->column();
+    }
+
+    public function getCartItemPrice()
+    {
+        return OrderProduct::find()->select(['price'])->indexBy('variant_id')->asArray()->column();
+    }
+
+    public static function statusList()
+    {
+        return [
+            self::STATUS_NEW => 'Новый',
+            self::STATUS_OLD => 'Старый',
+        ];
     }
 }

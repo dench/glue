@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'name',
             'phone',
             'email:email',
-            'created_at',
+            'created_at:date',
             //'entity',
             //'delivery',
 

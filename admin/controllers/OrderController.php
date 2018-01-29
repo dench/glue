@@ -2,9 +2,11 @@
 
 namespace app\admin\controllers;
 
+use dench\products\models\Variant;
 use Yii;
 use app\models\Order;
 use app\admin\models\OrderSearch;
+use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -87,6 +89,8 @@ class OrderController extends Controller
      */
     public function actionUpdate($id)
     {
+        Order::read($id);
+
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {

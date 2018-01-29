@@ -2,8 +2,9 @@
 
 namespace app\controllers;
 
+use app\models\Cart;
 use app\models\OrderForm;
-use app\widgets\Cart;
+use app\widgets\CartWidget;
 use dench\page\models\Page;
 use dench\products\models\Variant;
 use Yii;
@@ -28,16 +29,24 @@ class CartController extends Controller
     {
         $page = Page::viewPage('cart');
 
-        $cart = $this->getCart();
+        $cart = Cart::getCart();
 
         $variant_ids = array_keys($cart);
 
         $items = Variant::find()->where(['id' => $variant_ids])->andWhere(['enabled' => true])->all();
 
+        $model = new OrderForm();
+
+        if ($model->load(Yii::$app->request->post()) && $model->send()) {
+            Yii::$app->session->setFlash('orderSubmitted');
+            return $this->redirect(['']);
+        }
+
         return $this->render('index', [
             'page' => $page,
             'items' => $items,
             'cart' => $cart,
+            'model' => $model,
         ]);
     }
 
@@ -46,7 +55,7 @@ class CartController extends Controller
         $footer = Html::button(Yii::t('app', 'Continue shopping'), ['class' => 'btn btn-primary mr-auto', 'data-dismiss' => 'modal']);
         $footer .= Html::a(Yii::t('app', 'Place an order'), ['/cart/index'], ['class' => 'btn btn-warning']);
 
-        $cart = $this->getCart();
+        $cart = Cart::getCart();
 
         $variant_ids = array_keys($cart);
 
@@ -66,72 +75,56 @@ class CartController extends Controller
 
     public function actionBlock()
     {
-        return Cart::widget();
+        return CartWidget::widget();
     }
 
-    public function actionOrder()
+    /*public function actionOrder()
     {
         $page = Page::viewPage('order');
 
+        $cart = Cart::getCart();
+
+        if (empty($cart)) {
+            return $this->redirect(['/cart/index']);
+        }
+
         $model = new OrderForm();
 
-        /*if ($model->load(Yii::$app->request->post()) && $model->send()) {
+        if ($model->load(Yii::$app->request->post()) && $model->send()) {
             Yii::$app->session->setFlash('orderSubmitted');
             return $this->redirect(['']);
-        }*/
+        }
 
         return $this->render('order', [
             'page' => $page,
             'model' => $model,
         ]);
-    }
+    }*/
 
     public function actionDel($id)
     {
-        $cart = $this->getCart();
+        $cart = Cart::getCart();
 
         ArrayHelper::remove($cart, $id);
 
-        return $this->setCart($cart);
+        return Cart::setCart($cart);
     }
 
     public function actionAdd($id)
     {
-        $cart = $this->getCart();
+        $cart = Cart::getCart();
 
-        @$cart[$id] += 1;
+        ArrayHelper::setValue($cart, $id, ArrayHelper::getValue($cart, $id) + 1);
 
-        return $this->setCart($cart);
+        return Cart::setCart($cart);
     }
 
     public function actionSet($id, $count)
     {
-        $cart = $this->getCart();
+        $cart = Cart::getCart();
 
         $cart[$id] = $count;
 
-        return $this->setCart($cart);
-    }
-
-    private function setCart($data)
-    {
-        Yii::$app->response->cookies->add(new \yii\web\Cookie([
-            'name' => 'cart',
-            'value' => serialize($data),
-            'expire' => time() + 3600 * 24 * 7,
-        ]));
-
-        return true;
-    }
-
-    private function getCart()
-    {
-        $cart = Yii::$app->request->cookies->getValue('cart');
-
-        if (empty($cart)) {
-            return [];
-        } else {
-            return unserialize($cart);
-        }
+        return Cart::setCart($cart);
     }
 }
