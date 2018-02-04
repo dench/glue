@@ -20,7 +20,6 @@ class OrderForm extends Model
     public $email;
     public $delivery;
     public $entity;
-    public $policy;
     public $reCaptcha;
 
     /**
@@ -29,11 +28,11 @@ class OrderForm extends Model
     public function rules()
     {
         return [
-            [['name', 'phone', 'policy'], 'required'],
+            [['name', 'phone'], 'required'],
             [['name', 'phone', 'email', 'delivery'], 'string'],
             ['email', 'email'],
-            [['entity', 'policy'], 'boolean'],
-            //['reCaptcha', ReCaptchaValidator::className(), 'uncheckedMessage' => Yii::t('app', 'Пожалуйста, подтвердите, что вы не бот.')],
+            [['entity'], 'boolean'],
+            ['reCaptcha', ReCaptchaValidator::className(), 'uncheckedMessage' => Yii::t('app', 'Пожалуйста, подтвердите, что вы не бот.')],
         ];
     }
 

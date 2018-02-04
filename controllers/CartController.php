@@ -78,29 +78,6 @@ class CartController extends Controller
         return CartWidget::widget();
     }
 
-    /*public function actionOrder()
-    {
-        $page = Page::viewPage('order');
-
-        $cart = Cart::getCart();
-
-        if (empty($cart)) {
-            return $this->redirect(['/cart/index']);
-        }
-
-        $model = new OrderForm();
-
-        if ($model->load(Yii::$app->request->post()) && $model->send()) {
-            Yii::$app->session->setFlash('orderSubmitted');
-            return $this->redirect(['']);
-        }
-
-        return $this->render('order', [
-            'page' => $page,
-            'model' => $model,
-        ]);
-    }*/
-
     public function actionDel($id)
     {
         $cart = Cart::getCart();

@@ -1028,13 +1028,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/luyadev/luya-bootstrap4.git",
-                "reference": "dff3cfcaa6876e15a56770ba449f3e0c40364793"
+                "reference": "a4a536499f0a0174264c28eebe3a05a000f72a06"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/luyadev/luya-bootstrap4/zipball/dff3cfcaa6876e15a56770ba449f3e0c40364793",
-                "reference": "dff3cfcaa6876e15a56770ba449f3e0c40364793",
+                "url": "https://api.github.com/repos/luyadev/luya-bootstrap4/zipball/a4a536499f0a0174264c28eebe3a05a000f72a06",
+                "reference": "a4a536499f0a0174264c28eebe3a05a000f72a06",
                 "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "^2.0@dev"
             },
             "require-dev": {
                 "luyadev/luya-testsuite": "~1.0.0"
@@ -1085,7 +1088,7 @@
                 "twbs4",
                 "yii2"
             ],
-            "time": "2018-01-28T12:07:54+00:00"
+            "time": "2018-01-31T12:41:49+00:00"
         },
         {
             "name": "omgdef/yii2-multilingual-behavior",
@@ -1233,7 +1236,7 @@
         },
         {
             "name": "symfony/css-selector",
-            "version": "v3.4.3",
+            "version": "v3.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/css-selector.git",
@@ -1286,7 +1289,7 @@
         },
         {
             "name": "symfony/dom-crawler",
-            "version": "v3.4.3",
+            "version": "v3.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dom-crawler.git",
@@ -1342,16 +1345,16 @@
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.6.0",
+            "version": "v1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "2ec8b39c38cb16674bbf3fea2b6ce5bf117e1296"
+                "reference": "78be803ce01e55d3491c1397cf1c64beb9c1b63b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/2ec8b39c38cb16674bbf3fea2b6ce5bf117e1296",
-                "reference": "2ec8b39c38cb16674bbf3fea2b6ce5bf117e1296",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/78be803ce01e55d3491c1397cf1c64beb9c1b63b",
+                "reference": "78be803ce01e55d3491c1397cf1c64beb9c1b63b",
                 "shasum": ""
             },
             "require": {
@@ -1363,7 +1366,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.6-dev"
+                    "dev-master": "1.7-dev"
                 }
             },
             "autoload": {
@@ -1397,7 +1400,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2017-10-11T12:05:26+00:00"
+            "time": "2018-01-30T19:27:44+00:00"
         },
         {
             "name": "twbs/bootstrap",

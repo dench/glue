@@ -5,6 +5,7 @@
 /* @var $cart array */
 
 use app\components\ActiveForm;
+use himiklab\yii2\recaptcha\ReCaptcha;
 use yii\helpers\Html;
 use yii\widgets\MaskedInput;
 
@@ -44,11 +45,9 @@ $this->params['breadcrumbs'][] = $page->name;
                 ]) ?>
 
                 <div class="row">
-                    <div class="col-sm-3">
-
-                    </div>
+                    <div class="col-sm-3"></div>
                     <div class="col-sm-9">
-                        <?= Html::activeCheckbox($model, 'policy', ['value' => 1, 'checked' => false, 'required' => true, 'label' => '<span class="text-muted">Я ознакомлен с <a href="' . \yii\helpers\Url::to(['site/page', 'slug' => 'policy']) . '">политикой сайта о конфиденциальности</a> и согласен отправить указанные мной данные на обработку</span>']) ?>
+                        <?= $form->field($model, 'reCaptcha')->widget(ReCaptcha::className())->label(false) ?>
                     </div>
                 </div>
 
