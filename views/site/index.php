@@ -12,18 +12,23 @@ use yii\helpers\Url;
 <section>
     <div class="row categories">
         <?php foreach ($categories as $category) : ?>
-        <div class="col-sm-6 col-lg-4 pb-3 px-2">
-            <div class="card block-link">
-                <?php if ($category->image) { ?>
-                    <img src="<?= ImageHelper::thumb($category->image->id, 'category') ?>" class="card-img-top" alt="<?= $category->image->alt ? $category->image->alt : $category->name ?>" title="<?= $category->title ?>">
-                <?php } else { ?>
-                    <img src="<?= Yii::$app->params['image']['size']['category']['none'] ?>" class="card-img-top" alt="">
-                <?php } ?>
-                <div class="card-footer bg-gradient-dark text-center">
-                    <a href="<?= Url::to(['category/view', 'slug' => $category->slug]) ?>" class="text-white"><?= $category->name ?></a>
+            <?php
+            $url = Url::to((count($category->categories)) ? ['category/pod', 'slug' => $category->slug] : ['category/view', 'slug' => $category->slug]);
+            ?>
+            <div class="col-sm-6 col-lg-4 pb-3 px-2">
+                <div class="card block-link">
+                    <a href="<?= $url ?>" rel="nofollow">
+                        <?php if ($category->image) { ?>
+                            <img src="<?= ImageHelper::thumb($category->image->id, 'category') ?>" class="card-img-top" alt="<?= $category->image->alt ? $category->image->alt : $category->name ?>" title="<?= $category->title ?>">
+                        <?php } else { ?>
+                            <img src="<?= Yii::$app->params['image']['size']['category']['none'] ?>" class="card-img-top" alt="">
+                        <?php } ?>
+                    </a>
+                    <div class="card-footer bg-gradient-dark text-center">
+                        <a href="<?= $url ?>" class="text-white"><?= $category->name ?></a>
+                    </div>
                 </div>
             </div>
-        </div>
         <?php endforeach; ?>
     </div>
 

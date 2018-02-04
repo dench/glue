@@ -14,9 +14,12 @@ $this->params['breadcrumbs'][] = $page->name;
 
 <div class="row categories">
     <?php foreach ($categories as $category) : ?>
+        <?php
+        $url = Url::to((count($category->categories)) ? ['category/pod', 'slug' => $category->slug] : ['category/view', 'slug' => $category->slug]);
+        ?>
         <div class="col-sm-6 col-lg-4 pb-3 px-2">
             <div class="card block-link">
-                <a href="<?= Url::to(['category/view', 'slug' => $category->slug]) ?>" rel="nofollow">
+                <a href="<?= $url ?>" rel="nofollow">
                 <?php if ($category->image) { ?>
                     <img src="<?= ImageHelper::thumb($category->image->id, 'category') ?>" class="card-img-top" alt="<?= $category->image->alt ? $category->image->alt : $category->name ?>" title="<?= $category->title ?>">
                 <?php } else { ?>
@@ -24,7 +27,7 @@ $this->params['breadcrumbs'][] = $page->name;
                 <?php } ?>
                 </a>
                 <div class="card-footer bg-gradient-dark text-center">
-                    <a href="<?= Url::to(['category/view', 'slug' => $category->slug]) ?>" class="text-white"><?= $category->name ?></a>
+                    <a href="<?= $url ?>" class="text-white"><?= $category->name ?></a>
                 </div>
             </div>
         </div>
