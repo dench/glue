@@ -47,7 +47,7 @@ $variant = @$model->variants[0];
                 ]) ?>
             </div>
             <div class="col-sm-3">
-                <a href="#" class="btn btn-primary btn-block btn-buy" rel="price<?= $model->id ?>"><?= Yii::t('app', 'Buy') ?></a>
+                <button class="btn btn-primary btn-block btn-buy" rel="price<?= $model->id ?>"><?= Yii::t('app', 'Buy') ?></button>
             </div>
         </div>
 
