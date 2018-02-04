@@ -124,4 +124,7 @@ return [
     'Entity' => 'Организация',
     'Phone' => 'Телефон',
     'Delivery' => 'Доставка',
+    'Short description' => 'Краткое описание',
+    'Description (top)' => 'Описание (сверху)',
+    'Search for...' => 'Искать...',
 ];

@@ -8,6 +8,7 @@ use app\models\QuestionForm;
 use app\models\Review;
 use app\models\ReviewForm;
 use dench\page\models\Page;
+use dench\products\models\Category;
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\helpers\Url;
@@ -37,8 +38,11 @@ class SiteController extends Controller
     {
         $page = Page::viewPage(1);
 
+        $categories = !Yii::$app->cache->exists('_categories-' . Yii::$app->language) ? Category::getMain() : [];
+
         return $this->render('index', [
             'page' => $page,
+            'categories' => $categories,
         ]);
     }
 

@@ -10,7 +10,14 @@
 ?>
 <div class="media-body p-3">
     <div class="mb-1">
-        <div class="float-right">Оценка: <?= $model->rating ?></div>
+        <div class="float-right">
+            Оценка:
+            <?php
+            for ($i = 0; $i < $model->rating; $i++) {
+                echo '<i class="fa fa-star text-warning"></i> ';
+            }
+            ?>
+        </div>
         <b><?= $model->name ?></b>
         <span class="text-muted"><?= Yii::$app->formatter->asDate($model->created_at) ?></span>
     </div>

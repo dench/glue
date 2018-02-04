@@ -526,12 +526,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dench/yii2-products.git",
-                "reference": "4dc0451de098ed99bdf11ccd24414d9541f2c6f1"
+                "reference": "d60e1f8d937f5b4505812348c4c3460c1f25831e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dench/yii2-products/zipball/4dc0451de098ed99bdf11ccd24414d9541f2c6f1",
-                "reference": "4dc0451de098ed99bdf11ccd24414d9541f2c6f1",
+                "url": "https://api.github.com/repos/dench/yii2-products/zipball/d60e1f8d937f5b4505812348c4c3460c1f25831e",
+                "reference": "d60e1f8d937f5b4505812348c4c3460c1f25831e",
                 "shasum": ""
             },
             "require": {
@@ -565,7 +565,7 @@
                 "products",
                 "yii2"
             ],
-            "time": "2018-01-13T11:04:18+00:00"
+            "time": "2018-02-04T18:00:41+00:00"
         },
         {
             "name": "dench/yii2-sortable",

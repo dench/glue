@@ -9,6 +9,7 @@ use app\components\Nav;
 use app\models\Question;
 use app\models\Review;
 use app\widgets\CartWidget;
+use app\widgets\OrderScheme;
 use dench\modal\Modal;
 use dench\page\models\Page;
 use dench\products\models\Category;
@@ -16,7 +17,6 @@ use luya\bootstrap4\widgets\Breadcrumbs;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\Menu;
-use yii\widgets\Pjax;
 
 SiteAsset::register($this);
 FontAwesomeAsset::register($this);
@@ -49,7 +49,7 @@ $this->registerJs($js);
             </div>
             <div class="search col-10 col-md-4 py-2">
                 <div class="input-group pt-1">
-                    <input type="text" class="form-control" placeholder="Search for..." aria-label="Search for...">
+                    <input type="text" class="form-control" placeholder="<?= Yii::t('app', 'Search for...') ?>" aria-label="<?= Yii::t('app', 'Search for...') ?>">
                     <span class="input-group-append">
                         <button class="btn btn-primary" type="button">Найти</button>
                     </span>
@@ -58,7 +58,7 @@ $this->registerJs($js);
             <div class="col-6 col-md-4 text-right">
                 <div class="phones">
                     <a href="tel:<?= Yii::$app->params['phone1'] ?>"><i class="fa fa-phone"></i> <?= Yii::$app->params['phone1f'] ?></a>
-                    <a href="tel:<?= Yii::$app->params['phone1'] ?>"><i class="fa fa-phone"></i> <?= Yii::$app->params['phone2f'] ?></a>
+                    <a href="tel:<?= Yii::$app->params['phone2'] ?>"><i class="fa fa-phone"></i> <?= Yii::$app->params['phone2f'] ?></a>
                 </div>
             </div>
         </div>
@@ -137,7 +137,7 @@ $this->registerJs($js);
 
 <div class="container my-2 my-md-3">
     <div class="row">
-        <div class="col-md-4 col-lg-3">
+        <div class="sidebar col-md-4 col-lg-3">
             <div class="row">
                 <div class="col-sm-6 col-md-12">
 
@@ -149,26 +149,20 @@ $this->registerJs($js);
                         </button>
                         <div class="collapse navbar-collapse" id="navbar-left">
                             <?php
+
+                            /** @var $categories Category[] */
+                            $categories = !Yii::$app->cache->exists('_categories-' . Yii::$app->language) ? Category::getMain() : [];
+
                             $items = [];
-                            foreach (Category::findAll(['enabled' => 1]) as $category) {
-                                $slug = '';
+
+                            foreach ($categories as $category) {
                                 $items[$category->id] = [
                                     'label' => $category->name,
-                                    'url' => ['category/view', 'slug' => $category->slug],
+                                    'url' => (count($category->categories)) ? ['category/pod', 'slug' => $category->slug] : ['category/view', 'slug' => $category->slug],
                                     'options' => [
                                         'tag' => false,
                                     ],
                                 ];
-                                if (Yii::$app->controller->id == 'product') {
-                                    $slug = @$this->params['breadcrumbs'][1]['url']['slug'];
-                                } elseif (Yii::$app->controller->id == 'category') {
-                                    $slug = Yii::$app->request->get('slug');
-                                } else {
-                                    $slug = '';
-                                }
-                                if ($slug == $category->slug) {
-                                    $items[$category->id]['template'] = '<a class="nav-link active bg-gradient-primary text-white" href="{url}">{label}</a>';
-                                }
                             }
                             echo Menu::widget([
                                 'items' => $items,
@@ -190,7 +184,7 @@ $this->registerJs($js);
                 </div>
                 <div class="col-sm-6 col-md-12">
                     <a href="#" class="btn btn-primary btn-lg btn-block my-3"><small>Техническая документация</small></a>
-                    <a href="#" class="btn btn-warning btn-lg btn-block my-3"><small>Литература</small></a>
+                    <a href="#" class="btn btn-warning btn-lg btn-block my-3"><small>Сертификаты</small></a>
                     <div class="list-group list-article my-3">
                         <div class="list-group-item h4">Информация для клиентов</div>
                         <?php
@@ -203,7 +197,7 @@ $this->registerJs($js);
                 </div>
             </div>
         </div>
-        <div class="col-md-8 col-lg-9">
+        <div class="mainblock col-md-8 col-lg-9">
             <?php
             if (isset($this->params['breadcrumbs'])) {
                 echo Html::tag(
@@ -226,46 +220,7 @@ $this->registerJs($js);
 
     <?php if (Yii::$app->controller->id == 'site' && Yii::$app->controller->action->id == 'index') : ?>
 
-    <div class="card how mt-3 mb-4">
-        <div class="card-body text-center">
-            <div class="h1">Схема заказа</div>
-            <div class="row">
-                <div class="col-sm-4 px-lg-5">
-                    <div>
-                        <img src="/img/how-1.png" alt="Заказ товара">
-                    </div>
-                    <div class="my-2">
-                        <a href="#" class="h3"><span class="text-primary">1.</span> Заказ товара</a>
-                    </div>
-                    <div class="text-muted">
-                        Описание описание описание описание описание описание описание описание описание описание описание
-                    </div>
-                </div>
-                <div class="col-sm-4 px-lg-5">
-                    <div>
-                        <img src="/img/how-2.png" alt="100% предоплата">
-                    </div>
-                    <div class="my-2">
-                        <a href="#" class="h3"><span class="text-primary">2.</span> 100% предоплата</a>
-                    </div>
-                    <div class="text-muted">
-                        Описание описание описание описание описание описание описание описание описание описание описание
-                    </div>
-                </div>
-                <div class="col-sm-4 px-lg-5">
-                    <div>
-                        <img src="/img/how-3.png" alt="Доставка">
-                    </div>
-                    <div class="my-2">
-                        <a href="#" class="h3"><span class="text-primary">3.</span> Доставка</a>
-                    </div>
-                    <div class="text-muted">
-                        Описание описание описание описание описание описание описание описание описание описание описание
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <?= OrderScheme::widget() ?>
 
     <div class="card how my-4">
         <div class="card-body">

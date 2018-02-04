@@ -23,6 +23,21 @@ class CategoryController extends Controller
         ]);
     }
 
+    public function actionPod($slug)
+    {
+        $page = Category::viewPage($slug);
+
+        /** @var $category Category */
+        $category = Category::find()->where(['slug' => $slug])->one();
+
+        $categories = $category->categories;
+
+        return $this->render('pod', [
+            'page' => $page,
+            'categories' => $categories,
+        ]);
+    }
+
     public function actionView($slug)
     {
         $page = Category::viewPage($slug);

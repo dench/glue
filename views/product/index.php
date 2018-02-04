@@ -1,6 +1,9 @@
 <?php
 
 /* @var $this yii\web\View */
+
+use app\widgets\OrderScheme;
+
 /* @var $model dench\products\models\Product */
 /* @var $similar dench\products\models\Product[] */
 /* @var $viewed boolean */
@@ -103,3 +106,5 @@ $this->registerJs($js);
 <?= $this->render('_options', [
     'options' => $model->options,
 ]) ?>
+
+<?= OrderScheme::widget() ?>

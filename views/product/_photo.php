@@ -35,7 +35,7 @@ foreach ($model->variants as $variant) {
 <?php if (count($images) > 1) : ?>
     <div class="row mx-0">
         <?php foreach ($images as $image) : ?>
-            <div class="col-lg-4 px-1">
+            <div class="col-lg-4 col-md-6 px-1">
                 <a class="<?php if ($model->image->id == $image->id) echo " active"; ?>" href="<?= ImageHelper::thumb($image->id, 'big') ?>" data-size="<?= $image->width ?>x<?= $image->height ?>">
                     <img class="img-thumbnail" src="<?= ImageHelper::thumb($image->id, 'micro') ?>" alt="<?= $model->image->alt ? $model->image->alt : $model->name ?>" title="<?= $model->title ?>">
                 </a>

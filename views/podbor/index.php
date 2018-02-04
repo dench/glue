@@ -12,6 +12,7 @@ $this->params['breadcrumbs'][] = $page->name;
 <?= $page->text ?>
 
 <?php
+/*
 $items = [];
 foreach ($photos as $photo) {
     $items[] = [
@@ -25,4 +26,5 @@ foreach ($photos as $photo) {
 echo Gallery::widget([
     'items' => $items,
 ]);
+*/
 ?>

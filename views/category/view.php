@@ -7,6 +7,7 @@
 /* @var $dataProvider yii\data\ActiveDataProvider */
 /* @var $features dench\products\models\Feature[] */
 
+use yii\helpers\Url;
 use yii\widgets\ListView;
 use yii\widgets\Pjax;
 
@@ -14,11 +15,33 @@ $this->params['breadcrumbs'][] = [
     'label' => Yii::t('app', 'Products'),
     'url' => ['category/index'],
 ];
+
+if ($page->parent) {
+    $url_active = Url::to(['category/pod', 'slug' => $page->parent->slug]);
+    $this->params['breadcrumbs'][] = [
+        'label' => Yii::t('app', $page->parent->name),
+        'url' => $url_active,
+    ];
+} else {
+    $url_active = Url::to(['category/view', 'slug' => $page->slug]);
+}
+
 $this->params['breadcrumbs'][] = $page->name;
+
+$js = <<<JS
+    $('.sidebar nav .nav-link[href="{$url_active}"]').addClass('active bg-gradient-primary text-white');
+JS;
+$this->registerJs($js);
 ?>
 <h1><?= $page->h1 ?></h1>
 
-<?= $page->text ?>
+<?php if ($page->text) : ?>
+<div class="card mb-3">
+    <div class="card-body">
+        <?= $page->text ?>
+    </div>
+</div>
+<?php endif; ?>
 
 <?php Pjax::begin(['id' => 'pjax']); ?>
 
@@ -37,7 +60,7 @@ $this->params['breadcrumbs'][] = $page->name;
             'class' => 'alert alert-danger',
         ],
         'options' => [
-            'class' => 'list-group',
+            'class' => 'list-group mb-4',
         ],
         'itemOptions' => [
             'class' => 'list-group-item',
@@ -47,6 +70,10 @@ $this->params['breadcrumbs'][] = $page->name;
 
 <?php Pjax::end(); ?>
 
-<div class="page-seo">
-    <?= $page->seo ?>
+<?php if ($page->seo) : ?>
+<div class="card mb-3">
+    <div class="page-seo card-body">
+        <?= $page->seo ?>
+    </div>
 </div>
+<?php endif; ?>

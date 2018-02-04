@@ -29,7 +29,7 @@ $variant = @$model->variants[0];
             <a href="<?= $link ?>"><?= $model->name ?></a>
         </h3>
         <div>
-            <?= $model->description ?>
+            <?= $model->text_short ?>
         </div>
         <?php if ($variant->available > 0): ?>
             <div class="text-success my-2"><i class="fa fa-check"></i> <?= Yii::t('app', 'In stock') ?></div>

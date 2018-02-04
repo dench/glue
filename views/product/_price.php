@@ -15,7 +15,7 @@ use app\widgets\PriceTable;
 <div class="row">
 <?php if (@$model->variants[0]->price) { ?>
     <div class="col-sm-12">
-        <?= nl2br($model->description) ?>
+        <?= $model->text_top ?>
         <?php if ($model->variants[0]->available > 0): ?>
             <div class="text-success my-3"><i class="fa fa-check"></i> <?= Yii::t('app', 'In stock') ?></div>
         <?php else: ?>
@@ -32,7 +32,7 @@ use app\widgets\PriceTable;
                 <button class="btn btn-primary btn-block btn-buy" rel="price<?= $model->id ?>"><?= Yii::t('app', 'Buy') ?></button>
             </div>
             <div class="col">
-
+                <span class="btn btn-link" onclick="window.print();"><i class="fa fa-print"></i> Версия для печати</span>
             </div>
         </div>
     </div>

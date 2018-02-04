@@ -11,5 +11,9 @@ use yii\bootstrap\ActiveForm;
 
 $this->params['breadcrumbs'][] = $page->name;
 ?>
-<h1><?= $page->h1 ?></h1>
-<?= $page->text ?>
+<div class="card mb-4">
+    <div class="card-body">
+        <h1 class="mb-4"><?= $page->h1 ?></h1>
+        <?= $page->text ?>
+    </div>
+</div>
