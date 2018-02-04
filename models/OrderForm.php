@@ -93,10 +93,11 @@ class OrderForm extends Model
                 'buyer_id' => $buyer->id,
                 'product_ids' => $product_ids,
                 'amount' => $amount,
-                'cartItemName' => $cartItemName,
-                'cartItemCount' => $cartItemCount,
-                'cartItemPrice' => $cartItemPrice,
             ]);
+
+            $order->cartItemName = $cartItemName;
+            $order->cartItemCount = $cartItemCount;
+            $order->cartItemPrice = $cartItemPrice;
 
             if ($order->save()) {
                 Cart::clearCart();
