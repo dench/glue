@@ -25,6 +25,7 @@ namespace app\widgets;
 
 use app\assets\PhotoswipeAsset;
 use yii\base\Widget;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 
 class Gallery extends Widget
@@ -84,15 +85,25 @@ JS;
 
     protected function renderItem($item)
     {
+        $title = !empty($item['caption']) ? $item['caption'] : null;
+
         $this->clientItems[] = [
             'src' => $item['image'],
             'w' => $item['width'],
             'h' => $item['height'],
-            'title' => !empty($item['caption']) ? $item['caption'] : null,
+            'title' => $title,
         ];
 
-        $img = Html::img($item['thumb'], $this->itemOptions);
+        $itemOptions = ArrayHelper::merge([
+            'alt' => $title,
+        ], $this->itemOptions);
 
-        return Html::a($img, $item['image'], $this->linkOptions);
+        $linkOptions = ArrayHelper::merge([
+            'title' => $title,
+        ], $this->linkOptions);
+
+        $img = Html::img($item['thumb'], $itemOptions);
+
+        return Html::a($img, $item['image'], $linkOptions);
     }
 }

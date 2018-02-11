@@ -8,13 +8,14 @@
  * @var $model dench\products\models\Product
  */
 
+use app\widgets\Gallery;
 use dench\image\helpers\ImageHelper;
 
 ?>
 <div class="product-photo mb-3">
     <div class="photo">
         <?php if ($model->image) { ?>
-            <a href="<?= ImageHelper::thumb($model->image->id, 'big') ?>" data-size="<?= Yii::$app->params['image']['size']['big']['width'] ?>x<?= Yii::$app->params['image']['size']['big']['height'] ?>">
+            <a class="gallery-item" href="<?= ImageHelper::thumb($model->image->id, 'big') ?>" data-size="<?= Yii::$app->params['image']['size']['big']['width'] ?>x<?= Yii::$app->params['image']['size']['big']['height'] ?>">
                 <img class="img-fluid" src="<?= ImageHelper::thumb($model->image->id, 'normal') ?>" alt="<?= $model->image->alt ? $model->image->alt : $model->name ?>" title="<?= $model->title ?>">
             </a>
         <?php } else { ?>
@@ -31,15 +32,28 @@ foreach ($model->variants as $variant) {
         $images[] = $image;
     }
 }
+if (count($images) > 1) {
+    $items = [];
+    foreach ($images as $photo) {
+        $items[] = [
+            'image' => ImageHelper::thumb($photo->id, 'big'),
+            'thumb' => ImageHelper::thumb($photo->id, 'micro'),
+            'width' => Yii::$app->params['image']['size']['big']['width'],
+            'height' => Yii::$app->params['image']['size']['big']['height'],
+            'title' => $photo->alt,
+        ];
+    }
+    echo Gallery::widget([
+        'items' => $items,
+        'options' => [
+            'class' => 'gallery row mx-0',
+        ],
+        'itemOptions' => [
+            'class' => 'img-thumbnail',
+        ],
+        'linkOptions' => [
+            'class' => 'gallery-item col-lg-4 col-md-6 px-1',
+        ],
+    ]);
+}
 ?>
-<?php if (count($images) > 1) : ?>
-    <div class="row mx-0">
-        <?php foreach ($images as $image) : ?>
-            <div class="col-lg-4 col-md-6 px-1">
-                <a class="<?php if ($model->image->id == $image->id) echo " active"; ?>" href="<?= ImageHelper::thumb($image->id, 'big') ?>" data-size="<?= $image->width ?>x<?= $image->height ?>">
-                    <img class="img-thumbnail" src="<?= ImageHelper::thumb($image->id, 'micro') ?>" alt="<?= $model->image->alt ? $model->image->alt : $model->name ?>" title="<?= $model->title ?>">
-                </a>
-            </div>
-        <?php endforeach; ?>
-    </div>
-<?php endif; ?>

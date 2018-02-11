@@ -10,21 +10,3 @@ $this->params['breadcrumbs'][] = $page->name;
 <h1><?= $page->h1 ?></h1>
 
 <?= $page->text ?>
-
-<?php
-/*
-$items = [];
-foreach ($photos as $photo) {
-    $items[] = [
-        'image' => ImageHelper::thumb($photo->id, 'page'),
-        'thumb' => ImageHelper::thumb($photo->id, 'cover'),
-        'width' => 600,
-        'height' => 450,
-        'title' => 'Title 1',
-    ];
-}
-echo Gallery::widget([
-    'items' => $items,
-]);
-*/
-?>

@@ -65,7 +65,7 @@ class PriceTable extends Widget
 
         $options = [
             'id' => $this->id,
-            'class' => 'table table-default table-bordered table-price text-center',
+            'class' => 'table table-default table-bordered table-price text-center bg-white',
         ];
 
         $optionsClass = ArrayHelper::remove($this->options, 'class');

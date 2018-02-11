@@ -9,8 +9,10 @@ use app\models\Review;
 use app\models\ReviewForm;
 use dench\page\models\Page;
 use dench\products\models\Category;
+use dench\products\models\Product;
 use Yii;
 use yii\data\ActiveDataProvider;
+use yii\helpers\Json;
 use yii\helpers\Url;
 use yii\web\Controller;
 use app\models\ContactForm;
@@ -173,5 +175,22 @@ class SiteController extends Controller
         return $this->renderAjax('callback', [
             'model' => $model,
         ]);
+    }
+
+    public function actionSearchList($q = null)
+    {
+        $data = Product::find()->select(['id', 'name', 'slug'])->joinWith(['translations'])->where(['enabled' => 1])->andFilterWhere(['like', 'name', $q])->asArray()->limit(100)->all();
+
+        $out = [];
+
+        foreach ($data as $d) {
+            Yii::error($d['name']);
+            $out[] = [
+                'value' => $d['name'],
+                'link' => Url::to(['product/index', 'slug' => $d['slug']]),
+            ];
+        }
+
+        echo Json::encode($out);
     }
 }

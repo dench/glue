@@ -13,9 +13,12 @@ use app\widgets\OrderScheme;
 use dench\modal\Modal;
 use dench\page\models\Page;
 use dench\products\models\Category;
+use kartik\typeahead\Typeahead;
 use luya\bootstrap4\widgets\Breadcrumbs;
 use yii\helpers\Html;
+use yii\helpers\Json;
 use yii\helpers\Url;
+use yii\web\JsExpression;
 use yii\widgets\Menu;
 
 SiteAsset::register($this);
@@ -48,12 +51,44 @@ $this->registerJs($js);
                 <a href="/"><img src="/img/loxeal.png" class="logo"></a>
             </div>
             <div class="search col-10 col-md-4 py-2">
-                <div class="input-group pt-1">
-                    <input type="text" class="form-control" placeholder="<?= Yii::t('app', 'Search for...') ?>" aria-label="<?= Yii::t('app', 'Search for...') ?>">
+                <form action="<?= Url::to(['/search']) ?>" class="input-group pt-1">
+                    <?php
+                    $template = '<a href="{{link}}">{{value}}</a>';
+                    echo Typeahead::widget([
+                        'name' => 'query',
+                        'value' => Yii::$app->request->get('query'),
+                        'container' => [
+                            'style' => 'flex: 1;',
+                        ],
+                        'options' => [
+                            'placeholder' => Yii::t('app', 'Search for...'),
+                            'style' => 'border-bottom-right-radius: 0; border-top-right-radius: 0; font-size: 1rem;',
+                        ],
+                        'pluginOptions' => [
+                            'highlight' => true,
+                        ],
+                        'dataset' => [
+                            [
+                                'datumTokenizer' => "Bloodhound.tokenizers.obj.whitespace('value')",
+                                'display' => 'value',
+                                'templates' => [
+                                    'notFound' => '<div class="text-danger" style="padding:0 8px">По данному запросу ничего не найдено.</div>',
+                                    'suggestion' => new JsExpression("Handlebars.compile('{$template}')")
+                                ],
+                                'prefetch' => Url::to(['site/search-list']),
+                                'remote' => [
+                                    'url' => Url::to(['site/search-list']) . '?q=%QUERY',
+                                    'wildcard' => '%QUERY'
+                                ],
+                                'limit' => 10
+                            ]
+                        ]
+                    ]);
+                    ?>
                     <span class="input-group-append">
-                        <button class="btn btn-primary" type="button">Найти</button>
+                        <button class="btn btn-primary" type="submit">Найти</button>
                     </span>
-                </div>
+                </form>
             </div>
             <div class="col-6 col-md-4 text-right">
                 <div class="phones">
@@ -321,7 +356,7 @@ $this->registerJs($js);
         </div>
     </div>
     <div class="text-center py-2 bg-gradient-secondary text-white">
-        2017 © <a href="/"><?= Yii::$app->name ?></a>
+        <?= date('Y') ?> © <a href="/"><?= Yii::$app->name ?></a>
     </div>
 </footer>
 <?= Modal::widget([
