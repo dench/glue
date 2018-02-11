@@ -32,28 +32,29 @@ foreach ($model->variants as $variant) {
         $images[] = $image;
     }
 }
-if (count($images) > 1) {
-    $items = [];
-    foreach ($images as $photo) {
-        $items[] = [
-            'image' => ImageHelper::thumb($photo->id, 'big'),
-            'thumb' => ImageHelper::thumb($photo->id, 'micro'),
-            'width' => Yii::$app->params['image']['size']['big']['width'],
-            'height' => Yii::$app->params['image']['size']['big']['height'],
-            'title' => $photo->alt,
-        ];
-    }
-    echo Gallery::widget([
-        'items' => $items,
-        'options' => [
-            'class' => 'gallery row mx-0',
-        ],
-        'itemOptions' => [
-            'class' => 'img-thumbnail',
-        ],
-        'linkOptions' => [
-            'class' => 'gallery-item col-lg-4 col-md-6 px-1',
-        ],
-    ]);
+$items = [];
+foreach ($images as $photo) {
+    $items[] = [
+        'image' => ImageHelper::thumb($photo->id, 'big'),
+        'thumb' => ImageHelper::thumb($photo->id, 'micro'),
+        'width' => Yii::$app->params['image']['size']['big']['width'],
+        'height' => Yii::$app->params['image']['size']['big']['height'],
+        'title' => $photo->alt,
+    ];
+}
+echo Gallery::widget([
+    'items' => $items,
+    'options' => [
+        'class' => 'gallery row mx-0',
+    ],
+    'itemOptions' => [
+        'class' => 'img-thumbnail',
+    ],
+    'linkOptions' => [
+        'class' => 'gallery-item col-lg-4 col-md-6 px-1',
+    ],
+]);
+if (count($images) <= 1) {
+    echo "<style>.gallery { display: none; }</style>";
 }
 ?>
