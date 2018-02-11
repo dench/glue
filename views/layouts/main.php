@@ -16,7 +16,6 @@ use dench\products\models\Category;
 use kartik\typeahead\Typeahead;
 use luya\bootstrap4\widgets\Breadcrumbs;
 use yii\helpers\Html;
-use yii\helpers\Json;
 use yii\helpers\Url;
 use yii\web\JsExpression;
 use yii\widgets\Menu;

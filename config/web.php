@@ -5,6 +5,21 @@
 $config = [
     'id' => 'app',
     'defaultRoute' => 'site/index',
+    'container' => [
+        'definitions' => [
+            'yii\widgets\LinkPager' => [
+                'options' => [
+                    'class' => 'pagination my-3 justify-content-center',
+                ],
+                'linkContainerOptions' => [
+                    'class' => 'page-item',
+                ],
+                'linkOptions' => [
+                    'class' => 'page-link',
+                ],
+            ],
+        ],
+    ],
     'components' => [
         'user' => [
             'identityClass' => 'app\models\User',

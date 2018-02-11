@@ -198,6 +198,32 @@ div.required label.col-form-label:after {
   }
 }
 
+.pagination {
+  .disabled {
+    span {
+      position: relative;
+      display: block;
+      padding: .5rem .75rem;
+      margin-left: -1px;
+      line-height: 1.25;
+      background-color: #fff;
+      border: 1px solid #dee2e6;
+    }
+    &.next {
+      span {
+        border-top-right-radius: .25rem;
+        border-bottom-right-radius: .25rem;
+      }
+    }
+    &.prev {
+      span {
+        border-top-left-radius: .25rem;
+        border-bottom-left-radius: .25rem;
+      }
+    }
+  }
+}
+
 textarea.form-control {
   width: 99%;
 }
