@@ -74,9 +74,9 @@ $this->registerJs($js);
                                     'notFound' => '<div class="text-danger" style="padding:0 8px">По данному запросу ничего не найдено.</div>',
                                     'suggestion' => new JsExpression("Handlebars.compile('{$template}')")
                                 ],
-                                'prefetch' => Url::to(['site/search-list']),
+                                'prefetch' => Url::to(['/search/list']),
                                 'remote' => [
-                                    'url' => Url::to(['site/search-list']) . '?q=%QUERY',
+                                    'url' => Url::to(['/search/list']) . '?q=%QUERY',
                                     'wildcard' => '%QUERY'
                                 ],
                                 'limit' => 10

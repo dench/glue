@@ -3,8 +3,12 @@
 namespace app\controllers;
 
 use dench\page\models\Page;
+use dench\products\models\Category;
 use dench\products\models\Product;
+use Yii;
 use yii\data\ActiveDataProvider;
+use yii\helpers\Json;
+use yii\helpers\Url;
 use yii\web\Controller;
 
 class SearchController extends Controller
@@ -38,6 +42,40 @@ class SearchController extends Controller
             'page' => $page,
             'dataProvider' => $dataProvider,
         ]);
+    }
+
+    public function actionList($q = null)
+    {
+        $q = trim($q);
+
+        $data = Product::find()->select(['id', 'name', 'slug'])->joinWith(['translations'])->where(['enabled' => 1])->andFilterWhere(['like', 'name', $q])->asArray()->limit(100)->all();
+
+        $out = [];
+
+        foreach ($data as $d) {
+            $out[] = [
+                'value' => $d['name'],
+                'link' => Url::to(['product/index', 'slug' => $d['slug']]),
+            ];
+        }
+
+        $data = Category::find()->select(['id', 'name', 'slug', 'parent_id'])->joinWith(['translations'])->where(['enabled' => 1])->andFilterWhere(['like', 'name', $q])->asArray()->all();
+
+        foreach ($data as $d) {
+            if ($d['parent_id']) {
+                $out[] = [
+                    'value' => $d['name'],
+                    'link' => Url::to(['category/pod', 'slug' => $d['slug']]),
+                ];
+            } else {
+                $out[] = [
+                    'value' => $d['name'],
+                    'link' => Url::to(['category/view', 'slug' => $d['slug']]),
+                ];
+            }
+        }
+
+        echo Json::encode($out);
     }
 
 }
