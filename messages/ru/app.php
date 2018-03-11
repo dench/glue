@@ -127,4 +127,10 @@ return [
     'Short description' => 'Краткое описание',
     'Description (top)' => 'Описание (сверху)',
     'Search for...' => 'Искать...',
+    'Create order' => 'Создать заказ',
+    'Add product to order' => 'Добавить товар в заказ',
+    'Order #{order_id}' => 'Заказ №{order_id}',
+    'Not found' => 'Не найдено',
+    'Product name ...' => 'Название продукта ...',
+    'Save' => 'Сохранить',
 ];

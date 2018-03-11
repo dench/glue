@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\widgets\MaskedInput;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Buyer */
@@ -14,7 +15,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'phone')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'phone')->widget(MaskedInput::className(), [
+        'mask' => '+38 (099) 999-99-99',
+    ]) ?>
 
     <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 

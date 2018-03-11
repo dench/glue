@@ -18,6 +18,9 @@ use yii\db\ActiveRecord;
  * @property int $created_at
  * @property int $status
  * @property array $product_ids
+ * @property string $phone
+ * @property string $email
+ * @property string $delivery
  *
  * @property Buyer $buyer
  * @property Variant[] $products
@@ -29,7 +32,9 @@ class Order extends ActiveRecord
     public $cartItemPrice = [];
 
     const STATUS_NEW = 1;
-    const STATUS_OLD = 2;
+    const STATUS_VIEWED = 2;
+    const STATUS_COMPLETED = 3;
+    const STATUS_CANCELED = 4;
 
     public function init()
     {
@@ -89,11 +94,13 @@ class Order extends ActiveRecord
     public function rules()
     {
         return [
-            [['buyer_id', 'amount', 'product_ids'], 'required'],
+            [['buyer_id', 'amount', 'product_ids', 'phone'], 'required'],
             [['buyer_id', 'amount', 'status'], 'integer'],
             [['text'], 'string'],
+            [['email', 'delivery'], 'string', 'max' => 255],
+            [['phone'], 'string', 'max' => 20],
             ['status', 'default', 'value' => self::STATUS_NEW],
-            ['status', 'in', 'range' => [self::STATUS_NEW, self::STATUS_OLD]],
+            ['status', 'in', 'range' => [self::STATUS_NEW, self::STATUS_VIEWED, self::STATUS_COMPLETED, self::STATUS_CANCELED]],
             [['product_ids'], 'each', 'rule' => ['integer']],
             [['buyer_id'], 'exist', 'skipOnError' => true, 'targetClass' => Buyer::className(), 'targetAttribute' => ['buyer_id' => 'id']],
         ];
@@ -111,6 +118,9 @@ class Order extends ActiveRecord
             'text' => Yii::t('app', 'Text'),
             'created_at' => Yii::t('app', 'Created'),
             'status' => Yii::t('app', 'Status'),
+            'phone' => Yii::t('app', 'Phone'),
+            'email' => Yii::t('app', 'E-mail'),
+            'delivery' => Yii::t('app', 'Delivery'),
         ];
     }
 
@@ -137,13 +147,11 @@ class Order extends ActiveRecord
 
     public static function read($id = null)
     {
-        /** @var $temp Order[] */
-        $temp = self::find()->where(['status' => self::STATUS_NEW])->andFilterWhere(['id' => $id])->all();
+        $order = self::findOne($id);
 
-        foreach ($temp as $t) {
-            $t->status = self::STATUS_OLD;
-            $t->save();
-        }
+        $order->status = self::STATUS_VIEWED;
+
+        $order->save();
     }
 
     public function getCartItemName()
@@ -165,7 +173,26 @@ class Order extends ActiveRecord
     {
         return [
             self::STATUS_NEW => 'Новый',
-            self::STATUS_OLD => 'Старый',
+            self::STATUS_VIEWED => 'Просмотрено',
+            self::STATUS_COMPLETED => 'Завершено',
+            self::STATUS_CANCELED => 'Отменено',
         ];
+    }
+
+    public static function statusClass()
+    {
+        return [
+            self::STATUS_NEW => 'danger',
+            self::STATUS_VIEWED => 'primary',
+            self::STATUS_COMPLETED => 'success',
+            self::STATUS_CANCELED => 'default',
+        ];
+    }
+
+    public function beforeValidate()
+    {
+        $this->phone = preg_replace('/[^0-9]/','', $this->phone);
+
+        return parent::beforeValidate();
     }
 }

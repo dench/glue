@@ -5,23 +5,21 @@ namespace app\admin\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Order;
+use app\models\OrderProduct;
 
 /**
- * OrderSearch represents the model behind the search form of `app\models\Order`.
+ * OrderProductSearch represents the model behind the search form of `app\models\OrderProduct`.
  */
-class OrderSearch extends Order
+class OrderProductSearch extends OrderProduct
 {
-    public $buyer_name;
-
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['id', 'buyer_id', 'amount', 'created_at', 'status'], 'integer'],
-            [['text', 'phone', 'email', 'delivery', 'buyer_name'], 'safe'],
+            [['id', 'order_id', 'variant_id', 'count', 'price'], 'integer'],
+            [['name'], 'safe'],
         ];
     }
 
@@ -43,19 +41,13 @@ class OrderSearch extends Order
      */
     public function search($params)
     {
-        $query = Order::find();
-
-        $query->joinWith('buyer');
+        $query = OrderProduct::find();
 
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
-            'sort' => [
-                'defaultOrder' => [
-                    'id' => SORT_DESC
-                ],
-            ],
+            'pagination' => false,
         ]);
 
         $this->load($params);
@@ -69,17 +61,13 @@ class OrderSearch extends Order
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'buyer_id' => $this->buyer_id,
-            'amount' => $this->amount,
-            'created_at' => $this->created_at,
-            'status' => $this->status,
+            'order_id' => $this->order_id,
+            'variant_id' => $this->variant_id,
+            'count' => $this->count,
+            'price' => $this->price,
         ]);
 
-        $query->andFilterWhere(['like', 'text', $this->text])
-            ->andFilterWhere(['like', 'order.phone', $this->phone])
-            ->andFilterWhere(['like', 'order.email', $this->email])
-            ->andFilterWhere(['like', 'order.delivery', $this->delivery])
-            ->andFilterWhere(['like', 'buyer.name', $this->buyer_name]);
+        $query->andFilterWhere(['like', 'name', $this->name]);
 
         return $dataProvider;
     }

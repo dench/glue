@@ -106,13 +106,9 @@ $this->registerJs($js);
                                 'display' => 'value',
                                 'templates' => [
                                     'notFound' => '<div class="text-danger" style="padding:0 8px">По данному запросу ничего не найдено.</div>',
-                                    'suggestion' => new JsExpression("Handlebars.compile('{$template}')")
+                                    'suggestion' => new JsExpression("Handlebars.compile('{$template}')"),
                                 ],
                                 'prefetch' => Url::to(['/search/list']),
-                                'remote' => [
-                                    'url' => Url::to(['/search/list']) . '?q=%QUERY',
-                                    'wildcard' => '%QUERY'
-                                ],
                                 'limit' => 10
                             ]
                         ]

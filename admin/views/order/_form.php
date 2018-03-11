@@ -4,6 +4,7 @@ use app\models\Order;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\ActiveForm;
+use yii\widgets\MaskedInput;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Order */
@@ -11,32 +12,23 @@ use yii\widgets\ActiveForm;
 ?>
 
 <div class="order-form">
-
+<div class="alert alert-danger">Не работает</div>
     <?php $form = ActiveForm::begin(); ?>
 
-    <h4><?= $model->buyer->name ?></h4>
-    <h4><?= $model->buyer->phone ?></h4>
-    <h4><?= $model->buyer->delivery ?></h4>
+    <?= $form->field($model, 'name')->textInput(['placeholder' => 'Фамилия Имя Отчество']) ?>
 
-    <ul class="list-group mt-4">
-        <?php
-        $total = 0;
-        foreach ($model->products as $product) {
-            echo '<li class="list-group-item"><span class="badge">' . @$model->cartItemPrice[$product->id] . ' грн</span> <span class="badge">' . @$model->cartItemCount[$product->id] . ' шт</span> ' . @$model->cartItemName[$product->id] . '</li>';
-            $total += $model->cartItemCount[$product->id] * $model->cartItemPrice[$product->id];
-        }
-        ?>
-    </ul>
+    <?= $form->field($model, 'phone')->widget(MaskedInput::className(), [
+        'mask' => '+38 (099) 999-99-99',
+    ]) ?>
 
-    <h2 class="text-right mb-5"><?= $total ?> грн</h2>
+    <?= $form->field($model, 'delivery')->textInput(['placeholder' => 'Введите город и номер отделения Новой почты']) ?>
 
-    <?= $form->field($model, 'buyer_id')->textInput() ?>
+    <?= $form->field($model, 'email')->textInput() ?>
 
-    <?= $form->field($model, 'amount')->textInput() ?>
-
-    <?= $form->field($model, 'text')->textarea(['rows' => 6]) ?>
-
-    <?= $form->field($model, 'status')->dropDownList(Order::statusList()) ?>
+    <?= $form->field($model, 'entity')->radioList([
+        0 => 'Частное лицо ',
+        1 => 'Организация',
+    ], ['class' => 'pt-2']) ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>

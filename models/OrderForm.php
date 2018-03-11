@@ -36,6 +36,14 @@ class OrderForm extends Model
         ];
     }
 
+    public function scenarios()
+    {
+        return [
+            'admin' => ['name', 'phone', 'email', 'delivery', 'entity'],
+            'user' => ['name', 'phone', 'email', 'delivery', 'entity', 'reCaptcha'],
+        ];
+    }
+
     /**
      * @inheritdoc
      */
@@ -93,6 +101,9 @@ class OrderForm extends Model
                 'buyer_id' => $buyer->id,
                 'product_ids' => $product_ids,
                 'amount' => $amount,
+                'phone' => $this->phone,
+                'email' => $this->email,
+                'delivery' => $this->delivery,
             ]);
 
             $order->cartItemName = $cartItemName;

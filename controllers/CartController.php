@@ -37,6 +37,8 @@ class CartController extends Controller
 
         $model = new OrderForm();
 
+        $model->scenario = 'user';
+
         if ($model->load(Yii::$app->request->post()) && $model->send()) {
             Yii::$app->session->setFlash('orderSubmitted');
             return $this->redirect(['']);

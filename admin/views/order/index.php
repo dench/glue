@@ -3,6 +3,7 @@
 use app\models\Order;
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\admin\models\OrderSearch */
@@ -15,36 +16,59 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        <?= Html::a(Yii::t('app', 'Create Order'), ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+    <!--<p>
+        <?= Html::a(Yii::t('app', 'Create order'), ['create'], ['class' => 'btn btn-success']) ?>
+    </p>-->
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            'id',
-            'buyer.name',
-            'buyer.phone',
-            'amount',
-            'created_at:datetime',
+            [
+                'attribute' => 'id',
+                'label' => '№',
+                'headerOptions' => ['width' => '100'],
+            ],
+            [
+                'attribute' => 'buyer_name',
+                'value' => 'buyer.name',
+                'label' => Yii::t('app', 'Buyer')
+            ],
+            [
+                'attribute' => 'phone',
+                'enableSorting' => false,
+            ],
+            [
+                'attribute' => 'amount',
+                'headerOptions' => ['width' => '100'],
+                'enableSorting' => false,
+            ],
+            [
+                'attribute' => 'created_at',
+                'format' => 'datetime',
+                'filter' => false,
+            ],
             [
                 'attribute' => 'status',
                 'filter' => Order::statusList(),
+                'enableSorting' => false,
                 'content' => function($model, $key, $index, $column){
                     $statusList = Order::statusList();
-                    $class = 'default';
-                    if ($model->status == Order::STATUS_NEW) {
-                        $class = 'danger';
-                    } else if ($model->status == Order::STATUS_OLD) {
-                        $class = 'default';
-                    }
+                    $classes = Order::statusClass();
+                    $class = $classes[$model->status];
                     return '<span class="badge badge-' . $class . '">' . $statusList[$model->status] . '</span>';
                 },
             ],
             [
                 'class' => 'yii\grid\ActionColumn',
-                'template' => '{update} {delete}',
+                'template' => '{view} {delete}',
+                'buttons' => [
+                    'view' => function ($url, $model, $key) {
+                        return Html::a(
+                                '<span class="glyphicon glyphicon-eye-open"></span>',
+                                Url::to(['/admin/order-product', 'order_id' => $model->id]));
+                    },
+                ],
             ],
         ],
     ]); ?>

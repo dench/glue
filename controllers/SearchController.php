@@ -5,6 +5,7 @@ namespace app\controllers;
 use dench\page\models\Page;
 use dench\products\models\Category;
 use dench\products\models\Product;
+use dench\products\models\Variant;
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\helpers\Json;
@@ -75,7 +76,26 @@ class SearchController extends Controller
             }
         }
 
-        echo Json::encode($out);
+        return Json::encode($out);
+    }
+
+    public function actionProductList()
+    {
+        $data = [];
+
+        $products = Product::find()->where(['enabled' => true])->all();
+        foreach ($products as $product) {
+            $variants = Variant::find()->where(['enabled' => true])->all();
+            foreach ($variants as $variant) {
+                $data[] = [
+                    'id' => $variant->id,
+                    'value' => $product->name . ", " . $variant->name,
+                    'price' => $variant->price,
+                ];
+            }
+        }
+
+        return Json::encode($data);
     }
 
 }
