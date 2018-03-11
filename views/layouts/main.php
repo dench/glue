@@ -28,7 +28,7 @@ $('.block-link').click(function(){
     document.location.href = $(this).find('a').attr('href');
 });
 var minWidth = 768;
-var sidebar = 0;
+var sidebar = 1;
 $(window).resize(function(){
     if ($(this).width() < minWidth) {
         goBottom();
@@ -245,29 +245,7 @@ $this->registerJs($js);
                     </nav>
                 </div>
                 <div id="sidebarleft" class="col-sm-6 col-md-12">
-                    <div class="row">
-                        <div class="col-sm-6 col-md-12">
-                            <div class="card border border-primary border-strong block-link">
-                                <img class="card-img-top" src="/img/podbor.jpg" alt="Подобрать клей">
-                                <div class="card-body text-center">
-                                    <a href="<?= Url::to(['/podbor/index']) ?>" class="card-text h4">Подобрать продукт</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-12">
-                            <a href="#" class="btn btn-primary btn-lg btn-block my-3"><small>Техническая документация</small></a>
-                            <a href="#" class="btn btn-warning btn-lg btn-block my-3"><small>Сертификаты</small></a>
-                            <div class="list-group list-article my-3">
-                                <div class="list-group-item h4">Информация для клиентов</div>
-                                <?php
 
-                                foreach ($info as $item) {
-                                    echo Html::a($item->name, ['/info/view', 'slug' => $item->slug], ['class' => 'list-group-item']);
-                                }
-                                ?>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -343,7 +321,29 @@ $this->registerJs($js);
     <?php endif; ?>
 
     <div id="sidebarbottom">
+        <div class="row">
+            <div class="col-sm-6 col-md-12">
+                <div class="card border border-primary border-strong block-link mb-3">
+                    <img class="card-img-top" src="/img/podbor.jpg" alt="Подобрать клей">
+                    <div class="card-body text-center">
+                        <a href="<?= Url::to(['/podbor/index']) ?>" class="card-text h4">Подобрать продукт</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-12">
+                <a href="#" class="btn btn-primary btn-lg btn-block mb-3"><small>Техническая документация</small></a>
+                <a href="#" class="btn btn-warning btn-lg btn-block mb-3"><small>Сертификаты</small></a>
+                <div class="list-group list-article my-3">
+                    <div class="list-group-item h4">Информация для клиентов</div>
+                    <?php
 
+                    foreach ($info as $item) {
+                        echo Html::a($item->name, ['/info/view', 'slug' => $item->slug], ['class' => 'list-group-item']);
+                    }
+                    ?>
+                </div>
+            </div>
+        </div>
     </div>
 
 </div>
