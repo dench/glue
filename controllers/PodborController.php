@@ -11,11 +11,8 @@ class PodborController extends \yii\web\Controller
     {
         $page = Page::viewPage(3);
 
-        $photos = Image::find()->all();
-
         return $this->render('index', [
             'page' => $page,
-            'photos' => $photos,
         ]);
     }
 
