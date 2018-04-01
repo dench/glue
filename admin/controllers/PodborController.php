@@ -92,7 +92,7 @@ class PodborController extends Controller
      */
     public function actionUpdate($id)
     {
-        $model = $this->findModel($id);
+        $model = $this->findModelMulti($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['index', 'PodborSearch[parent_id]' => $model->parent_id]);

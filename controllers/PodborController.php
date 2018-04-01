@@ -2,8 +2,9 @@
 
 namespace app\controllers;
 
-use dench\image\models\Image;
+use app\models\PodborForm;
 use dench\page\models\Page;
+use Yii;
 
 class PodborController extends \yii\web\Controller
 {
@@ -11,8 +12,15 @@ class PodborController extends \yii\web\Controller
     {
         $page = Page::viewPage(3);
 
+        $model = new PodborForm();
+
+        if ($model->load(Yii::$app->request->post()) && $model->send()) {
+
+        }
+
         return $this->render('index', [
             'page' => $page,
+            'model' => $model,
         ]);
     }
 
