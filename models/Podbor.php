@@ -168,4 +168,13 @@ class Podbor extends ActiveRecord
     {
         return ArrayHelper::map(Product::find()->andFilterWhere(['enabled' => $enabled])->orderBy('position')->all(), 'id', 'name');
     }
+
+    /**
+     * @param integer $id
+     * @return Podbor|ActiveRecord
+     */
+    public static function findOneEnabled($id)
+    {
+        return self::find()->where(['id' => $id, 'enabled' => true])->one();
+    }
 }

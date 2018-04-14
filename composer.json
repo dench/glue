@@ -34,7 +34,8 @@
         "twbs/bootstrap": "4.0.0",
         "luyadev/luya-bootstrap4": "^1.0@dev",
         "fortawesome/font-awesome": "~4.7",
-        "powerkernel/yii2-photoswipe": "*"
+        "powerkernel/yii2-photoswipe": "*",
+        "kartik-v/yii2-widget-depdrop": "@dev"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

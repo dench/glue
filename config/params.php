@@ -98,4 +98,9 @@ return [
             ],
         ],
     ],
+
+    'podbor' => [
+        'horizontalLabelClass' => 'col-sm-5',
+        'horizontalInputClass' => 'col-sm-7',
+    ],
 ];

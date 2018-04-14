@@ -47,7 +47,6 @@ function goBottom() {
     if (!sidebar) {
         bottom.html(left.html());
         left.html("");
-        console.log(1);
         sidebar = 1;
     }
 }
@@ -57,7 +56,6 @@ function goLeft() {
     if (sidebar) {
         left.html(bottom.html());
         bottom.html("");
-        console.log(2);
         sidebar = 0;
     }
 }

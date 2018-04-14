@@ -42,6 +42,10 @@ class ActiveForm extends \yii\widgets\ActiveForm
      */
     public $successCssClass = 'has-success';
 
+    public $horizontalLabelClass = 'col-sm-5';
+
+    public $horizontalInputClass = 'col-sm-7';
+
     /**
      * @inheritdoc
      */
@@ -76,9 +80,9 @@ class ActiveForm extends \yii\widgets\ActiveForm
                 'class' => 'form-group row',
             ],
             'labelOptions' => [
-                'class' => 'col-sm-3 col-form-label',
+                'class' => $this->horizontalLabelClass . ' col-form-label',
             ],
-            'template' => "{label}\n<div class=\"col-sm-9\">{input}\n{hint}\n{error}</div>",
+            'template' => "{label}\n<div class=\"" . $this->horizontalInputClass . "\">{input}\n{hint}\n{error}</div>",
         ];
     }
 }
