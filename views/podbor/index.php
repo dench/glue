@@ -16,6 +16,12 @@ $js = <<<JS
 function loadProducts(id) {
     $('#result').load('{$resultUrl}', { id: id });
 }
+
+var emptyHelp = 'Выберите вариант<br> из выпадающего списка';
+
+$('[data-toggle="popover"]').popover({ html: true });
+
+$('.field-step1').find('.btn-help').attr('data-content', emptyHelp);
 JS;
 $this->registerJs($js);
 ?>
@@ -30,6 +36,19 @@ $this->registerJs($js);
     'options' => [
         'class' => 'mb-4',
     ],
+    'horizontalTemplate' => "{label}
+<div class=\"{horizontalInputClass}\">
+    <div class=\"input-group\">
+        {input}
+        <div class=\"input-group-append\">
+            <button type=\"button\" class=\"btn btn-secondary btn-help\" tabindex=\"0\" data-toggle=\"popover\" data-trigger=\"focus\" data-content=\"\">
+                <i class=\"fa fa-question-circle fa-lg\"></i>
+            </button>
+        </div>
+    </div>
+    {hint}
+    {error}
+</div>",
 ]); ?>
 
 <?= $form->field($model, 'step[]')->dropDownList(Podbor::getParentList(), [
@@ -53,6 +72,8 @@ function(event, id, value, count) {
         $('#result').text('');
         var result = $('#step2').depdrop('getAjaxResults');
         $('.field-step2').removeClass('d-none').find('.col-form-label').text(result.label);
+        if (result.help === '') result.help = emptyHelp;
+        $('.field-step2').find('.btn-help').attr('data-content', result.help);
     } else {
         if (value) loadProducts(value);
     }
@@ -76,6 +97,8 @@ function(event, id, value, count) {
         $('#result').text('');
         var result = $('#step3').depdrop('getAjaxResults');
         $('.field-step3').removeClass('d-none').find('.col-form-label').text(result.label);
+        if (result.help === '') result.help = emptyHelp;
+        $('.field-step3').find('.btn-help').attr('data-content', result.help);
     } else {
         if (value) loadProducts(value);
     }
@@ -99,6 +122,8 @@ function(event, id, value, count) {
         $('#result').text('');
         var result = $('#step4').depdrop('getAjaxResults');
         $('.field-step4').removeClass('d-none').find('.col-form-label').text(result.label);
+        if (result.help === '') result.help = emptyHelp;
+        $('.field-step4').find('.btn-help').attr('data-content', result.help);
     } else {
         if (value) loadProducts(value);
     }
@@ -121,6 +146,8 @@ function(event, id, value, count) {
         $('#result').text('');
         var result = $('#step5').depdrop('getAjaxResults');
         $('.field-step5').removeClass('d-none').find('.col-form-label').text(result.label);
+        if (result.help === '') result.help = emptyHelp;
+        $('.field-step5').find('.btn-help').attr('data-content', result.help);
     } else {
         if (value) loadProducts(value);
     }

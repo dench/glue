@@ -38,11 +38,22 @@ class PodborController extends \yii\web\Controller
                         'name' => $v,
                     ];
                 }
-                echo Json::encode(['output' => $out, 'selected' => '', 'label' => Podbor::getLabelTitle($parent_id)]);
+
+                $podbor = Podbor::findOneEnabled($parent_id);
+
+                echo Json::encode([
+                    'output' => $out,
+                    'selected' => '',
+                    'label' => $podbor->title,
+                    'help' => $podbor->text,
+                ]);
                 return;
             }
         }
-        echo Json::encode(['output' => '', 'selected' => '']);
+        echo Json::encode([
+            'output' => '',
+            'selected' => '',
+        ]);
     }
 
     public function actionResult()

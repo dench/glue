@@ -31,7 +31,7 @@
         "wbraganca/yii2-dynamicform": "*",
         "kartik-v/yii2-widget-select2": "@dev",
         "kartik-v/yii2-widget-typeahead": "*",
-        "twbs/bootstrap": "4.0.0",
+        "twbs/bootstrap": "^4.1.0",
         "luyadev/luya-bootstrap4": "^1.0@dev",
         "fortawesome/font-awesome": "~4.7",
         "powerkernel/yii2-photoswipe": "*",

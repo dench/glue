@@ -148,19 +148,6 @@ class Podbor extends ActiveRecord
     }
 
     /**
-     * @param integer $id
-     * @return int
-     */
-    public static function getLabelTitle($id)
-    {
-        if ($temp = self::find()->where(['id' => $id, 'enabled' => true])->one()) {
-            return $temp->title;
-        } else {
-            return '';
-        }
-    }
-
-    /**
      * @param boolean|null $enabled
      * @return array
      */

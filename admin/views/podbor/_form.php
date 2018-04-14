@@ -33,6 +33,7 @@ use yii\widgets\ActiveForm;
                         'customConfig' => '/js/ckeditor.js',
                         'language' => Yii::$app->language,
                         'allowedContent' => true,
+                        'enterMode' => 2,
                     ]
                 ]) ?>
             </div>

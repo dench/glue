@@ -2,6 +2,8 @@
 
 namespace app\components;
 
+use yii\helpers\Html;
+
 /**
  * Bootstrap 4 Active Form.
  *
@@ -46,6 +48,8 @@ class ActiveForm extends \yii\widgets\ActiveForm
 
     public $horizontalInputClass = 'col-sm-7';
 
+    public $horizontalTemplate = "{label}\n<div class=\"{horizontalInputClass}\">{input}\n{hint}\n{error}</div>";
+
     /**
      * @inheritdoc
      */
@@ -74,7 +78,7 @@ class ActiveForm extends \yii\widgets\ActiveForm
      */
     protected function provideHorizontalLayout()
     {
-        $this->options = ['class' => 'form-group'];
+        Html::addCssClass($this->options, ['class' => 'form-group']);
         $this->fieldConfig = [
             'options' => [
                 'class' => 'form-group row',
@@ -82,7 +86,7 @@ class ActiveForm extends \yii\widgets\ActiveForm
             'labelOptions' => [
                 'class' => $this->horizontalLabelClass . ' col-form-label',
             ],
-            'template' => "{label}\n<div class=\"" . $this->horizontalInputClass . "\">{input}\n{hint}\n{error}</div>",
+            'template' => str_replace('{horizontalInputClass}', $this->horizontalInputClass, $this->horizontalTemplate),
         ];
     }
 }
