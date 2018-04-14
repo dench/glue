@@ -83,7 +83,7 @@ class Podbor extends ActiveRecord
             'position' => Yii::t('app', 'Position'),
             'enabled' => Yii::t('app', 'Enabled'),
             'name' => Yii::t('app', 'Name'),
-            'title' => Yii::t('app', 'Title'),
+            'title' => Yii::t('app', 'Question'),
             'text' => Yii::t('app', 'Hint'),
         ];
     }
