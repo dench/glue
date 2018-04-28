@@ -318,7 +318,9 @@ $this->registerJs($js);
         <div class="row">
             <div class="col-sm-6 col-md-12">
                 <div class="card border border-primary border-strong block-link mb-3">
-                    <img class="card-img-top" src="/img/podbor.jpg" alt="Подобрать клей">
+                    <a href="<?= Url::to(['/podbor/index']) ?>">
+                        <img class="card-img-top" src="/img/podbor.jpg" alt="Подобрать клей">
+                    </a>
                     <div class="card-body text-center">
                         <a href="<?= Url::to(['/podbor/index']) ?>" class="card-text h4">Подобрать продукт</a>
                     </div>

@@ -11,7 +11,6 @@
 <div class="media-body p-3">
     <div class="mb-1">
         <b><?= $model->name ?></b>
-        <span class="text-muted"><?= Yii::$app->formatter->asDate($model->created_at) ?></span>
     </div>
     <?= nl2br($model->question) ?>
 
