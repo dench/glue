@@ -19,7 +19,7 @@
             ?>
         </div>
         <b><?= $model->name ?></b>
-        <span class="text-muted"><?= Yii::$app->formatter->asDate($model->created_at) ?></span>
+        <?php /*<span class="text-muted">Yii::$app->formatter->asDate($model->created_at)</span>*/ ?>
     </div>
     <?= nl2br($model->text) ?>
 
