@@ -71,7 +71,7 @@ function(event, id, value, count) {
     if (count) {
         $('#result').text('');
         var result = $('#step2').depdrop('getAjaxResults');
-        $('.field-step2').removeClass('d-none').find('.col-form-label').text(result.label + ':');
+        $('.field-step2').removeClass('d-none').find('.col-form-label').text(result.label);
         if (result.help === '') result.help = emptyHelp;
         $('.field-step2').find('.btn-help').attr('data-content', result.help);
     } else {
