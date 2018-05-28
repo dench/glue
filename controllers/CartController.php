@@ -70,6 +70,7 @@ class CartController extends Controller
                 'cart' => $cart,
             ]),
             'footer' => $footer,
+            'size' => 'modal-lg',
         ];
 
         return Json::encode($data);
