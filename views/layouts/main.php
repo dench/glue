@@ -378,10 +378,10 @@ $this->registerJs($js);
                         <nav class="nav flex-column">
                             <?php
                             $items = [
-                                ['label' => 'Вопросы и ответы', 'url' => ['/site/qa']],
+                                ['label' => 'Вопросы и ответы', 'url' => ['/site/questions']],
                                 ['label' => 'Информация для клиентов', 'url' => ['/info/index']],
                                 ['label' => 'Контакты', 'url' => ['/site/contacts']],
-                                ['label' => 'Отзывы', 'url' => ['/guestbook/index']],
+                                ['label' => 'Отзывы', 'url' => ['/site/reviews']],
                             ];
                             echo Nav::widget([
                                 'items' => $items,
