@@ -12,7 +12,7 @@ return [
     'googleMapsApiKey' => '',
 
     'file' => [
-        'extensions' => 'png, jpg, pdf, zip, rar, doc, docx',
+        'extensions' => 'png, jpg, pdf, zip, rar, doc, docx, xls, xlsx',
         'maxSize' => 100*1024*1024,
         'maxFiles' => 50,
         'path' => dirname(__DIR__) . '/files',

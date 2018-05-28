@@ -352,12 +352,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dench/yii2-image.git",
-                "reference": "addcbaa293a9ed78525952918359cce596ec5c03"
+                "reference": "ea54c4479a1d4da2d173be6fcd70206756084bff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dench/yii2-image/zipball/addcbaa293a9ed78525952918359cce596ec5c03",
-                "reference": "addcbaa293a9ed78525952918359cce596ec5c03",
+                "url": "https://api.github.com/repos/dench/yii2-image/zipball/ea54c4479a1d4da2d173be6fcd70206756084bff",
+                "reference": "ea54c4479a1d4da2d173be6fcd70206756084bff",
                 "shasum": ""
             },
             "require": {
@@ -387,7 +387,7 @@
                 "image",
                 "yii2"
             ],
-            "time": "2018-01-08T17:16:35+00:00"
+            "time": "2018-05-28T15:42:47+00:00"
         },
         {
             "name": "dench/yii2-language",
@@ -438,12 +438,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dench/yii2-modal.git",
-                "reference": "4246f203e928550d060faf9df7af287ce053ac4c"
+                "reference": "4d71227de98d50e144ddbd283d655c8b4be53d3d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dench/yii2-modal/zipball/4246f203e928550d060faf9df7af287ce053ac4c",
-                "reference": "4246f203e928550d060faf9df7af287ce053ac4c",
+                "url": "https://api.github.com/repos/dench/yii2-modal/zipball/4d71227de98d50e144ddbd283d655c8b4be53d3d",
+                "reference": "4d71227de98d50e144ddbd283d655c8b4be53d3d",
                 "shasum": ""
             },
             "require": {
@@ -471,7 +471,7 @@
                 "modal",
                 "yii2"
             ],
-            "time": "2018-01-13T17:54:08+00:00"
+            "time": "2018-05-25T06:51:52+00:00"
         },
         {
             "name": "dench/yii2-page",
@@ -479,12 +479,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dench/yii2-page.git",
-                "reference": "f8f78ca5bedae874238e3a3e991b52beacdf8919"
+                "reference": "23d9fbb1c97aaf06e46e342e907d4451cb419d59"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dench/yii2-page/zipball/f8f78ca5bedae874238e3a3e991b52beacdf8919",
-                "reference": "f8f78ca5bedae874238e3a3e991b52beacdf8919",
+                "url": "https://api.github.com/repos/dench/yii2-page/zipball/23d9fbb1c97aaf06e46e342e907d4451cb419d59",
+                "reference": "23d9fbb1c97aaf06e46e342e907d4451cb419d59",
                 "shasum": ""
             },
             "require": {
@@ -518,7 +518,7 @@
                 "page",
                 "yii2"
             ],
-            "time": "2018-03-11T13:19:38+00:00"
+            "time": "2018-05-28T15:27:45+00:00"
         },
         {
             "name": "dench/yii2-products",
@@ -526,12 +526,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dench/yii2-products.git",
-                "reference": "d60e1f8d937f5b4505812348c4c3460c1f25831e"
+                "reference": "33b3da29aaf68294cf75f57f44ea3b8763272ddc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dench/yii2-products/zipball/d60e1f8d937f5b4505812348c4c3460c1f25831e",
-                "reference": "d60e1f8d937f5b4505812348c4c3460c1f25831e",
+                "url": "https://api.github.com/repos/dench/yii2-products/zipball/33b3da29aaf68294cf75f57f44ea3b8763272ddc",
+                "reference": "33b3da29aaf68294cf75f57f44ea3b8763272ddc",
                 "shasum": ""
             },
             "require": {
@@ -565,7 +565,7 @@
                 "products",
                 "yii2"
             ],
-            "time": "2018-02-04T18:00:41+00:00"
+            "time": "2018-05-28T14:29:53+00:00"
         },
         {
             "name": "dench/yii2-sortable",
@@ -712,20 +712,21 @@
         },
         {
             "name": "himiklab/yii2-recaptcha-widget",
-            "version": "1.1.2",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/himiklab/yii2-recaptcha-widget.git",
-                "reference": "980abb9e81227f4253ee65340a43dcb80851a75e"
+                "reference": "35c9a4ae38ad20e0b4db8e9030c3744f2572dda7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/himiklab/yii2-recaptcha-widget/zipball/980abb9e81227f4253ee65340a43dcb80851a75e",
-                "reference": "980abb9e81227f4253ee65340a43dcb80851a75e",
+                "url": "https://api.github.com/repos/himiklab/yii2-recaptcha-widget/zipball/35c9a4ae38ad20e0b4db8e9030c3744f2572dda7",
+                "reference": "35c9a4ae38ad20e0b4db8e9030c3744f2572dda7",
                 "shasum": ""
             },
             "require": {
-                "yiisoft/yii2": "*"
+                "yiisoft/yii2": "*",
+                "yiisoft/yii2-httpclient": "*"
             },
             "type": "yii2-extension",
             "autoload": {
@@ -751,7 +752,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2018-02-27T12:55:43+00:00"
+            "time": "2018-04-03T08:17:47+00:00"
         },
         {
             "name": "imagine/imagine",
@@ -1173,16 +1174,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/luyadev/luya-bootstrap4.git",
-                "reference": "b05d01ed525c40e5510b4edd69710b9d581f9d03"
+                "reference": "3d8765d8c4f4f698923a19673254c865126c5ca5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/luyadev/luya-bootstrap4/zipball/b05d01ed525c40e5510b4edd69710b9d581f9d03",
-                "reference": "b05d01ed525c40e5510b4edd69710b9d581f9d03",
+                "url": "https://api.github.com/repos/luyadev/luya-bootstrap4/zipball/3d8765d8c4f4f698923a19673254c865126c5ca5",
+                "reference": "3d8765d8c4f4f698923a19673254c865126c5ca5",
                 "shasum": ""
             },
             "require-dev": {
-                "luyadev/luya-testsuite": "~1.1.0"
+                "luyadev/luya-testsuite": "~1.0.0"
             },
             "type": "luya-extension",
             "extra": {
@@ -1217,7 +1218,7 @@
                 }
             ],
             "description": "Bootstrap4 Assets and Helper classes like ActiveForm for LUYA and Yii2.",
-            "homepage": "http://luya.io",
+            "homepage": "https://luya.io",
             "keywords": [
                 "assets",
                 "bootstrap",
@@ -1230,7 +1231,7 @@
                 "twbs4",
                 "yii2"
             ],
-            "time": "2018-04-10T06:56:43+00:00"
+            "time": "2018-05-21T19:54:36+00:00"
         },
         {
             "name": "omgdef/yii2-multilingual-behavior",
@@ -1378,16 +1379,16 @@
         },
         {
             "name": "symfony/css-selector",
-            "version": "v3.4.8",
+            "version": "v3.4.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/css-selector.git",
-                "reference": "519a80d7c1d95c6cc0b67f686d15fe27c6910de0"
+                "reference": "d2ce52290b648ae33b5301d09bc14ee378612914"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/css-selector/zipball/519a80d7c1d95c6cc0b67f686d15fe27c6910de0",
-                "reference": "519a80d7c1d95c6cc0b67f686d15fe27c6910de0",
+                "url": "https://api.github.com/repos/symfony/css-selector/zipball/d2ce52290b648ae33b5301d09bc14ee378612914",
+                "reference": "d2ce52290b648ae33b5301d09bc14ee378612914",
                 "shasum": ""
             },
             "require": {
@@ -1427,24 +1428,25 @@
             ],
             "description": "Symfony CssSelector Component",
             "homepage": "https://symfony.com",
-            "time": "2018-03-19T22:32:39+00:00"
+            "time": "2018-05-16T12:49:49+00:00"
         },
         {
             "name": "symfony/dom-crawler",
-            "version": "v3.4.8",
+            "version": "v3.4.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dom-crawler.git",
-                "reference": "1a4cffeb059226ff6bee9f48acb388faf674afff"
+                "reference": "201b210fafcdd193c1e45b2994bf7133fb6263e8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/dom-crawler/zipball/1a4cffeb059226ff6bee9f48acb388faf674afff",
-                "reference": "1a4cffeb059226ff6bee9f48acb388faf674afff",
+                "url": "https://api.github.com/repos/symfony/dom-crawler/zipball/201b210fafcdd193c1e45b2994bf7133fb6263e8",
+                "reference": "201b210fafcdd193c1e45b2994bf7133fb6263e8",
                 "shasum": ""
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
+                "symfony/polyfill-ctype": "~1.8",
                 "symfony/polyfill-mbstring": "~1.0"
             },
             "require-dev": {
@@ -1483,20 +1485,75 @@
             ],
             "description": "Symfony DomCrawler Component",
             "homepage": "https://symfony.com",
-            "time": "2018-03-19T22:32:39+00:00"
+            "time": "2018-05-01T22:53:27+00:00"
         },
         {
-            "name": "symfony/polyfill-mbstring",
-            "version": "v1.7.0",
+            "name": "symfony/polyfill-ctype",
+            "version": "v1.8.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "78be803ce01e55d3491c1397cf1c64beb9c1b63b"
+                "url": "https://github.com/symfony/polyfill-ctype.git",
+                "reference": "7cc359f1b7b80fc25ed7796be7d96adc9b354bae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/78be803ce01e55d3491c1397cf1c64beb9c1b63b",
-                "reference": "78be803ce01e55d3491c1397cf1c64beb9c1b63b",
+                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/7cc359f1b7b80fc25ed7796be7d96adc9b354bae",
+                "reference": "7cc359f1b7b80fc25ed7796be7d96adc9b354bae",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.8-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Polyfill\\Ctype\\": ""
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                },
+                {
+                    "name": "Gert de Pagter",
+                    "email": "BackEndTea@gmail.com"
+                }
+            ],
+            "description": "Symfony polyfill for ctype functions",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "ctype",
+                "polyfill",
+                "portable"
+            ],
+            "time": "2018-04-30T19:57:29+00:00"
+        },
+        {
+            "name": "symfony/polyfill-mbstring",
+            "version": "v1.8.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-mbstring.git",
+                "reference": "3296adf6a6454a050679cde90f95350ad604b171"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/3296adf6a6454a050679cde90f95350ad604b171",
+                "reference": "3296adf6a6454a050679cde90f95350ad604b171",
                 "shasum": ""
             },
             "require": {
@@ -1508,7 +1565,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.7-dev"
+                    "dev-master": "1.8-dev"
                 }
             },
             "autoload": {
@@ -1542,20 +1599,20 @@
                 "portable",
                 "shim"
             ],
-            "time": "2018-01-30T19:27:44+00:00"
+            "time": "2018-04-26T10:06:28+00:00"
         },
         {
             "name": "twbs/bootstrap",
-            "version": "v4.1.0",
+            "version": "v4.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twbs/bootstrap.git",
-                "reference": "8f7bd419935adfcd53c471a0202083464800619e"
+                "reference": "779ad9f174ea5ab7e755f6df0ec9e5912d67dd16"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/8f7bd419935adfcd53c471a0202083464800619e",
-                "reference": "8f7bd419935adfcd53c471a0202083464800619e",
+                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/779ad9f174ea5ab7e755f6df0ec9e5912d67dd16",
+                "reference": "779ad9f174ea5ab7e755f6df0ec9e5912d67dd16",
                 "shasum": ""
             },
             "replace": {
@@ -1593,7 +1650,7 @@
                 "sass",
                 "web"
             ],
-            "time": "2018-04-09T16:00:23+00:00"
+            "time": "2018-04-30T16:04:33+00:00"
         },
         {
             "name": "voskobovich/yii2-linker-behavior",
@@ -1917,6 +1974,53 @@
             "time": "2018-03-21T16:15:55+00:00"
         },
         {
+            "name": "yiisoft/yii2-httpclient",
+            "version": "2.0.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yiisoft/yii2-httpclient.git",
+                "reference": "95fc8a943e8abb86e3d0f4eace6f6d1f4ba4f028"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yiisoft/yii2-httpclient/zipball/95fc8a943e8abb86e3d0f4eace6f6d1f4ba4f028",
+                "reference": "95fc8a943e8abb86e3d0f4eace6f6d1f4ba4f028",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "~2.0.13"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "yii\\httpclient\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Paul Klimov",
+                    "email": "klimov.paul@gmail.com"
+                }
+            ],
+            "description": "HTTP client extension for the Yii framework",
+            "keywords": [
+                "curl",
+                "http",
+                "httpclient",
+                "yii2"
+            ],
+            "time": "2018-02-13T15:11:30+00:00"
+        },
+        {
             "name": "yiisoft/yii2-imagine",
             "version": "2.1.1",
             "source": {
@@ -2219,22 +2323,22 @@
         },
         {
             "name": "yiisoft/yii2-gii",
-            "version": "2.0.6",
+            "version": "2.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-gii.git",
-                "reference": "db41f647d9b73702ceb6864fdfce827a72b5ce42"
+                "reference": "9ec1374d0844f448d2af29c707f77c9f8d1375c8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-gii/zipball/db41f647d9b73702ceb6864fdfce827a72b5ce42",
-                "reference": "db41f647d9b73702ceb6864fdfce827a72b5ce42",
+                "url": "https://api.github.com/repos/yiisoft/yii2-gii/zipball/9ec1374d0844f448d2af29c707f77c9f8d1375c8",
+                "reference": "9ec1374d0844f448d2af29c707f77c9f8d1375c8",
                 "shasum": ""
             },
             "require": {
                 "bower-asset/typeahead.js": "0.10.* | ~0.11.0",
                 "phpspec/php-diff": ">=1.0.2",
-                "yiisoft/yii2": "~2.0.13",
+                "yiisoft/yii2": "~2.0.14",
                 "yiisoft/yii2-bootstrap": "~2.0.0"
             },
             "type": "yii2-extension",
@@ -2249,7 +2353,7 @@
             },
             "autoload": {
                 "psr-4": {
-                    "yii\\gii\\": ""
+                    "yii\\gii\\": "src"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -2268,7 +2372,7 @@
                 "gii",
                 "yii2"
             ],
-            "time": "2017-12-22T23:53:06+00:00"
+            "time": "2018-05-02T22:05:25+00:00"
         }
     ],
     "aliases": [],

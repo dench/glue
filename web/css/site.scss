@@ -146,11 +146,36 @@ h1, h2, h3, h4, .h1, .h2, .h3, .h4 {
   }
 }
 
-.btn:not(.btn-link) {
+.mainblock {
+  padding-bottom: 30px;
+}
+
+.btn:not(.btn-link):not(.btn-file) {
   color: $white;
   text-shadow: 1px 1px 0 rgba(0,0,0,.2);
   &:hover {
     color: $white;
+  }
+}
+
+.btn-file {
+  display: block;
+  text-align: left;
+  line-height: 3;
+  &:hover {
+    color: $white;
+    background-color: $primary;
+  }
+  .fa {
+    font-size: 30px;
+    vertical-align: middle;
+  }
+  span {
+    display: inline-block;
+    vertical-align: middle;
+    white-space: normal;
+    padding-right: 38px;
+    line-height: 1.5;
   }
 }
 
