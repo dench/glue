@@ -10,7 +10,7 @@ echo $this->render('_breadcrumbs', [
 ]);
 
 ?>
-<h1 class="title"><?= $model->h1 ?></h1>
+<h1 class="mb-3"><?= $model->h1 ?></h1>
 <div class="row">
     <div class="col-md-5">
         <?= $this->render('_photo', [

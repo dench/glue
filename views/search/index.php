@@ -5,7 +5,10 @@
 
 use yii\widgets\ListView;
 ?>
-<h1><?= $page->h1 ?></h1>
+<h1 class="mb-3"><?= $page->h1 ?></h1>
+
+<?= $page->short ?>
+
 <?php if ($page->text) : ?>
     <div class="card mb-3">
         <div class="card-body">

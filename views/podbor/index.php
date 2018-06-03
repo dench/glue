@@ -25,7 +25,7 @@ $('.field-step1').find('.btn-help').attr('data-content', emptyHelp);
 JS;
 $this->registerJs($js);
 ?>
-<h1><?= $page->h1 ?></h1>
+<h1 class="mb-3"><?= $page->h1 ?></h1>
 
 <?= $page->short ?>
 

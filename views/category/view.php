@@ -33,7 +33,7 @@ $js = <<<JS
 JS;
 $this->registerJs($js);
 ?>
-<h1><?= $page->h1 ?></h1>
+<h1 class="mb-3"><?= $page->h1 ?></h1>
 
 <?php if ($page->text) : ?>
 <div class="card mb-3">

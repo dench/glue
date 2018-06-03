@@ -11,8 +11,16 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 
+/**
+ * Class Cart
+ * @package app\models
+ */
 class Cart extends Model
 {
+    /**
+     * @param $data
+     * @return bool
+     */
     public static function setCart($data)
     {
         Yii::$app->response->cookies->add(new \yii\web\Cookie([
@@ -24,6 +32,9 @@ class Cart extends Model
         return true;
     }
 
+    /**
+     * @return array|mixed
+     */
     public static function getCart()
     {
         $cart = Yii::$app->request->cookies->getValue('cart');
@@ -35,6 +46,9 @@ class Cart extends Model
         }
     }
 
+    /**
+     * @return bool
+     */
     public static function clearCart()
     {
         Yii::$app->response->cookies->remove('cart');

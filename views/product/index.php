@@ -24,7 +24,7 @@ JS;
 $this->registerJs($js);
 
 ?>
-<h1><?= $model->h1 ?></h1>
+<h1 class="mb-3"><?= $model->h1 ?></h1>
 <div class="row">
     <div class="col-sm-5">
         <?= $this->render('_photo', [

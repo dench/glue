@@ -136,12 +136,13 @@ $this->registerJs($js);
                 <div class="container">
                     <div class="navbar-nav nav-fill">
                     <?php
+                    /** @var Page[] $info */
                     $info = Page::find()
                         ->joinWith('translation')
                         ->leftJoin('page_parent','page.id = page_parent.page_id')
                         ->select(['name', 'slug'])
                         ->andWhere(['parent_id' => 6])
-                        ->orderBy(['page.id' => SORT_DESC])
+                        ->orderBy(['page.id' => SORT_ASC])
                         ->limit(5)
                         ->all();
 
@@ -327,17 +328,25 @@ $this->registerJs($js);
                 </div>
             </div>
             <div class="col-sm-6 col-md-12">
-                <a href="#" class="btn btn-primary btn-lg btn-block mb-3"><small>Техническая документация</small></a>
-                <a href="#" class="btn btn-warning btn-lg btn-block mb-3"><small>Сертификаты</small></a>
+                <?php
+                $item = $info[0];
+                echo Html::a('<small>' . $item->name . '</small>', ['/info/view', 'slug' => $item->slug], ['class' => 'btn btn-primary btn-lg btn-block mb-3']);
+                $item = $info[1];
+                echo Html::a('<small>' . $item->name . '</small>', ['/info/view', 'slug' => $item->slug], ['class' => 'btn btn-warning btn-lg btn-block mb-3']);
+                ?>
+                <?php
+                /*
+                ?>
                 <div class="list-group list-article my-3">
                     <div class="list-group-item h4">Информация для клиентов</div>
-                    <?php
-
+                    < ?php
                     foreach ($info as $item) {
                         echo Html::a($item->name, ['/info/view', 'slug' => $item->slug], ['class' => 'list-group-item']);
                     }
-                    ?>
+                    ? >
                 </div>
+                */
+                ?>
             </div>
         </div>
     </div>
@@ -395,7 +404,7 @@ $this->registerJs($js);
         </div>
     </div>
     <div class="text-center py-2 bg-gradient-secondary text-white">
-        <?= date('Y') ?> © <a href="/"><?= Yii::$app->name ?></a>
+        2017 - <?= date('Y') ?> © <a href="/"><?= Yii::$app->name ?></a>
     </div>
 </footer>
 <?= Modal::widget([

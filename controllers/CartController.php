@@ -13,8 +13,16 @@ use yii\helpers\Html;
 use yii\helpers\Json;
 use yii\web\Controller;
 
+/**
+ * Class CartController
+ * @package app\controllers
+ */
 class CartController extends Controller
 {
+
+    /**
+     * @return array
+     */
     public function behaviors()
     {
         return [
@@ -25,6 +33,9 @@ class CartController extends Controller
         ];
     }
 
+    /**
+     * @return string|\yii\web\Response
+     */
     public function actionIndex()
     {
         $page = Page::viewPage('cart');
@@ -52,6 +63,9 @@ class CartController extends Controller
         ]);
     }
 
+    /**
+     * @return string
+     */
     public function actionModal()
     {
         $footer = Html::button(Yii::t('app', 'Continue shopping'), ['class' => 'btn btn-primary mr-auto', 'data-dismiss' => 'modal']);
@@ -76,11 +90,19 @@ class CartController extends Controller
         return Json::encode($data);
     }
 
+    /**
+     * @return string
+     * @throws \Exception
+     */
     public function actionBlock()
     {
         return CartWidget::widget();
     }
 
+    /**
+     * @param $id
+     * @return bool
+     */
     public function actionDel($id)
     {
         $cart = Cart::getCart();
@@ -90,6 +112,10 @@ class CartController extends Controller
         return Cart::setCart($cart);
     }
 
+    /**
+     * @param $id
+     * @return bool
+     */
     public function actionAdd($id)
     {
         $cart = Cart::getCart();
@@ -99,6 +125,11 @@ class CartController extends Controller
         return Cart::setCart($cart);
     }
 
+    /**
+     * @param $id
+     * @param $count
+     * @return bool
+     */
     public function actionSet($id, $count)
     {
         $cart = Cart::getCart();

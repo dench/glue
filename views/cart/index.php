@@ -11,7 +11,7 @@ use yii\widgets\MaskedInput;
 
 $this->params['breadcrumbs'][] = $page->name;
 ?>
-<h1><?= $page->h1 ?></h1>
+<h1 class="mb-3"><?= $page->h1 ?></h1>
 
 <?php if (Yii::$app->session->hasFlash('orderSubmitted')): ?>
 
@@ -21,6 +21,7 @@ $this->params['breadcrumbs'][] = $page->name;
 
 <?php else: ?>
 
+    <?= $page->short ?>
     <?= $page->text ?>
 
     <?= $this->render('_table', [

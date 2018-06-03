@@ -3,7 +3,6 @@
 namespace app\controllers;
 
 use dench\page\models\Page;
-use yii\data\ActiveDataProvider;
 use yii\web\NotFoundHttpException;
 
 class InfoController extends \yii\web\Controller
@@ -14,21 +13,9 @@ class InfoController extends \yii\web\Controller
     {
         $page = Page::viewPage($this->_id);
 
-        $dataProvider = new ActiveDataProvider([
-            'query' => $page->getChilds()->where(['enabled' => 1]),
-            'sort'=> [
-                'defaultOrder' => [
-                    'position' => SORT_ASC,
-                ],
-            ],
-            'pagination' => [
-                'defaultPageSize' => 10,
-            ],
-        ]);
-
         return $this->render('index', [
             'page' => $page,
-            'dataProvider' => $dataProvider,
+            'childs' => $page->childs,
         ]);
     }
 
@@ -36,12 +23,13 @@ class InfoController extends \yii\web\Controller
     {
         $page = Page::viewPage($slug);
 
-        if (!in_array($this->_id, $page->parent_ids) || !$page->enabled) {
+        if (!$page->enabled) {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
 
         return $this->render('view', [
             'page' => $page,
+            'childs' => $page->childs,
         ]);
     }
 }
