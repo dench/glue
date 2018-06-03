@@ -142,7 +142,7 @@ $this->registerJs($js);
                         ->leftJoin('page_parent','page.id = page_parent.page_id')
                         ->select(['name', 'slug'])
                         ->andWhere(['parent_id' => 6])
-                        ->orderBy(['page.id' => SORT_ASC])
+                        ->orderBy(['page.position' => SORT_ASC])
                         ->limit(5)
                         ->all();
 
