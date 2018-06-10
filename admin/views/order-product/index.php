@@ -84,7 +84,7 @@ $this->registerJs($js);
     <?= $form->field($order, 'amount')->textInput(['class' => 'form-control mw-250px']) ?>
 
     <?= $form->field($order, 'phone')->widget(MaskedInput::className(), [
-        'mask' => '+38 (099) 999-99-99',
+        'mask' => '+99 (999) 999-99-99',
         'options' => [
             'class' => 'form-control mw-250px',
         ],
