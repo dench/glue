@@ -3,6 +3,7 @@
 /* @var $this yii\web\View */
 
 use app\widgets\OrderScheme;
+use yii\helpers\Url;
 
 /* @var $model dench\products\models\Product */
 /* @var $similar dench\products\models\Product[] */
@@ -13,16 +14,19 @@ echo $this->render('_breadcrumbs', [
     'model' => $model,
 ]);
 
+$url_active = Url::to(['category/view', 'slug' => $model->categories[0]->slug]);
+
 $js = <<<JS
 $('.card').on('hidden.bs.collapse', function () {
   $(this).find('.fa').removeClass('fa-minus-square').addClass('fa-plus-square');
 }).on('shown.bs.collapse', function () {
   $(this).find('.fa').removeClass('fa-plus-square').addClass('fa-minus-square');
-})
+});
+
+$('.sidebar nav .nav-link[href="{$url_active}"]').addClass('active bg-gradient-primary text-white');
 JS;
 
 $this->registerJs($js);
-
 ?>
 <h1 class="mb-3"><?= $model->h1 ?></h1>
 <div class="row">
