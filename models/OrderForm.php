@@ -12,6 +12,7 @@ use dench\products\models\Variant;
 use himiklab\yii2\recaptcha\ReCaptchaValidator;
 use Yii;
 use yii\base\Model;
+use yii\helpers\Url;
 
 class OrderForm extends Model
 {
@@ -112,6 +113,13 @@ class OrderForm extends Model
 
             if ($order->save()) {
                 Cart::clearCart();
+
+                Yii::$app->mailer->compose()
+                    ->setTo(Yii::$app->params['adminEmail'])
+                    ->setSubject('Заказ № ' . $order->id)
+                    ->setTextBody(Url::to(['/admin/order-product', 'order_id' => $order->id]))
+                    ->send();
+
                 return true;
             }
         }
