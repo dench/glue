@@ -117,7 +117,7 @@ class OrderForm extends Model
                 Yii::$app->mailer->compose()
                     ->setTo(Yii::$app->params['adminEmail'])
                     ->setSubject('Заказ № ' . $order->id)
-                    ->setTextBody(Url::to(['/admin/order-product', 'order_id' => $order->id]))
+                    ->setTextBody(Url::to(['/admin/order-product', 'order_id' => $order->id], 'https'))
                     ->send();
 
                 return true;
