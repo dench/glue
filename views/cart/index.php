@@ -45,13 +45,14 @@ $this->params['breadcrumbs'][] = $page->name;
                     'mask' => '+38 (099) 999-99-99',
                 ]) ?>
 
+                <?php if (!YII_DEBUG): ?>
                 <div class="row">
                     <div class="col-sm-3"></div>
                     <div class="col-sm-9">
                         <?= $form->field($model, 'reCaptcha')->widget(ReCaptcha::className())->label(false) ?>
                     </div>
                 </div>
-
+                <?php endif; ?>
             </div>
         </div>
 

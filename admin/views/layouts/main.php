@@ -10,7 +10,7 @@
 /* @var $content string */
 
 use app\assets\AdminAsset;
-use app\models\Order;
+use dench\cart\models\Order;
 use app\models\Question;
 use app\models\Review;
 use app\widgets\Alert;
@@ -68,7 +68,7 @@ AdminAsset::register($this);
             ['label' => Yii::t('app', 'Features'), 'url' => ['/admin/products/feature/index']],
             ['label' => Yii::t('app', 'Complectation'), 'url' => ['/admin/products/complect/index']],
             ['label' => Yii::t('app', 'Pages'), 'url' => ['/admin/page/default/index']],
-            ['label' => Yii::t('app', 'Orders') . $unread_order, 'url' => ['/admin/order/index']],
+            ['label' => Yii::t('app', 'Orders') . $unread_order, 'url' => ['/admin/cart/order/index']],
             ['label' => Yii::t('app', 'Questions') . $unread_question, 'url' => ['/admin/question/index']],
             ['label' => Yii::t('app', 'Reviews') . $unread_review, 'url' => ['/admin/review/index']],
             ['label' => Yii::t('app', 'Selection'), 'url' => ['/admin/podbor/index']],
@@ -80,7 +80,7 @@ AdminAsset::register($this);
                 ['label' => Yii::t('app', 'Units'), 'url' => ['/admin/products/unit/index']],
                 ['label' => Yii::t('app', 'Statuses'), 'url' => ['/admin/products/product-status/index']],
                 ['label' => Yii::t('app', 'Users'), 'url' => ['/admin/user/index']],
-                ['label' => Yii::t('app', 'Buyers'), 'url' => ['/admin/buyer/index']],
+                ['label' => Yii::t('app', 'Buyers'), 'url' => ['/admin/cart/buyer/index']],
                 ['label' => Yii::t('app', 'Settings'), 'url' => ['/admin/setting/index']],
             ]],
             ['label' => Yii::t('app', 'Home'), 'url' => ['/site/index']],

@@ -8,7 +8,7 @@ use app\assets\SiteAsset;
 use app\components\Nav;
 use app\models\Question;
 use app\models\Review;
-use app\widgets\CartWidget;
+use dench\cart\widgets\CartWidget;
 use app\widgets\OrderScheme;
 use dench\modal\Modal;
 use dench\page\models\Page;
