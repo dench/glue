@@ -108,7 +108,7 @@ AdminAsset::register($this);
             </div>
             <div class="col-md-4 text-center">
                 <div class="copyright">
-                    © <?= Yii::$app->name ?> 2017
+                    © <?= Yii::$app->name ?> 2017 - <?= date('Y') ?>
                 </div>
             </div>
             <div class="col-md-4">

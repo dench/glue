@@ -352,15 +352,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dench/yii2-cart.git",
-                "reference": "ddd1a00314e8373b0d08221a5a8fad74c13d589d"
+                "reference": "a8d80a4d805cccbef8b72477e473f2a1170fac80"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dench/yii2-cart/zipball/ddd1a00314e8373b0d08221a5a8fad74c13d589d",
-                "reference": "ddd1a00314e8373b0d08221a5a8fad74c13d589d",
+                "url": "https://api.github.com/repos/dench/yii2-cart/zipball/a8d80a4d805cccbef8b72477e473f2a1170fac80",
+                "reference": "a8d80a4d805cccbef8b72477e473f2a1170fac80",
                 "shasum": ""
             },
             "require": {
+                "dench/yii2-modal": "@dev",
+                "kartik-v/yii2-widget-typeahead": "*",
                 "yiisoft/yii2": "~2.0.0"
             },
             "type": "yii2-extension",
@@ -385,7 +387,7 @@
                 "extension",
                 "yii2"
             ],
-            "time": "2019-02-03T12:02:28+00:00"
+            "time": "2019-02-03T18:50:41+00:00"
         },
         {
             "name": "dench/yii2-image",
@@ -1429,16 +1431,16 @@
         },
         {
             "name": "symfony/css-selector",
-            "version": "v3.4.21",
+            "version": "v3.4.22",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/css-selector.git",
-                "reference": "12f86295c46c36af9896cf21db6b6b8a1465315d"
+                "reference": "8ca29297c29b64fb3a1a135e71cb25f67f9fdccf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/css-selector/zipball/12f86295c46c36af9896cf21db6b6b8a1465315d",
-                "reference": "12f86295c46c36af9896cf21db6b6b8a1465315d",
+                "url": "https://api.github.com/repos/symfony/css-selector/zipball/8ca29297c29b64fb3a1a135e71cb25f67f9fdccf",
+                "reference": "8ca29297c29b64fb3a1a135e71cb25f67f9fdccf",
                 "shasum": ""
             },
             "require": {
@@ -1478,20 +1480,20 @@
             ],
             "description": "Symfony CssSelector Component",
             "homepage": "https://symfony.com",
-            "time": "2019-01-02T09:30:52+00:00"
+            "time": "2019-01-16T09:39:14+00:00"
         },
         {
             "name": "symfony/dom-crawler",
-            "version": "v3.4.21",
+            "version": "v3.4.22",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dom-crawler.git",
-                "reference": "311f666d85d1075b0a294ba1f3de4ae9307d8180"
+                "reference": "32cb577c07bd900ee883a9d4b55d4098aa02e422"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/dom-crawler/zipball/311f666d85d1075b0a294ba1f3de4ae9307d8180",
-                "reference": "311f666d85d1075b0a294ba1f3de4ae9307d8180",
+                "url": "https://api.github.com/repos/symfony/dom-crawler/zipball/32cb577c07bd900ee883a9d4b55d4098aa02e422",
+                "reference": "32cb577c07bd900ee883a9d4b55d4098aa02e422",
                 "shasum": ""
             },
             "require": {
@@ -1535,7 +1537,7 @@
             ],
             "description": "Symfony DomCrawler Component",
             "homepage": "https://symfony.com",
-            "time": "2019-01-01T13:45:19+00:00"
+            "time": "2019-01-16T13:27:11+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",

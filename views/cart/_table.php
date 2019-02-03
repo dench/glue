@@ -98,7 +98,7 @@ $this->registerJs($js);
     </table>
 </div>
 <div class="text-right">
-    <?= Yii::t('app', 'Total amount') ?>: <b><?= $items[0]->currency->before . '<span class="total">0</span>' . $items[0]->currency->after ?></b>
+    <?= Yii::t('app', 'Total amount') ?>: <b><?= $items[0]->currency->before . '<span class="total">0</span> ' . $items[0]->currency->after ?></b>
 </div>
 <?php else: ?>
 <div class="alert alert-warning">

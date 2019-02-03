@@ -85,7 +85,7 @@ class SearchController extends Controller
 
         $products = Product::find()->where(['enabled' => true])->all();
         foreach ($products as $product) {
-            $variants = Variant::find()->where(['enabled' => true])->all();
+            $variants = Variant::find()->where(['enabled' => true])->andWhere(['product_id' => $product->id])->all();
             foreach ($variants as $variant) {
                 $data[] = [
                     'id' => $variant->id,
