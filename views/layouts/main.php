@@ -59,6 +59,18 @@ function goLeft() {
         sidebar = 0;
     }
 }
+$('.fa-phone').each(function(){
+    var obj = $(this).parent();
+    obj.attr('data-tel', obj.text());
+    obj.html('<i class="fa fa-phone"></i> +380 <small>показать номер</small>');
+    obj.click(function(e){
+        if ($(this).attr('data-tel')) {
+            $(this).html('<i class="fa fa-phone"></i>' + $(this).attr('data-tel'));
+            $(this).attr('data-tel', null);
+            return e.preventDefault();
+        }
+    });
+});
 JS;
 
 $this->registerJs($js);
@@ -82,7 +94,7 @@ $this->registerJs($js);
                 <a href="/"><img src="/img/loxeal.png" class="logo"></a>
             </div>
             <div class="search col-10 col-md-4 py-2">
-                <form action="<?= Url::to(['/search']) ?>" class="input-group pt-1">
+                <form action="<?= Url::to(['/search']) ?>" class="input-group">
                     <?php
                     $template = '<a href="{{link}}">{{value}}</a>';
                     echo Typeahead::widget([
@@ -92,7 +104,7 @@ $this->registerJs($js);
                             'style' => 'flex: 1;',
                         ],
                         'options' => [
-                            'placeholder' => Yii::t('app', 'Search for...'),
+                            'placeholder' => Yii::t('app', 'Enter the name of the product'),
                             'style' => 'border-bottom-right-radius: 0; border-top-right-radius: 0; font-size: 1rem;',
                         ],
                         'pluginOptions' => [
@@ -116,6 +128,9 @@ $this->registerJs($js);
                         <button class="btn btn-primary" type="submit">Найти</button>
                     </span>
                 </form>
+                <div class="pt-1 text-white-50 small" style="position: absolute;">
+                    Например: <a href="#" onclick="return $('#w0').val($(this).text());">loxeal 30-23</a>
+                </div>
             </div>
             <div class="col-6 col-md-4 text-right">
                 <div class="phones">

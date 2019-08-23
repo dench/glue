@@ -21,12 +21,15 @@ class SearchController extends Controller
         if (empty($query)) {
             $query = Product::find()->where(['id' => 0]);
         } else {
+            $query = str_replace('loxeal','', $query);
+
             $exp = explode(' ', $query);
 
             $query = Product::find()->joinWith(['translations']);
 
             foreach ($exp as $e) {
                 $query->orWhere(['like', 'name', $e]);
+                $query->orWhere(['like', 'description', $e]);
             }
         }
 

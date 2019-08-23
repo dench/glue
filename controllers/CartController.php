@@ -52,7 +52,7 @@ class CartController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->send()) {
             Yii::$app->session->setFlash('orderSubmitted');
-            return $this->redirect(['']);
+            return $this->redirect('/thankyou');
         }
 
         return $this->render('index', [

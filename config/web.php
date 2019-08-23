@@ -43,6 +43,7 @@ $config = [
             'rules' => [
                 '' => 'site/index',
                 '<controller:cart|podbor|info>' => '<controller>/index',
+                'thankyou' => 'cart/index',
                 '<action:(how|contacts|questions|reviews)>' => 'site/<action>',
                 'image/<size:[0-9a-z\-]+>/<name>.<extension:[a-z]+>' => 'image/default/index',
                 'file/<name>.<extension:[a-z]+>' => 'image/default/file',
