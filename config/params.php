@@ -11,6 +11,15 @@ return [
     'phone3' => '',
     'googleMapsApiKey' => '',
 
+    'currency_id' => 1,
+
+    'liqpay' => [
+        'public_key' => 'i#',
+        'private_key' => '',
+        'status_awaiting' => [2],
+        'sandbox' => true,
+    ],
+
     'file' => [
         'extensions' => 'png, jpg, pdf, zip, rar, doc, docx, xls, xlsx',
         'maxSize' => 100*1024*1024,

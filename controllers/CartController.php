@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use dench\cart\models\Cart;
+use dench\cart\models\Order;
 use dench\cart\models\OrderForm;
 use dench\cart\widgets\CartWidget;
 use dench\page\models\Page;
@@ -50,9 +51,15 @@ class CartController extends Controller
 
         $model->scenario = 'user';
 
-        if ($model->load(Yii::$app->request->post()) && $model->send()) {
+        if ($model->load(Yii::$app->request->post()) && $order_id = $model->send()) {
             Yii::$app->session->setFlash('orderSubmitted');
-            return $this->redirect('/thankyou');
+            return $this->redirect('/thankyou?order=' . $order_id);
+        }
+
+        $order = null;
+
+        if ($order_id = Yii::$app->request->get('order')) {
+            $order = Order::findOne($order_id);
         }
 
         return $this->render('index', [
@@ -60,6 +67,7 @@ class CartController extends Controller
             'items' => $items,
             'cart' => $cart,
             'model' => $model,
+            'order' => $order,
         ]);
     }
 

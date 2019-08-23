@@ -3,6 +3,7 @@
 /* @var $page dench\page\models\Page */
 /* @var $items dench\products\models\Variant[] */
 /* @var $cart array */
+/* @var $order dench\cart\models\Order */
 
 use app\components\ActiveForm;
 use himiklab\yii2\recaptcha\ReCaptcha;
@@ -18,6 +19,34 @@ $this->params['breadcrumbs'][] = $page->name;
     <div class="alert alert-success">
         Заказ успешно отправлен. Скоро с вами свяжется наш сотрудник для уточнения информации.
     </div>
+
+<?php
+
+echo $order->id;
+
+$products = [];
+
+foreach ($order->orderProducts as $product) {
+    $products[] = "{
+    'sku': '{$product->variant->product_id}',
+    'name': '{$product->variant->product->name}, {$product->variant->name}',
+    'category': '{$product->variant->product->categories[0]->name}',
+    'price': '{$product->variant->price}',
+    'quantity': '{$product->count}'
+}";
+}
+
+$transactionProducts = implode(',', $products);
+
+$js = <<<JS
+dataLayer = [{
+    'transactionId': '{$order->id}',
+    'transactionTotal': '{$order->amount}',
+    'transactionProducts': [{$transactionProducts}]
+}];
+JS;
+$this->registerJs($js, \yii\web\View::POS_HEAD);
+?>
 
 <?php else: ?>
 
