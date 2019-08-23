@@ -23,7 +23,7 @@ class SearchController extends Controller
         } else {
             $query = str_replace('loxeal','', $query);
 
-            $exp = explode(' ', $query);
+            $exp = explode(' ', trim($query));
 
             $query = Product::find()->joinWith(['translations']);
 
