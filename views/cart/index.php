@@ -22,8 +22,6 @@ $this->params['breadcrumbs'][] = $page->name;
 
 <?php
 
-echo $order->id;
-
 $products = [];
 
 foreach ($order->orderProducts as $product) {
