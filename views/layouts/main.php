@@ -22,58 +22,6 @@ use yii\widgets\Menu;
 
 SiteAsset::register($this);
 FontAwesomeAsset::register($this);
-
-$js = <<<JS
-$('.block-link').click(function(){
-    document.location.href = $(this).find('a').attr('href');
-});
-var minWidth = 768;
-var sidebar = 1;
-$(window).resize(function(){
-    if ($(this).width() < minWidth) {
-        goBottom();
-    } else {
-        goLeft();
-    }
-});
-if ($(window).width() < minWidth) {
-    goBottom();
-} else {
-    goLeft();
-}
-function goBottom() {
-    var left = $('#sidebarleft');
-    var bottom = $('#sidebarbottom');
-    if (!sidebar) {
-        bottom.html(left.html());
-        left.html("");
-        sidebar = 1;
-    }
-}
-function goLeft() {
-    var left = $('#sidebarleft');
-    var bottom = $('#sidebarbottom');
-    if (sidebar) {
-        left.html(bottom.html());
-        bottom.html("");
-        sidebar = 0;
-    }
-}
-$('.fa-phone').each(function(){
-    var obj = $(this).parent();
-    obj.attr('data-tel', obj.text());
-    obj.html('<i class="fa fa-phone"></i> +380 <small>показать номер</small>');
-    obj.click(function(e){
-        if ($(this).attr('data-tel')) {
-            $(this).html('<i class="fa fa-phone"></i>' + $(this).attr('data-tel'));
-            $(this).attr('data-tel', null);
-            return e.preventDefault();
-        }
-    });
-});
-JS;
-
-$this->registerJs($js);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -93,7 +41,7 @@ $this->registerJs($js);
             <div class="col-6 col-md-4">
                 <a href="/"><img src="/img/loxeal.png" class="logo"></a>
             </div>
-            <div class="search col-10 col-md-4 py-2">
+            <div class="search col-10 col-md-4 py-2 mt-1 mt-md-0">
                 <form action="<?= Url::to(['/search']) ?>" class="input-group">
                     <?php
                     $template = '<a href="{{link}}">{{value}}</a>';
@@ -128,7 +76,7 @@ $this->registerJs($js);
                         <button class="btn btn-primary" type="submit">Найти</button>
                     </span>
                 </form>
-                <div class="pt-1 text-white-50 small" style="position: absolute;">
+                <div class="pt-1 text-white-50 small d-none d-md-block" style="position: absolute;">
                     Например: <a href="#" onclick="return $('#w0').val($(this).text());">loxeal 30-23</a>
                 </div>
             </div>
