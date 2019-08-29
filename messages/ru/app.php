@@ -140,4 +140,10 @@ return [
     '{0, plural, =0{items not found} =1{item found} one{# items found} few{# items found} many{# items found} other{# items found} for these criteria' => 'По данным критериям {0, plural, =0{товаров не найдено} =1{найден один товар} one{найден # товар} few{найдено # товара} many{найдено # товаров} other{найдено # товаров}}',
     'Question' => 'Вопрос',
     'Enter the name of the product' => 'Введите название товара',
+    'Full Name' => 'Ваше имя и фамилия',
+    'Contact phone' => 'Контактный телефон',
+    'Choose the appropriate delivery method' => 'Выберите подходящий способ доставки',
+    'Delivery address' => 'Адресс доставки',
+    'Select the appropriate method of payment' => 'Выберите подходящий способ оплаты',
+    'Buyer is' => 'Кем вы являетесь',
 ];
