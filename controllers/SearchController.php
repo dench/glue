@@ -18,19 +18,12 @@ class SearchController extends Controller
     {
         $page = Page::viewPage('search');
 
-        if (empty($query)) {
-            $query = Product::find()->where(['id' => 0]);
-        } else {
-            $query = str_replace('loxeal','', $query);
+        $exp = explode(' ', $query);
 
-            $exp = explode(' ', trim($query));
+        $query = Product::find()->joinWith(['translations'])->where(['enabled' => 1]);
 
-            $query = Product::find()->joinWith(['translations']);
-
-            foreach ($exp as $e) {
-                $query->orWhere(['like', 'name', $e]);
-                $query->orWhere(['like', 'description', $e]);
-            }
+        foreach ($exp as $e) {
+            $query->andWhere(['or', ['like', 'name', $e], ['like', 'text', $e]]);
         }
 
         $dataProvider = new ActiveDataProvider([
@@ -52,13 +45,19 @@ class SearchController extends Controller
     {
         $q = trim($q);
 
-        $data = Product::find()->select(['id', 'name', 'slug'])->joinWith(['translations'])->where(['enabled' => 1])->andFilterWhere(['like', 'name', $q])->asArray()->limit(100)->all();
+        $data = Product::find()->select(['id', 'name', 'slug', 'text'])->joinWith(['translations'])->where(['enabled' => 1])->andFilterWhere(['or', ['like', 'name', $q], ['like', 'text', $q]])->asArray()->limit(100)->all();
 
         $out = [];
 
         foreach ($data as $d) {
+            $text = '';
+            if ($d['text'] && $q) {
+                if (!mb_strpos($d['name'], $q, 0, 'UTF-8') && mb_strpos($d['text'], $q, 0, 'UTF-8')) {
+                    $text = ' ' . $q;
+                }
+            }
             $out[] = [
-                'value' => $d['name'],
+                'value' => $d['name'] . $text,
                 'link' => Url::to(['product/index', 'slug' => $d['slug']]),
             ];
         }

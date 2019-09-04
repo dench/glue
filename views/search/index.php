@@ -17,6 +17,12 @@ use yii\widgets\ListView;
     </div>
 <?php endif; ?>
 
+<style>
+.card-img-top img {
+    height: 150px !important;
+}
+</style>
+
 <?php
 echo ListView::widget([
     'dataProvider' => $dataProvider,

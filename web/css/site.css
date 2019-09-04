@@ -7443,6 +7443,9 @@ h1, h2, h3, h4, .h1, .h2, .h3, .h4 {
     border-bottom-right-radius: 0.25rem;
     border-bottom-left-radius: 0.25rem; }
 
+.tt-menu {
+  width: auto !important; }
+
 .question-list > .media,
 .review-list > .media {
   border-top: 1px solid rgba(0, 0, 0, 0.125); }
