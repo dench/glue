@@ -52,7 +52,7 @@ class SearchController extends Controller
         foreach ($data as $d) {
             $text = '';
             if ($d['text'] && $q) {
-                if (!mb_strpos(' '.$d['name'], $q, 0, 'UTF-8') && ' '.mb_strpos($d['text'], $q, 0, 'UTF-8')) {
+                if (!mb_stripos(' '.$d['name'], $q, 0, 'UTF-8') && ' '.mb_stripos($d['text'], $q, 0, 'UTF-8')) {
                     $text = ' ' . $q;
                 }
             }
