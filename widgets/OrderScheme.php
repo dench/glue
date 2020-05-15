@@ -12,8 +12,10 @@ use yii\base\Widget;
 
 class OrderScheme extends Widget
 {
+    public $baseUrl;
+
     public function run()
     {
-        return $this->render('orderScheme');
+        return $this->render('orderScheme', ['baseUrl' => $this->baseUrl]);
     }
 }

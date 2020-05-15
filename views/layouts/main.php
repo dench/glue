@@ -20,7 +20,7 @@ use yii\helpers\Url;
 use yii\web\JsExpression;
 use yii\widgets\Menu;
 
-SiteAsset::register($this);
+$asset = SiteAsset::register($this);
 FontAwesomeAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -234,7 +234,7 @@ FontAwesomeAsset::register($this);
 
     <?php if (Yii::$app->controller->id == 'site' && Yii::$app->controller->action->id == 'index') : ?>
 
-    <?= OrderScheme::widget() ?>
+    <?= OrderScheme::widget(['basePath' => $asset->basePath]) ?>
 
     <div class="card how my-4">
         <div class="card-body">
