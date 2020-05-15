@@ -234,7 +234,7 @@ FontAwesomeAsset::register($this);
 
     <?php if (Yii::$app->controller->id == 'site' && Yii::$app->controller->action->id == 'index') : ?>
 
-    <?= OrderScheme::widget(['basePath' => $asset->basePath]) ?>
+    <?= OrderScheme::widget(['baseUrl' => $asset->baseUrl]) ?>
 
     <div class="card how my-4">
         <div class="card-body">
