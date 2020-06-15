@@ -2,10 +2,10 @@
 
 namespace app\controllers;
 
-use dench\products\models\Category;
+use app\components\Category;
+use app\components\Page;
 use dench\products\models\Feature;
 use dench\products\models\ProductFilter;
-use dench\page\models\Page;
 use Yii;
 use yii\web\Controller;
 

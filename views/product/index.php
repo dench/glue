@@ -3,6 +3,7 @@
 /* @var $this yii\web\View */
 
 use app\widgets\OrderScheme;
+use dench\image\helpers\ImageHelper;
 use yii\helpers\Url;
 
 /* @var $model dench\products\models\Product */
@@ -112,3 +113,19 @@ $this->registerJs($js);
 ]) ?>
 
 <?= OrderScheme::widget() ?>
+
+<script type='application/ld+json'>
+{
+    "@context": "http://www.schema.org",
+    "@type": "product",
+    "name": "<?= $model->name ?>",
+    "image": "<?= Url::to(ImageHelper::thumb($model->image->id, 'normal'), true) ?>",
+    "description": "<?= $model->description ?>",
+    "offers": {
+        "@type": "Offer",
+        "availability": "http://schema.org/InStock",
+        "price": "<?= $model->priceDef ?>",
+        "priceCurrency": "UAH"
+    }
+}
+</script>

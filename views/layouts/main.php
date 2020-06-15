@@ -8,13 +8,13 @@ use app\assets\SiteAsset;
 use app\components\Nav;
 use app\models\Question;
 use app\models\Review;
+use app\widgets\Breadcrumbs;
 use dench\cart\widgets\CartWidget;
 use app\widgets\OrderScheme;
 use dench\modal\Modal;
 use dench\page\models\Page;
 use dench\products\models\Category;
 use kartik\typeahead\Typeahead;
-use luya\bootstrap4\widgets\Breadcrumbs;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\web\JsExpression;
@@ -22,6 +22,8 @@ use yii\widgets\Menu;
 
 $asset = SiteAsset::register($this);
 FontAwesomeAsset::register($this);
+
+$this->registerLinkTag(['rel' => 'canonical', 'href' => Url::to(explode('?', Yii::$app->request->url)[0], true)]);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -167,51 +169,55 @@ FontAwesomeAsset::register($this);
 
 <div class="container my-2 my-md-3">
     <div class="row">
-        <div class="sidebar col-md-4 col-lg-3">
-            <div class="row">
-                <div class="col-sm-6 col-md-12">
+        <?php if (Yii::$app->controller->id !== 'site' || Yii::$app->controller->action->id !== 'index'): ?>
+            <div class="sidebar col-md-4 col-lg-3">
+                <div class="row">
+                    <div class="col-sm-6 col-md-12">
 
-                    <?= CartWidget::widget() ?>
+                        <?= CartWidget::widget() ?>
 
-                    <nav class="navbar navbar-expand-md mb-3">
-                        <button class="btn btn-dark btn-block d-md-none" type="button" data-toggle="collapse" data-target="#navbar-left" aria-controls="navbar-left" aria-expanded="false" aria-label="Toggle navigation">
-                            Каталог товаров
-                        </button>
-                        <div class="collapse navbar-collapse" id="navbar-left">
-                            <?php
+                        <nav class="navbar navbar-expand-md mb-3">
+                            <button class="btn btn-dark btn-block d-md-none" type="button" data-toggle="collapse" data-target="#navbar-left" aria-controls="navbar-left" aria-expanded="false" aria-label="Toggle navigation">
+                                Каталог товаров
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbar-left">
+                                <?php
 
-                            /** @var $categories Category[] */
-                            $categories = !Yii::$app->cache->exists('_categories-' . Yii::$app->language) ? Category::getMain() : [];
+                                /** @var $categories Category[] */
+                                $categories = !Yii::$app->cache->exists('_categories-' . Yii::$app->language) ? Category::getMain() : [];
 
-                            $items = [];
+                                $items = [];
 
-                            foreach ($categories as $category) {
-                                $items[$category->id] = [
-                                    'label' => $category->name,
-                                    'url' => (count($category->categories)) ? ['category/pod', 'slug' => $category->slug] : ['category/view', 'slug' => $category->slug],
+                                foreach ($categories as $category) {
+                                    $items[$category->id] = [
+                                        'label' => $category->name,
+                                        'url' => (count($category->categories)) ? ['category/pod', 'slug' => $category->slug] : ['category/view', 'slug' => $category->slug],
+                                        'options' => [
+                                            'tag' => false,
+                                        ],
+                                    ];
+                                }
+                                echo Menu::widget([
+                                    'items' => $items,
+                                    'linkTemplate' => '<a class="nav-link" href="{url}">{label}</a>',
                                     'options' => [
-                                        'tag' => false,
+                                        'tag' => 'div',
+                                        'class' => 'nav nav-left flex-column',
                                     ],
-                                ];
-                            }
-                            echo Menu::widget([
-                                'items' => $items,
-                                'linkTemplate' => '<a class="nav-link" href="{url}">{label}</a>',
-                                'options' => [
-                                    'tag' => 'div',
-                                    'class' => 'nav nav-left flex-column',
-                                ],
-                            ]);
-                            ?>
-                        </div>
-                    </nav>
-                </div>
-                <div id="sidebarleft" class="col-sm-6 col-md-12">
+                                ]);
+                                ?>
+                            </div>
+                        </nav>
+                    </div>
+                    <div id="sidebarleft" class="col-sm-6 col-md-12">
 
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="mainblock col-md-8 col-lg-9">
+            <div class="mainblock col-md-8 col-lg-9">
+        <?php else: ?>
+            <div class="mainblock col-12">
+        <?php endif; ?>
             <?php
             if (isset($this->params['breadcrumbs'])) {
                 echo Html::tag(

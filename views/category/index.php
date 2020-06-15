@@ -1,7 +1,7 @@
 <?php
 
 /** @var $this yii\web\View */
-/** @var $page dench\page\models\Page */
+/** @var $page app\components\Page */
 /** @var $categories dench\products\models\Category[] */
 
 use dench\image\helpers\ImageHelper;
@@ -11,6 +11,14 @@ use yii\helpers\Url;
 $this->params['breadcrumbs'][] = $page->name;
 ?>
 <h1 class="mb-3"><?= $page->h1 ?></h1>
+
+<?php if ($page->short) : ?>
+    <div class="card mb-3">
+        <div class="card-body">
+            <?= $page->short ?>
+        </div>
+    </div>
+<?php endif; ?>
 
 <div class="row categories">
     <?php foreach ($categories as $category) : ?>
@@ -34,4 +42,10 @@ $this->params['breadcrumbs'][] = $page->name;
     <?php endforeach; ?>
 </div>
 
-<?= $page->text ?>
+<?php if (!Yii::$app->request->get('page') && $page->text) : ?>
+    <div class="card mb-3">
+        <div class="page-seo card-body">
+            <?= $page->text ?>
+        </div>
+    </div>
+<?php endif; ?>

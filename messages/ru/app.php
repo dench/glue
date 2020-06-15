@@ -146,4 +146,7 @@ return [
     'Delivery address' => 'Адресс доставки',
     'Select the appropriate method of payment' => 'Выберите подходящий способ оплаты',
     'Buyer is' => 'Кем вы являетесь',
+
+    'Product catalog' => 'Каталог товаров',
+    'page {0}' => 'страница {0}',
 ];

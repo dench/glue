@@ -25,9 +25,9 @@ $variant = @$model->variants[0];
         </a>
     </div>
     <div class="col-sm-9 col-md-9">
-        <h3>
+        <div class="h3">
             <a href="<?= $link ?>"><?= $model->name ?></a>
-        </h3>
+        </div>
         <div>
             <?= $model->text_short ?>
         </div>

@@ -36,7 +36,7 @@ $config = [
             'class' => 'dench\language\LangRequest'
         ],
         'urlManager' => [
-            'class' => 'dench\language\LangUrlManager',
+            'class' => 'app\components\SiteUrlManager',
             'defaultLanguage' => 'ru',
             'enablePrettyUrl' => true,
             'showScriptName' => false,

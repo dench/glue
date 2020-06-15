@@ -1,7 +1,7 @@
 <?php
 /* @var $this yii\web\View */
-/* @var $page dench\products\models\Category */
-/* @var $categories dench\products\models\Category[] */
+/* @var $page app\components\Category */
+/* @var $categories app\components\Category[] */
 /* @var $products dench\products\models\Product[] */
 /* @var $searchModel dench\products\models\ProductFilter */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -70,10 +70,10 @@ $this->registerJs($js);
 
 <?php Pjax::end(); ?>
 
-<?php if ($page->seo) : ?>
-<div class="card mb-3">
-    <div class="page-seo card-body">
-        <?= $page->seo ?>
+<?php if (!Yii::$app->request->get('page') && $page->seo) : ?>
+    <div class="card mb-3">
+        <div class="page-seo card-body">
+            <?= $page->seo ?>
+        </div>
     </div>
-</div>
 <?php endif; ?>
