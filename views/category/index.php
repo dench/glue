@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = $page->name;
         <?php
         $url = Url::to((count($category->categories)) ? ['category/pod', 'slug' => $category->slug] : ['category/view', 'slug' => $category->slug]);
         ?>
-        <div class="col-sm-4 col-lg-3 pb-3 px-2">
+        <div class="col-6 col-sm-4 col-lg-3 pb-3 px-1 px-sm-2">
             <div class="card block-link">
                 <a href="<?= $url ?>" rel="nofollow">
                 <?php if ($category->image) { ?>
@@ -34,7 +34,7 @@ $this->params['breadcrumbs'][] = $page->name;
                     <img src="<?= Yii::$app->params['image']['size']['category']['none'] ?>" class="card-img-top" alt="">
                 <?php } ?>
                 </a>
-                <div class="card-footer bg-gradient-dark text-center px-1">
+                <div class="card-footer bg-gradient-dark text-center px-0 px-sm-1">
                     <a href="<?= $url ?>" class="text-white"><?= $category->name ?></a>
                 </div>
             </div>
