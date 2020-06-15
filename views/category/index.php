@@ -22,7 +22,7 @@ $this->params['breadcrumbs'][] = $page->name;
     </div>
 <?php endif; ?>
 
-<div class="row categories">
+<div class="row categories mb-4">
     <?php foreach ($categories as $category) : ?>
         <?php
         $url = Url::to((count($category->categories)) ? ['category/pod', 'slug' => $category->slug] : ['category/view', 'slug' => $category->slug]);
