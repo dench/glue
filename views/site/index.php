@@ -15,7 +15,7 @@ use yii\helpers\Url;
             <?php
             $url = Url::to((count($category->categories)) ? ['category/pod', 'slug' => $category->slug] : ['category/view', 'slug' => $category->slug]);
             ?>
-            <div class="col-6 col-sm-4 col-md-3 col-lg-2 pb-3 px-2">
+            <div class="col-sm-4 col-md-3 col-lg-2 pb-3 px-2">
                 <div class="card block-link">
                     <a href="<?= $url ?>" rel="nofollow">
                         <?php if ($category->image) { ?>
@@ -24,7 +24,7 @@ use yii\helpers\Url;
                             <img src="<?= Yii::$app->params['image']['size']['category']['none'] ?>" class="card-img-top" alt="">
                         <?php } ?>
                     </a>
-                    <div class="card-footer bg-gradient-dark text-center">
+                    <div class="card-footer bg-gradient-dark text-center px-1">
                         <a href="<?= $url ?>" class="text-white"><?= $category->name ?></a>
                     </div>
                 </div>
