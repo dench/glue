@@ -5,21 +5,45 @@ namespace app\controllers;
 use app\components\Category;
 use app\components\Page;
 use dench\products\models\Feature;
+use dench\products\models\Product;
 use dench\products\models\ProductFilter;
 use Yii;
+use yii\data\ActiveDataProvider;
 use yii\web\Controller;
+use yii\web\NotFoundHttpException;
 
 class CategoryController extends Controller
 {
     public function actionIndex()
     {
-        $page = Page::viewPage(2);
+        if (!$page = Page::viewPage(2)) {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
 
         $categories = !Yii::$app->cache->exists('_categories-' . Yii::$app->language) ? Category::getMain() : [];
+
+        $query = Product::find();
+        $query->joinWith(['categories']);
+        $query->andWhere(['product.enabled' => true]);
+        $query->andWhere(['category.enabled' => true]);
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            'sort'=> [
+                'defaultOrder' => [
+                    'position' => SORT_DESC,
+                ],
+            ],
+            'pagination' => [
+                'forcePageParam' => false,
+                'pageSizeParam' => false,
+                'pageSize' => 12,
+            ],
+        ]);
 
         return $this->render('index', [
             'page' => $page,
             'categories' => $categories,
+            'dataProvider' => $dataProvider,
         ]);
     }
 

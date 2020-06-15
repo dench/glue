@@ -3,10 +3,12 @@
 /** @var $this yii\web\View */
 /** @var $page app\components\Page */
 /** @var $categories dench\products\models\Category[] */
+/** @var $dataProvider yii\data\ActiveDataProvider */
 
 use dench\image\helpers\ImageHelper;
 use dench\products\models\Category;
 use yii\helpers\Url;
+use yii\widgets\ListView;
 
 $this->params['breadcrumbs'][] = $page->name;
 ?>
@@ -41,6 +43,24 @@ $this->params['breadcrumbs'][] = $page->name;
         </div>
     <?php endforeach; ?>
 </div>
+
+<h2 class="mb-3"><?= Yii::t('app', 'Product catalog') ?></h2>
+
+<?= ListView::widget([
+    'dataProvider' => $dataProvider,
+    'itemView' => '_item',
+    'layout' => "{items}\n{pager}",
+    'emptyTextOptions' => [
+        'class' => 'alert alert-danger',
+    ],
+    'options' => [
+        'class' => 'list-group mb-4',
+    ],
+    'itemOptions' => [
+        'class' => 'list-group-item',
+    ],
+]);
+?>
 
 <?php if (!Yii::$app->request->get('page') && $page->text) : ?>
     <div class="card mb-3">
