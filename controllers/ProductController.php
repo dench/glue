@@ -56,6 +56,18 @@ class ProductController extends Controller
             $view = $model->view;
         }
 
+        $model->title = str_replace('{0}', $model->title, Yii::$app->params['templateTitle']);
+
+        if (empty($model->description)) {
+            $model->description = str_replace('{0}', $model->name, Yii::$app->params['templateDescription']);
+        }
+
+        Yii::$app->view->title = $model->title;
+        Yii::$app->view->registerMetaTag([
+            'name' => 'description',
+            'content' => $model->description
+        ]);
+
         return $this->render($view, [
             'model' => $model,
             'viewed' => $viewed,

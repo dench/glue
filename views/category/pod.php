@@ -1,7 +1,7 @@
 <?php
 
 /** @var $this yii\web\View */
-/** @var $page dench\page\models\Page */
+/** @var $page app\components\Category */
 /** @var $categories dench\products\models\Category[] */
 
 use dench\image\helpers\ImageHelper;
@@ -22,6 +22,14 @@ $this->registerJs($js);
 ?>
 <h1 class="mb-3"><?= $page->h1 ?></h1>
 
+<?php if ($page->text) : ?>
+    <div class="card mb-3">
+        <div class="card-body">
+            <?= $page->text ?>
+        </div>
+    </div>
+<?php endif; ?>
+
 <div class="row categories">
     <?php foreach ($categories as $category) : ?>
         <div class="col-sm-6 col-lg-4 pb-3 px-2">
@@ -41,4 +49,10 @@ $this->registerJs($js);
     <?php endforeach; ?>
 </div>
 
-<?= $page->text ?>
+<?php if (!Yii::$app->request->get('page') && $page->seo) : ?>
+    <div class="card mb-3">
+        <div class="card-body">
+            <?= $page->seo ?>
+        </div>
+    </div>
+<?php endif; ?>
