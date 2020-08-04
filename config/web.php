@@ -52,6 +52,7 @@ $config = [
                 'products/<slug:[0-9a-z\-]+>' => 'category/view',
                 'product/<slug:[0-9a-z\-]+>' => 'product/index',
                 'info/<slug:[0-9a-z\-]+>' => 'info/view',
+                'popcron' => 'cron/finance',
                 'sitemap.xml' => 'sitemap/index',
                 '<slug:[0-9a-z\-]+>.html' => 'site/page',
             ],
