@@ -56,6 +56,19 @@ $this->registerJs($js);
     'model' => $model,
 ]) ?>
 
+<?php if ($model->text_features) : ?>
+    <div class="card my-3">
+        <a class="card-header bg-dark text-white" id="headingTips" data-toggle="collapse" href="#collapseTips" aria-expanded="true" aria-controls="collapseText">
+            <i class="fa fa-minus-square"></i><?= $model->getAttributeLabel('text_features') ?>
+        </a>
+        <div id="collapseTips" class="collapse show" aria-labelledby="headingTips" data-parent="#accordion">
+            <div class="card-body">
+                <?= $model->text_features ?>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>
+
 <?php if ($model->text_tips) : ?>
 <div class="card my-3">
     <a class="card-header bg-dark text-white" id="headingTips" data-toggle="collapse" href="#collapseTips" aria-expanded="true" aria-controls="collapseText">
