@@ -48,6 +48,7 @@ $this->registerLinkTag(['rel' => 'canonical', 'href' => Url::to(explode('?', Yii
                     <?php
                     $template = '<a href="{{link}}">{{value}}</a>';
                     echo Typeahead::widget([
+                        'id' => 'search',
                         'name' => 'query',
                         'value' => Yii::$app->request->get('query'),
                         'container' => [
@@ -83,7 +84,7 @@ $this->registerLinkTag(['rel' => 'canonical', 'href' => Url::to(explode('?', Yii
                     </span>
                 </form>
                 <div class="pt-1 text-white-50 small d-none d-md-block" style="position: absolute;">
-                    Например: <a href="#" onclick="return $('#w0').val($(this).text());">loxeal 30-23</a>
+                    Например: <a href="#" onclick="return $('#search').val($(this).text());">loxeal 30-23</a>
                 </div>
             </div>
             <div class="col-6 col-md-4 text-right">
