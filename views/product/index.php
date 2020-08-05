@@ -132,7 +132,7 @@ $this->registerJs($js);
     "@context": "http://www.schema.org",
     "@type": "product",
     "name": "<?= $model->name ?>",
-    "image": "<?= Url::to(ImageHelper::thumb($model->image->id, 'normal'), true) ?>",
+    "image": "<?= $model->image ? Url::to(ImageHelper::thumb($model->image->id, 'normal'), true) : null ?>",
     "description": "<?= $model->description ?>",
     "offers": {
         "@type": "Offer",

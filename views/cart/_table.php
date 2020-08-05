@@ -65,8 +65,8 @@ $this->registerJs($js);
             <th><?= Yii::t('app', 'Packing') ?></th>
             <th><?= Yii::t('app', 'Count') ?></th>
             <th><?= Yii::t('app', 'Delete') ?></th>
-            <th><?= Yii::t('app', 'Price per unit') . ', ' . $items[0]->currency->before . $items[0]->currency->after ?></th>
-            <th><?= Yii::t('app', 'Amount') . ', ' . $items[0]->currency->before . $items[0]->currency->after ?></th>
+            <th><?= Yii::t('app', 'Price per unit') . ', ' . $items[0]->currencyDef->before . $items[0]->currencyDef->after ?></th>
+            <th><?= Yii::t('app', 'Amount') . ', ' . $items[0]->currencyDef->before . $items[0]->currencyDef->after ?></th>
         </tr>
         <?php foreach ($items as $k => $item) : ?>
             <tr id="i<?= $item->id ?>" rel="<?= $item->id ?>">
@@ -83,13 +83,13 @@ $this->registerJs($js);
                     <?= $item->name ?>
                 </td>
                 <td>
-                    <?= Html::textInput('Count[]', $cart[$item->id], ['class' => 'form-control text-center form-control-sm product-count', 'size' => 1, 'data-id' => $item->id, 'data-price' => $item->price]) ?>
+                    <?= Html::textInput('Count[]', $cart[$item->id], ['class' => 'form-control text-center form-control-sm product-count', 'size' => 1, 'data-id' => $item->id, 'data-price' => $item->priceDef]) ?>
                 </td>
                 <td>
                     <a href="#" class="btn btn-link btn-sm text-danger product-delete" rel="<?= $item->id ?>"><i class="fa fa-trash fa-lg"></i></a>
                 </td>
                 <td>
-                    <?= $item->price ?>
+                    <?= $item->priceDef ?>
                 </td>
                 <td class="sum"></td>
             </tr>
@@ -98,7 +98,7 @@ $this->registerJs($js);
     </table>
 </div>
 <div class="text-right">
-    <?= Yii::t('app', 'Total amount') ?>: <b><?= $items[0]->currency->before . '<span class="total">0</span> ' . $items[0]->currency->after ?></b>
+    <?= Yii::t('app', 'Total amount') ?>: <b><?= $items[0]->currencyDef->before . '<span class="total">0</span> ' . $items[0]->currencyDef->after ?></b>
 </div>
 <?php else: ?>
 <div class="alert alert-warning">
