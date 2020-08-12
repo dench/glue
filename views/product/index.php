@@ -30,6 +30,9 @@ JS;
 $this->registerJs($js);
 ?>
 <h1 class="mb-3"><?= $model->h1 ?></h1>
+<?php if (!$model->enabled): ?>
+    <div class="alert alert-info">Этот товар отключен и виден только админам. Google и все посетители получают ошибку 404.</div>
+<?php endif; ?>
 <div class="row">
     <div class="col-sm-5">
         <?= $this->render('_photo', [

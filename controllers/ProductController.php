@@ -16,7 +16,7 @@ class ProductController extends Controller
     {
         $model = Product::viewPage($slug);
 
-        if (!$model->enabled) {
+        if (Yii::$app->user->isGuest && !$model->enabled) {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
 
