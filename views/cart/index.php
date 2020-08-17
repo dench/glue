@@ -97,10 +97,10 @@ $this->registerJs($js, \yii\web\View::POS_HEAD);
                     'mask' => 'город *{3,20}, отделение новой почты № 9{1,4}',
                 ])->textInput(['placeholder' => 'Введите город и номер отделения Новой почты']) ?>
 
-                <?= $form->field($model, 'email')->textInput() ?>
+                <?= $form->field($model, 'email')->textInput()->hint('Ваш адрес email не будет опубликован.') ?>
 
                 <?= $form->field($model, 'entity')->radioList([
-                    0 => 'Частное лицо ',
+                    0 => 'Частное лицо',
                     1 => 'Организация',
                 ], ['class' => 'pt-2']) ?>
 
