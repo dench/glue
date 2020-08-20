@@ -50,6 +50,7 @@ class CallbackForm extends Model
         if ($this->validate()) {
             Yii::$app->mailer->compose()
                 ->setTo($email)
+                ->setFrom([Yii::$app->params['fromEmail'] => Yii::$app->name])
                 ->setSubject(Yii::t('app', 'Callback'))
                 ->setTextBody($text)
                 ->send();

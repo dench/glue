@@ -4,8 +4,8 @@ return [
     'address' => '',
     'map_link' => '',
 
-    'adminEmail' => '',
-    'supportEmail' => '',
+    'fromEmail' => '',
+    'toEmail' => '',
     'phone1' => '',
     'phone2' => '',
     'phone3' => '',
