@@ -47,6 +47,16 @@ class ReviewForm extends Model
         ];
     }
 
+    /**
+     * @inheritdoc
+     */
+    public function attributeHints()
+    {
+        return [
+            'email' => 'Этот E-mail адрес не будет опубликован',
+        ];
+    }
+
     public function send()
     {
         $model = new Review([
