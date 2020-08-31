@@ -21,14 +21,14 @@ return [
     ],
 
     'file' => [
-        'extensions' => 'png, jpg, pdf, zip, rar, doc, docx, xls, xlsx',
+        'extensions' => 'png, jpg, jpeg, pdf, zip, rar, doc, docx, xls, xlsx',
         'maxSize' => 100*1024*1024,
         'maxFiles' => 50,
         'path' => dirname(__DIR__) . '/files',
     ],
 
     'image' => [
-        'extensions' => 'png, jpg',
+        'extensions' => 'png, jpg, jpeg',
         'path' => 'image',
         'jpeg_quality' => 85,
         'convert' => true,
