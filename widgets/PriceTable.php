@@ -26,6 +26,8 @@ class PriceTable extends Widget
 
     public $options = [];
 
+    public $originalPrice = false;
+
     public function run()
     {
         /** @var $variants Variant[] */
@@ -56,7 +58,11 @@ class PriceTable extends Widget
         $cols[] = Html::tag('th', Yii::t('app', 'Price') . ':');
 
         foreach ($variants as $variant) {
-            $cols[] = Html::tag('td', $variant->currencyDef->before . $variant->priceDef . $variant->currencyDef->after);
+            $originalPrice = null;
+            if ($this->originalPrice) {
+                $originalPrice .= ' (' . ($variant->currency->before . $variant->price . $variant->currency->after) . ')';
+            }
+            $cols[] = Html::tag('td', $variant->currencyDef->before . $variant->priceDef . $variant->currencyDef->after . $originalPrice);
         }
 
         $tr[] = Html::tag('tr', implode("\n", $cols));
