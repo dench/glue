@@ -20,7 +20,7 @@
                     <a href="#" class="h3"><span class="text-primary">1.</span> Заказ товара</a>
                 </div>
                 <div class="text-muted">
-                    Сделайте заказ на сайте через корзину либо свяжитесь по телефону".
+                    Сделайте заказ на сайте через корзину либо свяжитесь по телефону.
                 </div>
             </div>
             <div class="col-sm-4 px-lg-5">
@@ -28,10 +28,12 @@
                     <img src="<?= $baseUrl . '/img/how-2.png' ?>" alt="100% предоплата">
                 </div>
                 <div class="my-2">
-                    <a href="#" class="h3"><span class="text-primary">2.</span> 100% предоплата</a>
+                    <a href="#" class="h3"><span class="text-primary">2.</span> Оплата</a>
                 </div>
                 <div class="text-muted">
-                    Оплатите заказ по безналичному расчету.
+                    Выберите удобную форму оплаты:<br>
+                    - Оплата при получении<br>
+                    - Оплата на сайте
                 </div>
             </div>
             <div class="col-sm-4 px-lg-5">
