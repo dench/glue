@@ -80,6 +80,10 @@ return [
                     'sourceLanguage' => 'en',
                     'basePath' => '@vendor/dench/yii2-page/messages',
                 ],
+                'cart' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'basePath' => '@vendor/dench/yii2-cart/messages',
+                ],
             ],
         ],
     ],
