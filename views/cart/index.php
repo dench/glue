@@ -4,6 +4,7 @@
 /* @var $items dench\products\models\Variant[] */
 /* @var $cart array */
 /* @var $order dench\cart\models\Order */
+/* @var $model dench\cart\models\OrderForm */
 
 use app\components\ActiveForm;
 use himiklab\yii2\recaptcha\ReCaptcha;

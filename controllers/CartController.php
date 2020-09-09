@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+use dench\cart\actions\DeliveryAction;
+use dench\cart\actions\PaymentAction;
 use dench\cart\models\Cart;
 use dench\cart\models\Order;
 use dench\cart\models\OrderForm;
@@ -34,10 +36,52 @@ class CartController extends Controller
         ];
     }
 
+    public function actions()
+    {
+        return [
+            'delivery' => DeliveryAction::class,
+            'payment' => PaymentAction::class,
+        ];
+    }
+
     /**
      * @return string|\yii\web\Response
      */
     public function actionIndex()
+    {
+        $page = Page::viewPage('cart');
+
+        $cart = Cart::getCart();
+
+        $variant_ids = array_keys($cart);
+
+        $items = Variant::find()->where(['id' => $variant_ids])->andWhere(['enabled' => true])->all();
+
+        $model = new OrderForm();
+
+        $model->scenario = 'user';
+
+        if ($model->load(Yii::$app->request->post()) && $order_id = $model->send()) {
+            Yii::$app->response->cookies->add(new \yii\web\Cookie([
+                'name' => 'order',
+                'value' => $order_id,
+                'expire' => time() + 3600 * 24 * 7,
+            ]));
+            return $this->redirect(['/order', 'id' => $order_id, 'hash' => md5($order_id . Yii::$app->params['order_secret'])]);
+        }
+
+        return $this->render('index', [
+            'page' => $page,
+            'items' => $items,
+            'cart' => $cart,
+            'model' => $model,
+        ]);
+    }
+
+    /**
+     * @return string|\yii\web\Response
+     */
+    public function actionIndex2()
     {
         $page = Page::viewPage('cart');
 
