@@ -2,11 +2,14 @@
 
 namespace app\controllers;
 
+use dench\block\traits\BlockTrait;
 use dench\page\models\Page;
 use yii\web\NotFoundHttpException;
 
 class InfoController extends \yii\web\Controller
 {
+    use BlockTrait;
+
     private $_id = 6;
 
     public function actionIndex()

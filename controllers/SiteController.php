@@ -7,6 +7,7 @@ use app\models\Question;
 use app\models\QuestionForm;
 use app\models\Review;
 use app\models\ReviewForm;
+use dench\block\traits\BlockTrait;
 use dench\page\models\Page;
 use dench\products\models\Category;
 use Yii;
@@ -17,6 +18,8 @@ use app\models\ContactForm;
 
 class SiteController extends Controller
 {
+    use BlockTrait;
+
     /**
      * @inheritdoc
      */
