@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "b18dac90a8897067e7f8bfd315da8dfc",
+    "content-hash": "b0debb96cb9eea596e2c75cec1beba9e",
     "packages": [
         {
             "name": "2amigos/yii2-ckeditor-widget",
@@ -1859,21 +1859,21 @@
         },
         {
             "name": "yiisoft/yii2",
-            "version": "2.0.16",
+            "version": "2.0.38",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-framework.git",
-                "reference": "789de9783d41e6ca10fffc3644a43a764f79b399"
+                "reference": "fd01e747cc66a049ec105048f0ab8dfbdf60bf4b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/789de9783d41e6ca10fffc3644a43a764f79b399",
-                "reference": "789de9783d41e6ca10fffc3644a43a764f79b399",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/fd01e747cc66a049ec105048f0ab8dfbdf60bf4b",
+                "reference": "fd01e747cc66a049ec105048f0ab8dfbdf60bf4b",
                 "shasum": ""
             },
             "require": {
                 "bower-asset/inputmask": "~3.2.2 | ~3.3.5",
-                "bower-asset/jquery": "3.3.*@stable | 3.2.*@stable | 3.1.*@stable | 2.2.*@stable | 2.1.*@stable | 1.11.*@stable | 1.12.*@stable",
+                "bower-asset/jquery": "3.5.*@stable | 3.4.*@stable | 3.3.*@stable | 3.2.*@stable | 3.1.*@stable | 2.2.*@stable | 2.1.*@stable | 1.11.*@stable | 1.12.*@stable",
                 "bower-asset/punycode": "1.3.*",
                 "bower-asset/yii2-pjax": "~2.0.1",
                 "cebe/markdown": "~1.0.0 | ~1.1.0 | ~1.2.0",
@@ -1955,7 +1955,7 @@
                 "framework",
                 "yii2"
             ],
-            "time": "2019-01-30T23:54:16+00:00"
+            "time": "2020-09-14T21:52:10+00:00"
         },
         {
             "name": "yiisoft/yii2-bootstrap",
