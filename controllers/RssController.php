@@ -71,7 +71,7 @@ class RssController extends Controller
             $items[] = $this->generateXml([
                 'g:id' => $product->id,
                 'g:title' => $product->name,
-                'g:description' => trim(str_replace(['&nbsp;', "\n\n", '&mdash;', '&ndash;', '&deg;', '&laquo;', '&raquo;'], [' ', "\n", '-', '-', '°', '«', '»'], Filter::text($product->text))),
+                'g:description' => trim(str_replace(['&nbsp;', "\n\n", '&mdash;', '&ndash;', '&deg;', '&laquo;', '&raquo;', '&bull;'], [' ', "\n", '-', '-', '°', '«', '»', '•'], Filter::text($product->text))),
                 'g:link' => Url::to(['product/index', 'slug' => $product->slug], true),
                 'g:image_link' => $product->image ? Url::to(ImageHelper::thumb($product->image->id, 'normal'), true) : null,
                 'g:condition' => 'new',
