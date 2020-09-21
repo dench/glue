@@ -18,6 +18,8 @@ use app\widgets\PriceTable;
         <?= $model->text_top ?>
         <?php if ($model->variants[0]->available > 0): ?>
             <div class="text-success my-3"><i class="fa fa-check"></i> <?= Yii::t('app', 'In stock') ?></div>
+        <?php elseif ($model->variants[0]->available < 0): ?>
+            <div class="text-warning my-3"><i class="fa fa-clock-o"></i> <?= Yii::t('app', 'On order') ?></div>
         <?php else: ?>
             <div class="text-danger my-3"><i class="fa fa-times"></i> <?= Yii::t('app', 'Not available') ?></div>
         <?php endif; ?>
@@ -29,7 +31,9 @@ use app\widgets\PriceTable;
 
         <div class="row">
             <div class="col">
-                <button class="btn btn-primary btn-block btn-buy" rel="price<?= $model->id ?>"><?= Yii::t('app', 'Buy') ?></button>
+                <?php if ($model->variants[0]->available !== 0): ?>
+                    <button class="btn btn-primary btn-block btn-buy" rel="price<?= $model->id ?>"><?= $model->variants[0]->available > 0 ? Yii::t('app', 'Buy') : Yii::t('app', 'To order') ?></button>
+                <?php endif; ?>
             </div>
             <div class="col">
                 <span class="btn btn-link" onclick="window.print();"><i class="fa fa-print"></i> Версия для печати</span>
