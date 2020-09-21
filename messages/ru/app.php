@@ -174,4 +174,5 @@ return [
     'Months' => 'Месяцев',
     'Payments' => 'Платежей',
     'Payment' => 'Оплата',
+    'On order' => 'Под заказ',
 ];

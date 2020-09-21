@@ -55,7 +55,16 @@ class CartController extends Controller
 
         $variant_ids = array_keys($cart);
 
+        /** @var Variant[] $items */
         $items = Variant::find()->where(['id' => $variant_ids])->andWhere(['enabled' => true])->all();
+
+        $notAvailable = false;
+
+        foreach ($items as $item) {
+            if ($item->available <= 0) {
+                $notAvailable = true;
+            }
+        }
 
         $model = new OrderForm();
 
@@ -75,6 +84,7 @@ class CartController extends Controller
             'items' => $items,
             'cart' => $cart,
             'model' => $model,
+            'notAvailable' => $notAvailable,
         ]);
     }
 

@@ -68,7 +68,7 @@
             "version": "v3.4.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/twbs/bootstrap.git",
+                "url": "git@github.com:twbs/bootstrap.git",
                 "reference": "4c547f2175b9a05aa43551f6927da83fe249ce42"
             },
             "dist": {
@@ -90,7 +90,7 @@
             "version": "3.3.11",
             "source": {
                 "type": "git",
-                "url": "git@github.com:RobinHerbots/Inputmask.git",
+                "url": "https://github.com/RobinHerbots/Inputmask.git",
                 "reference": "5e670ad62f50c738388d4dcec78d2888505ad77b"
             },
             "dist": {
@@ -112,7 +112,7 @@
             "version": "3.3.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/jquery/jquery-dist.git",
+                "url": "git@github.com:jquery/jquery-dist.git",
                 "reference": "9e8ec3d10fad04748176144f108d7355662ae75e"
             },
             "dist": {
@@ -569,12 +569,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dench/yii2-products.git",
-                "reference": "1e854f008fa989da6b3ed85938a97c27b9465520"
+                "reference": "781c3cc884620a79343dad0690cdd71fb96dde81"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dench/yii2-products/zipball/1e854f008fa989da6b3ed85938a97c27b9465520",
-                "reference": "1e854f008fa989da6b3ed85938a97c27b9465520",
+                "url": "https://api.github.com/repos/dench/yii2-products/zipball/781c3cc884620a79343dad0690cdd71fb96dde81",
+                "reference": "781c3cc884620a79343dad0690cdd71fb96dde81",
                 "shasum": ""
             },
             "require": {
@@ -608,7 +608,7 @@
                 "products",
                 "yii2"
             ],
-            "time": "2020-08-05 07:58:14"
+            "time": "2020-09-21 08:23:21"
         },
         {
             "name": "dench/yii2-sortable",

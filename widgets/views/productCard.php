@@ -33,6 +33,8 @@ $variant = @$model->variants[0];
         </div>
         <?php if ($variant->available > 0): ?>
             <div class="text-success my-2"><i class="fa fa-check"></i> <?= Yii::t('app', 'In stock') ?></div>
+        <?php elseif ($variant->available < 0): ?>
+            <div class="text-warning my-2"><i class="fa fa-clock-o"></i> <?= Yii::t('app', 'On order') ?></div>
         <?php else: ?>
             <div class="text-danger my-2"><i class="fa fa-times"></i> <?= Yii::t('app', 'Not available') ?></div>
         <?php endif; ?>
@@ -47,7 +49,9 @@ $variant = @$model->variants[0];
                 ]) ?>
             </div>
             <div class="col-sm-3">
-                <button class="btn btn-primary btn-block btn-buy" rel="price<?= $model->id ?>"><?= Yii::t('app', 'Buy') ?></button>
+                <?php if ($variant->available !== 0): ?>
+                    <button class="btn btn-primary btn-block btn-buy" rel="price<?= $model->id ?>"><?= $variant->available > 0 ? Yii::t('app', 'Buy') : Yii::t('app', 'To order') ?></button>
+                <?php endif; ?>
             </div>
         </div>
 
