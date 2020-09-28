@@ -3,124 +3,134 @@
 /* @var $page dench\page\models\Page */
 /* @var $items dench\products\models\Variant[] */
 /* @var $cart array */
-/* @var $order dench\cart\models\Order */
 /* @var $model dench\cart\models\OrderForm */
+/* @var $notAvailable boolean */
 
-use app\components\ActiveForm;
+use dench\cart\models\Delivery;
+use dench\cart\models\Payment;
 use himiklab\yii2\recaptcha\ReCaptcha;
+use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\widgets\MaskedInput;
 
 $this->params['breadcrumbs'][] = $page->name;
+
+$delivery_url = Url::to(['cart/delivery']);
+$payment_url = Url::to(['cart/payment']);
+
+$js = <<<JS
+$('#delivery_id').change(function(){
+    var iD = $(this).find(':checked').val();
+    $('#delivery-info').load('{$delivery_url}', { id: iD });
+});
+$('#payment_id').change(function(){
+    var iD = $(this).find(':checked').val();
+    $('#payment-info').load('{$payment_url}', { id: iD });
+});
+JS;
+
+$this->registerJs($js);
+
+$css = <<<CSS
+.control-label {
+    font-weight: bold;
+}
+.help-block {
+    font-size: 13px;
+    margin-top: 5px;
+}
+.help-block-error {
+    color: red;
+}
+CSS;
+
+$this->registerCss($css);
 ?>
 <h1 class="mb-3"><?= $page->h1 ?></h1>
 
-<?php if (Yii::$app->session->hasFlash('orderSubmitted')): ?>
+<?= $page->short ?>
 
-    <div class="alert alert-success">
-        Заказ успешно отправлен. Скоро с вами свяжется наш сотрудник для уточнения информации.
-    </div>
+<?= $this->render('_table', [
+    'items' => $items,
+    'cart' => $cart,
+]) ?>
 
-<?php
+<?php if ($items) : ?>
 
-$products = [];
+    <?php $form = ActiveForm::begin(['options' => ['class' => 'mt-3']]) ?>
 
-foreach ($order->orderProducts as $product) {
-    $products[] = "{
-    'sku': '{$product->variant->product_id}',
-    'name': '{$product->variant->product->name}, {$product->variant->name}',
-    'category': '{$product->variant->product->categories[0]->name}',
-    'price': '{$product->variant->price}',
-    'quantity': '{$product->count}'
-}";
-}
-
-$transactionProducts = implode(',', $products);
-
-$js = <<<JS
-dataLayer = [{
-    'transactionId': '{$order->id}',
-    'transactionTotal': '{$order->amount}',
-    'transactionProducts': [{$transactionProducts}]
-}];
-JS;
-$this->registerJs($js, \yii\web\View::POS_HEAD);
-?>
-
-<?php else: ?>
-
-    <?= $page->short ?>
-    <?= $page->text ?>
-
-    <?= $this->render('_table', [
-        'items' => $items,
-        'cart' => $cart,
-    ]) ?>
-
-    <?php if ($items) : ?>
-
-        <?php $form = ActiveForm::begin([
-            'layout' => 'horizontal',
-        ]) ?>
-
-        <div class="card my-4">
+<div class="row">
+    <div class="col-lg-6">
+        <div class="card mb-4">
+            <div class="card-header bg-secondary text-white"><?= Yii::t('app', 'Required information for ordering') ?></div>
             <div class="card-body">
-                <div class="h1 text-center mb-3">Необходимая информация для заказа</div>
+                <?= $form->field($model, 'name')->textInput(['placeholder' => Yii::t('app', 'Full name')]) ?>
 
-                <?= $form->field($model, 'name')->textInput(['placeholder' => 'Фамилия Имя Отчество']) ?>
-
-                <?= $form->field($model, 'phone')->widget(MaskedInput::className(), [
+                <?= $form->field($model, 'phone')->widget(MaskedInput::class, [
                     'mask' => '+38 (099) 999-99-99',
                 ]) ?>
 
+                <?= $form->field($model, 'email')->textInput() ?>
+
+                <?= $form->field($model, 'entity')->radioList([
+                    0 => Yii::t('app', 'Private person'),
+                    1 => Yii::t('app', 'Organization'),
+                ], ['class' => 'pt-2']) ?>
+
                 <?php if (!YII_DEBUG): ?>
-                <div class="row">
-                    <div class="col-sm-3"></div>
-                    <div class="col-sm-9">
-                        <?= $form->field($model, 'reCaptcha')->widget(ReCaptcha::className())->label(false) ?>
-                    </div>
-                </div>
+                    <?= $form->field($model, 'reCaptcha')->widget(ReCaptcha::class)->label(false) ?>
                 <?php endif; ?>
             </div>
         </div>
-
+    </div>
+    <div class="col-lg-6">
         <div class="card mb-4">
+            <div class="card-header bg-secondary text-white"><?= Yii::t('app', 'Delivery method') ?></div>
             <div class="card-body">
-                <div class="h2 text-center mb-3">Дополнительная информация о себе</div>
-
-                <div class="mb-4">
-                    Если хотите, можете указать дополнительную информацию о себе.
-                    Это позволит нашим сотрудникам быстрее подготовить и отправить
-                    Вам счет на оплату заказанной продукции.
-                </div>
-
-                <?= $form->field($model, 'delivery')->widget(MaskedInput::className(), [
-                    'mask' => 'город *{3,20}, отделение новой почты № 9{1,4}',
-                ])->textInput(['placeholder' => 'Введите город и номер отделения Новой почты']) ?>
-
-                <?= $form->field($model, 'email')->textInput()->hint('Ваш адрес email не будет опубликован.') ?>
-
-                <?= $form->field($model, 'entity')->radioList([
-                    0 => 'Частное лицо',
-                    1 => 'Организация',
-                ], ['class' => 'pt-2']) ?>
-
+                <?= $form->field($model, 'delivery_id')->radioList(Delivery::getList(), [
+                    'class' => 'pt-2',
+                    'id' => 'delivery_id',
+                    'item' => function ($index, $label, $name, $checked, $value) {
+                        return '<div class="radio"><label>' . Html::radio($name, $checked, ['value' => $value]) . ' '. $label . '</label></div>';
+                    },
+                ]) ?>
+                <div id="delivery-info"></div>
             </div>
         </div>
-
-
-
-        <div class="text-muted">
-            <b class="text-danger">*</b> - поля являются обязательными для заполнения<br>
-            Просьба указывать дополнительную информацию - это поможет нам быстрее обработать Ваш заказ.
+        <div class="card">
+            <div class="card-header bg-secondary text-white"><?= Yii::t('app', 'Payment method') ?></div>
+            <div class="card-body">
+                <?= $form->field($model, 'payment_id')->radioList(Payment::getList(), [
+                    'class' => 'pt-2',
+                    'id' => 'payment_id',
+                    'item' =>  function ($index, $label, $name, $checked, $value) use ($notAvailable) {
+                        $disabled = $value === 2 && $notAvailable;
+                        $options = array_merge([
+                            'label' => Html::encode($label),
+                            'value' => $value,
+                            'disabled' => $disabled,
+                        ]);
+                        return '<div class="radio' . ($disabled ? ' text-muted' : null) . '">' . Html::radio($name, $checked, $options) . '</div>';
+                    },
+                ]) ?>
+                <div id="payment-info"></div>
+            </div>
         </div>
+    </div>
+</div>
 
-        <div class="text-center mt-4">
-            <?= Html::submitButton('Заказать', ['class' => 'btn btn-primary btn-lg']) ?>
-        </div>
 
-        <?php ActiveForm::end() ?>
+    <div class="text-muted">
+        <b style="color: red;">*</b> <?= Yii::t('app', ' - fields are required') ?>
+    </div>
 
-    <?php endif; ?>
+    <div class="text-center mt-4">
+        <?= Html::submitButton(Yii::t('app', 'To order'), ['id' => 'submitButton', 'class' => 'btn btn-primary btn-lg']) ?>
+    </div>
+
+    <?php ActiveForm::end() ?>
 
 <?php endif; ?>
+
+<?= $page->text ?>

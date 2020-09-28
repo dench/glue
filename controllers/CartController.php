@@ -76,6 +76,7 @@ class CartController extends Controller
                 'value' => $order_id,
                 'expire' => time() + 3600 * 24 * 7,
             ]));
+            Yii::$app->session->setFlash('orderSubmitted');
             return $this->redirect(['/order', 'id' => $order_id, 'hash' => md5($order_id . Yii::$app->params['order_secret'])]);
         }
 

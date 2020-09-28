@@ -15,6 +15,31 @@ use yii\widgets\DetailView;
 $this->title = Yii::t('app', 'Order #{order_id}', ['order_id' => $order->id]);
 
 $this->params['breadcrumbs'][] = $this->title;
+
+if (Yii::$app->session->hasFlash('orderSubmitted')) {
+    $products = [];
+
+    foreach ($order->orderProducts as $product) {
+        $products[] = "{
+    'sku': '{$product->variant->product_id}',
+    'name': '{$product->variant->product->name}, {$product->variant->name}',
+    'category': '{$product->variant->product->categories[0]->name}',
+    'price': '{$product->variant->price}',
+    'quantity': '{$product->count}'
+}";
+    }
+
+    $transactionProducts = implode(',', $products);
+
+    $js = <<<JS
+dataLayer = [{
+    'transactionId': '{$order->id}',
+    'transactionTotal': '{$order->amount}',
+    'transactionProducts': [{$transactionProducts}]
+}];
+JS;
+    $this->registerJs($js, \yii\web\View::POS_HEAD);
+}
 ?>
 <h1 class="mb-3"><?= $this->title ?></h1>
 
