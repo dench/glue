@@ -16,4 +16,4 @@ $this->params['breadcrumbs'][] = $page->name;
     </div>
 </div>
 
-<?= OrderScheme::widget(OrderScheme::widget(['baseUrl' => $this->theme ? $this->assetManager->getBundle(app\site\assets\SiteAsset::class)->baseUrl : null])) ?>
+<?= OrderScheme::widget(['baseUrl' => $this->theme ? $this->assetManager->getBundle(app\site\assets\SiteAsset::class)->baseUrl : null]) ?>
