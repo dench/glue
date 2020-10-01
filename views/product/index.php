@@ -1,15 +1,12 @@
 <?php
-
 /* @var $this yii\web\View */
-
-use app\widgets\OrderScheme;
-use dench\image\helpers\ImageHelper;
-use yii\helpers\Url;
-
 /* @var $model dench\products\models\Product */
 /* @var $similar dench\products\models\Product[] */
 /* @var $viewed boolean */
 
+use app\widgets\OrderScheme;
+use dench\image\helpers\ImageHelper;
+use yii\helpers\Url;
 
 echo $this->render('_breadcrumbs', [
     'model' => $model,
@@ -128,7 +125,7 @@ $this->registerJs($js);
     'options' => $model->options,
 ]) ?>
 
-<?= OrderScheme::widget() ?>
+<?= OrderScheme::widget(['baseUrl' => $this->theme ? $this->assetManager->getBundle(app\site\assets\SiteAsset::class)->baseUrl : null]) ?>
 
 <script type='application/ld+json'>
 {
