@@ -66,6 +66,20 @@ class CategoryController extends Controller
     {
         $page = Category::viewPage($slug);
 
+        if (!empty(Yii::$app->params['templateTitleCategory'])) {
+            $page->title = str_replace('{0}', $page->h1, Yii::$app->params['templateTitleCategory']);
+
+            if (empty($model->description)) {
+                $page->description = str_replace('{0}', $page->h1, Yii::$app->params['templateDescriptionCategory']);
+            }
+
+            Yii::$app->view->title = $page->title;
+            Yii::$app->view->registerMetaTag([
+                'name' => 'description',
+                'content' => $page->description
+            ]);
+        }
+
         $this->view->params['category_ids'] = [$page->id];
 
         $searchModel = new ProductFilter(['category_id' => $page->id, 'enabled' => true]);
