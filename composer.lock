@@ -90,7 +90,7 @@
             "version": "3.3.11",
             "source": {
                 "type": "git",
-                "url": "https://github.com/RobinHerbots/Inputmask.git",
+                "url": "git@github.com:RobinHerbots/Inputmask.git",
                 "reference": "5e670ad62f50c738388d4dcec78d2888505ad77b"
             },
             "dist": {
@@ -569,12 +569,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dench/yii2-products.git",
-                "reference": "781c3cc884620a79343dad0690cdd71fb96dde81"
+                "reference": "b1424620a9e3da60cfb81a2c771e66a97a974b70"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dench/yii2-products/zipball/781c3cc884620a79343dad0690cdd71fb96dde81",
-                "reference": "781c3cc884620a79343dad0690cdd71fb96dde81",
+                "url": "https://api.github.com/repos/dench/yii2-products/zipball/b1424620a9e3da60cfb81a2c771e66a97a974b70",
+                "reference": "b1424620a9e3da60cfb81a2c771e66a97a974b70",
                 "shasum": ""
             },
             "require": {
@@ -608,7 +608,7 @@
                 "products",
                 "yii2"
             ],
-            "time": "2020-09-21 08:23:21"
+            "time": "2020-10-02 09:09:24"
         },
         {
             "name": "dench/yii2-sortable",
