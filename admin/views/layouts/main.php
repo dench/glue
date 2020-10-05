@@ -84,6 +84,7 @@ AdminAsset::register($this);
                 ['label' => Yii::t('cart', 'Delivery methods'), 'url' => ['/admin/cart/delivery/index']],
                 ['label' => Yii::t('cart', 'Payment methods'), 'url' => ['/admin/cart/payment/index']],
                 ['label' => Yii::t('cart', 'LiqPay Log'), 'url' => ['/admin/cart/liqpay-log/index']],
+                ['label' => Yii::t('cart', 'Wfp Log'), 'url' => ['/admin/cart/wfp-log/index']],
             ]],
             ['label' => Yii::t('app', 'Home'), 'url' => ['/site/index']],
         ],
