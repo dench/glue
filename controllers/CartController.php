@@ -90,43 +90,6 @@ class CartController extends Controller
     }
 
     /**
-     * @return string|\yii\web\Response
-     */
-    public function actionIndex2()
-    {
-        $page = Page::viewPage('cart');
-
-        $cart = Cart::getCart();
-
-        $variant_ids = array_keys($cart);
-
-        $items = Variant::find()->where(['id' => $variant_ids])->andWhere(['enabled' => true])->all();
-
-        $model = new OrderForm();
-
-        $model->scenario = 'user';
-
-        if ($model->load(Yii::$app->request->post()) && $order_id = $model->send()) {
-            Yii::$app->session->setFlash('orderSubmitted');
-            return $this->redirect('/thankyou?order=' . $order_id);
-        }
-
-        $order = null;
-
-        if ($order_id = Yii::$app->request->get('order')) {
-            $order = Order::findOne($order_id);
-        }
-
-        return $this->render('index', [
-            'page' => $page,
-            'items' => $items,
-            'cart' => $cart,
-            'model' => $model,
-            'order' => $order,
-        ]);
-    }
-
-    /**
      * @return string
      */
     public function actionModal()

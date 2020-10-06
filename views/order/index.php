@@ -7,6 +7,7 @@
  */
 
 use dench\cart\models\Order;
+use dench\cart\models\Payment;
 use dench\cart\widgets\LiqPay;
 use yii\helpers\Html;
 use yii\helpers\Url;
@@ -90,15 +91,19 @@ echo '<div class="alert alert-' . (in_array($order->status, [Order::STATUS_COMPL
 <div class="text-center">
     <?php
     if ($order->status === Order::STATUS_AWAITING) {
-        echo LiqPay::widget([
-            'amount' => $order->amount,
-            'currency' => $items[0]->variant->currencyDef->code,
-            'order_id' => $order->id . '-' . time(),
-            'description' => Yii::t('app', 'Order #{order_id}', ['order_id' => $order->id]),
-            'result_url' => Url::to(['/order', 'id' => $order->id, 'hash' => md5($order->id . Yii::$app->params['order_secret'])], true),
-            'server_url' => Url::to(['/liqpay'], true),
-            'sandbox' => Yii::$app->params['liqpay']['sandbox'],
-        ]);
+        if ($order->paymentMethod->type === Payment::TYPE_LIQPAY) {
+            echo LiqPay::widget([
+                'amount' => $order->amount,
+                'currency' => $items[0]->variant->currencyDef->code,
+                'order_id' => $order->id . '-' . time(),
+                'description' => Yii::t('app', 'Order #{order_id}', ['order_id' => $order->id]),
+                'result_url' => Url::to(['/order', 'id' => $order->id, 'hash' => md5($order->id . Yii::$app->params['order_secret'])], true),
+                'server_url' => Url::to(['/liqpay'], true),
+                'sandbox' => Yii::$app->params['liqpay']['sandbox'],
+            ]);
+        } elseif ($order->paymentMethod->type === Payment::TYPE_WFP) {
+            echo Yii::$app->wfp->button($order, Url::current());
+        }
     }
     ?>
 </div>
