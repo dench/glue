@@ -2,6 +2,8 @@
 
 /** @var array $params */
 
+use dench\cart\components\WayForPay;
+
 $config = [
     'id' => 'app',
     'defaultRoute' => 'site/index',
@@ -80,6 +82,15 @@ $config = [
                     'css' => [],
                 ],
             ],
+        ],
+        'wfp' => [
+            'class' => WayForPay::class,
+            'test' => true,
+            'merchantDomainName' => 'domain',
+            'account' => 'test_merch_n1',
+            'secret' => 'flk3409refn54t54t*FNJRET',
+            //'returnUrl',
+            'serviceUrl' => '/wfp',
         ],
     ],
 ];
