@@ -8,6 +8,7 @@ use dench\image\helpers\ImageHelper;
 use yii\helpers\Url;
 
 ?>
+<h1 class="mb-4 text-center"><?= $page->h1 ?></h1>
 
 <section>
     <div class="row categories">
@@ -15,7 +16,7 @@ use yii\helpers\Url;
             <?php
             $url = Url::to((count($category->categories)) ? ['category/pod', 'slug' => $category->slug] : ['category/view', 'slug' => $category->slug]);
             ?>
-            <div class="col-6 col-sm-4 col-md-3 col-lg-2 pb-3 px-1 px-sm-2">
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2 pb-3">
                 <div class="card block-link">
                     <a href="<?= $url ?>" rel="nofollow">
                         <?php if ($category->image) { ?>
@@ -32,6 +33,9 @@ use yii\helpers\Url;
         <?php endforeach; ?>
     </div>
 
-    <!--<h1><?= $page->h1 ?></h1>-->
-    <?= $page->text ?>
+    <div class="card mt-3">
+        <div class="card-body">
+            <?= $page->text ?>
+        </div>
+    </div>
 </section>
