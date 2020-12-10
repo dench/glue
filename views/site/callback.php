@@ -15,9 +15,7 @@ use yii\helpers\Html;
 
 <?= $form->field($model, 'phone') ?>
 
-<?php if (!YII_DEBUG): ?>
-    <?= $form->field($model, 'reCaptcha')->widget(ReCaptcha::class)->label(false) ?>
-<?php endif; ?>
+<?= $form->field($model, 'reCaptcha')->widget(ReCaptcha::class)->label(false) ?>
 
 <div class="form-group">
     <?= Html::submitButton(Yii::t('app', 'Submit'), ['class' => 'btn btn-primary', 'name' => 'callback-button']) ?>
