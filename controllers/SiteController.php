@@ -15,6 +15,7 @@ use yii\data\ActiveDataProvider;
 use yii\helpers\Url;
 use yii\web\Controller;
 use app\models\ContactForm;
+use yii\web\Response;
 
 class SiteController extends Controller
 {
@@ -162,19 +163,24 @@ class SiteController extends Controller
         ]);
     }
 
-    /**
-     * @return string
-     */
     public function actionCallback()
     {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+
         $model = new CallbackForm();
 
         if ($model->load(Yii::$app->request->post()) && $model->send(Yii::$app->params['toEmail'])) {
-            Yii::$app->session->setFlash('contactFormSubmitted');
-            return 'success';
+            return [
+                'title' => Yii::t('app', 'Callback'),
+                'body' => '<div class="alert alert-success">' . Yii::t('app', 'Thank you for contacting us. We will respond to you as soon as possible.') . '</div>',
+            ];
         }
-        return $this->renderAjax('callback', [
-            'model' => $model,
-        ]);
+
+        return [
+            'title' => Yii::t('app', 'Callback'),
+            'body' => $this->renderAjax('callback', [
+                'model' => $model,
+            ]),
+        ];
     }
 }

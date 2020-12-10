@@ -23,7 +23,7 @@ class CallbackForm extends Model
         return [
             [['name', 'phone'], 'required'],
             [['name', 'phone'], 'string'],
-            [['reCaptcha'], ReCaptchaValidator::className(), 'uncheckedMessage' => Yii::t('app','Please confirm that you are not a bot.')],
+            [['reCaptcha'], ReCaptchaValidator::class, 'skipOnEmpty' => YII_DEBUG ? true : false, 'uncheckedMessage' => Yii::t('app', 'Please confirm that you are not a bot.')],
         ];
     }
 
