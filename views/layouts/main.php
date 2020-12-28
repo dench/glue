@@ -376,6 +376,11 @@ $this->registerLinkTag(['rel' => 'canonical', 'href' => Url::to(explode('?', Yii
                 </div>
             </div>
         </div>
+        <div class="text-white pb-4 text-center text-md-left">
+            <div class="my-3">Работа офиса и склада: <?= Yii::$app->params['work_time'] ?></div>
+            <div class="my-3"><?= Yii::$app->params['address'] ?></div>
+            <div class="my-3"><?= Yii::$app->params['email'] ?></div>
+        </div>
     </div>
     <div class="text-center py-2 bg-gradient-secondary text-white">
         2017 - <?= date('Y') ?> © <a href="/"><?= Yii::$app->name ?></a>
