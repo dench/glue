@@ -1,6 +1,7 @@
 <?php
 
 use app\models\Question;
+use dench\products\models\Product;
 use dosamigos\ckeditor\CKEditor;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
@@ -13,6 +14,8 @@ use yii\widgets\ActiveForm;
 <div class="review-form">
 
     <?php $form = ActiveForm::begin(); ?>
+
+    <?= $form->field($model, 'product_id')->dropDownList(Product::getList(null), ['prompt' => '-']) ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 

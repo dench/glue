@@ -148,7 +148,9 @@ class SiteController extends Controller
         }
 
         $dataProvider = new ActiveDataProvider([
-            'query' => Review::find()->where(['status' => Review::STATUS_PUBLISHED]),
+            'query' => Review::find()
+                ->where(['status' => Review::STATUS_PUBLISHED])
+                ->andWhere(['product_id' => null]),
             'sort' => [
                 'defaultOrder' => [
                     'position' => SORT_DESC

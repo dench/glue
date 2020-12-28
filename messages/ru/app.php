@@ -175,4 +175,5 @@ return [
     'Payments' => 'Платежей',
     'Payment' => 'Оплата',
     'On order' => 'Под заказ',
+    'Product reviews' => 'Отзывы о товаре',
 ];

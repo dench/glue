@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use dench\products\models\Product;
 use dench\sortable\behaviors\SortableBehavior;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
@@ -18,6 +19,9 @@ use yii\db\ActiveRecord;
  * @property integer $created_at
  * @property integer $position
  * @property integer $status
+ * @property integer|null $product_id
+ *
+ * @property Product $product
  */
 class Review extends ActiveRecord
 {
@@ -41,10 +45,10 @@ class Review extends ActiveRecord
     {
         return [
             [
-                'class' => TimestampBehavior::className(),
+                'class' => TimestampBehavior::class,
                 'updatedAtAttribute' => false,
             ],
-            SortableBehavior::className(),
+            SortableBehavior::class,
         ];
     }
 
@@ -56,11 +60,12 @@ class Review extends ActiveRecord
         return [
             [['name', 'rating'], 'required'],
             [['text', 'answer'], 'string'],
-            [['rating', 'created_at', 'position', 'status'], 'integer'],
+            [['rating', 'created_at', 'position', 'status', 'product_id'], 'integer'],
             [['name', 'email'], 'string', 'max' => 255],
             ['email', 'email'],
             ['status', 'default', 'value' => self::STATUS_NEW],
             ['status', 'in', 'range' => [self::STATUS_DELETED, self::STATUS_NEW, self::STATUS_UNPUBLISHED, self::STATUS_PUBLISHED]],
+            [['product_id'], 'exist', 'skipOnError' => true, 'targetClass' => Product::class, 'targetAttribute' => ['product_id' => 'id']],
         ];
     }
 
@@ -79,7 +84,16 @@ class Review extends ActiveRecord
             'created_at' => 'Создан',
             'position' => 'Позиция',
             'status' => 'Статус',
+            'product_id' => 'Товар',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getProduct()
+    {
+        return $this->hasOne(Product::class, ['id' => 'product_id']);
     }
 
     public static function unread()

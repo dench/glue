@@ -19,6 +19,7 @@ class ReviewForm extends Model
     public $text;
     public $rating;
     public $reCaptcha;
+    public $product_id;
 
     /**
      * @inheritdoc
@@ -28,8 +29,8 @@ class ReviewForm extends Model
         return [
             [['name', 'text', 'email', 'rating'], 'required'],
             [['name', 'text', 'email'], 'string'],
-            ['rating', 'integer'],
-            ['email', 'email'],
+            [['rating', 'product_id'], 'integer'],
+            [['email'], 'email'],
             ['reCaptcha', ReCaptchaValidator::className(), 'uncheckedMessage' => Yii::t('app', 'Пожалуйста, подтвердите, что вы не бот.')],
         ];
     }
@@ -64,12 +65,13 @@ class ReviewForm extends Model
             'email' => $this->email,
             'text' => $this->text,
             'rating' => $this->rating,
+            'product_id' => $this->product_id,
         ]);
 
         if ($model->save()) {
             return true;
-        } else {
-            return false;
         }
+
+        return false;
     }
 }

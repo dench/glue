@@ -3,6 +3,9 @@
 /* @var $model dench\products\models\Product */
 /* @var $similar dench\products\models\Product[] */
 /* @var $viewed boolean */
+/* @var $dataProvider yii\data\ActiveDataProvider */
+/* @var $reviewForm app\models\ReviewForm */
+/* @var $rating array */
 
 use app\widgets\OrderScheme;
 use dench\image\helpers\ImageHelper;
@@ -125,6 +128,20 @@ $this->registerJs($js);
     'options' => $model->options,
 ]) ?>
 
+<div class="card my-3" id="reviews">
+    <a class="card-header bg-dark text-white" id="headingReviews" data-toggle="collapse" href="#collapseReviews" aria-expanded="true" aria-controls="collapseReviews">
+        <i class="fa fa-minus-square"></i><?= Yii::t('app', 'Product reviews') ?> (<?= $dataProvider->totalCount ?>)
+    </a>
+    <div id="collapseReviews" class="collapse show" aria-labelledby="headingReviews" data-parent="#accordion">
+        <div class="card-body">
+            <?= $this->render('_reviews', [
+                'model' => $reviewForm,
+                'dataProvider' => $dataProvider,
+            ]) ?>
+        </div>
+    </div>
+</div>
+
 <?= OrderScheme::widget(['baseUrl' => $this->theme ? $this->assetManager->getBundle(app\site\assets\SiteAsset::class)->baseUrl : null]) ?>
 
 <script type='application/ld+json'>
@@ -139,6 +156,11 @@ $this->registerJs($js);
         "availability": "http://schema.org/InStock",
         "price": "<?= $model->priceDef ?>",
         "priceCurrency": "UAH"
+    },
+    "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "<?= $rating['value'] ?>",
+        "reviewCount": "<?= $rating['count'] ?>"
     }
 }
 </script>

@@ -2,9 +2,12 @@
 
 namespace app\controllers;
 
+use app\models\Review;
+use app\models\ReviewForm;
 use dench\products\models\Product;
 use dench\block\traits\BlockTrait;
 use Yii;
+use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
@@ -70,10 +73,45 @@ class ProductController extends Controller
             ]);
         }
 
+        $reviewForm = new ReviewForm();
+        $reviewForm->product_id = $model->id;
+
+        if ($reviewForm->load(Yii::$app->request->post()) && $reviewForm->send()) {
+            Yii::$app->session->setFlash('reviewSubmitted');
+            return $this->refresh('#card-form');
+        }
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => Review::find()->where(['status' => Review::STATUS_PUBLISHED, 'product_id' => $model->id]),
+            'sort' => [
+                'defaultOrder' => [
+                    'position' => SORT_DESC
+                ],
+            ],
+        ]);
+
+        $rating = Review::find()
+            ->select(['SUM(rating) sum', 'COUNT(*) count'])
+            ->where(['status' => Review::STATUS_PUBLISHED, 'product_id' => $model->id])
+            ->asArray()
+            ->one();
+
+        if (!empty($rating['count'])) {
+            $rating['value'] = round($rating['sum'] / $rating['count'], 1);
+        } else {
+            $rating = [
+                'count' => 0,
+                'value' => 0,
+            ];
+        }
+
         return $this->render($view, [
             'model' => $model,
             'viewed' => $viewed,
             'similar' => $similar,
+            'reviewForm' => $reviewForm,
+            'dataProvider' => $dataProvider,
+            'rating' => $rating,
         ]);
     }
 
