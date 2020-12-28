@@ -42,6 +42,7 @@ $this->registerJs($js);
     <div class="col-sm-7">
         <?= $this->render('_price', [
             'model' => $model,
+            'rating' => $rating,
         ]) ?>
     </div>
 </div>
