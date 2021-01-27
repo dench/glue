@@ -28,7 +28,7 @@ use app\widgets\PriceTable;
                 echo '<i class="fa fa-star-half text-warning"></i> ';
             }
             ?>
-            <a href="#reviews" class="text-muted ml-2"><?= Yii::$app->i18n->format('{n, plural, =0{нет отзывов} =1{1 отзыв} one{# отзыв} few{# отзыва} many{# отзывов} other{# отзывов}}', ['n' => $rating['count']], 'ru_RU'); ?></a>
+            <a href="#reviews" class="text-muted ml-2"><?= Yii::t('app', '{0, plural, =0{нет отзывов} =1{1 отзыв} one{# отзыв} few{# отзыва} many{# отзывов} other{# отзывов}}', $rating['count']); ?></a>
         </div>
 
         <?php if ($model->variants[0]->available > 0): ?>
@@ -51,7 +51,7 @@ use app\widgets\PriceTable;
                 <?php endif; ?>
             </div>
             <div class="col">
-                <span class="btn btn-link" onclick="window.print();"><i class="fa fa-print"></i> Версия для печати</span>
+                <span class="btn btn-link" onclick="window.print();"><i class="fa fa-print"></i> <?= Yii::t('app', 'Print version') ?></span>
             </div>
         </div>
     </div>

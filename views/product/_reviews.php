@@ -18,18 +18,18 @@ use yii\widgets\ListView;
     'itemOptions' => [
         'class' => 'media',
     ],
-    'emptyText' => 'Пока ещё никто не оставил отзыв на этот товар. После покупки, обязательно оставьте отзыв.',
+    'emptyText' => Yii::t('app', 'No one has left a review for this product yet. Please leave a review after purchase.'),
 ]) ?>
 
 <div class="text-center <?= !Yii::$app->session->hasFlash('reviewSubmitted') ? null : 'collapse' ?>">
-    <?= Html::button('Оставить отзыв', ['class' => 'btn btn-primary btn-lg', 'onclick' => '$(this).hide().parent().next().slideDown();']) ?>
+    <?= Html::button(Yii::t('app', 'Leave a review'), ['class' => 'btn btn-primary btn-lg', 'onclick' => '$(this).hide().parent().next().slideDown();']) ?>
 </div>
 
 <div id="card-form" class="<?= Yii::$app->session->hasFlash('reviewSubmitted') ? null : 'collapse' ?>">
-    <div class="h1 text-center">Оставить отзыв</div>
+    <div class="h1 text-center"><?= Yii::t('app', 'Leave a review') ?></div>
     <?php if (Yii::$app->session->hasFlash('reviewSubmitted')): ?>
         <div class="alert alert-success">
-            Отзыв успешно добавлен и будет опубликован на сайте после проверки администратором.
+            <?= Yii::t('app', 'The review has been successfully added and will be published on the site after verification by the administrator.') ?>
         </div>
     <?php else: ?>
         <div class="row justify-content-md-center">
@@ -53,7 +53,7 @@ use yii\widgets\ListView;
                 <?= $form->field($model, 'reCaptcha')->widget(ReCaptcha::class)->label(false) ?>
 
                 <div class="form-group text-center">
-                    <?= Html::submitButton('Отправить', ['class' => 'btn btn-primary btn-lg']) ?>
+                    <?= Html::submitButton(Yii::t('app', 'Send'), ['class' => 'btn btn-primary btn-lg']) ?>
                 </div>
 
                 <?php ActiveForm::end(); ?>

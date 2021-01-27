@@ -66,7 +66,7 @@ $this->registerLinkTag(['rel' => 'canonical', 'href' => Url::to(explode('?', Yii
                                 'datumTokenizer' => "Bloodhound.tokenizers.obj.whitespace('value')",
                                 'display' => 'value',
                                 'templates' => [
-                                    'notFound' => '<div class="text-danger" style="padding:0 8px">По данному запросу ничего не найдено.</div>',
+                                    'notFound' => '<div class="text-danger" style="padding:0 8px">' . Yii::t('app', 'No results were found for this request.') . '</div>',
                                     'suggestion' => new JsExpression("Handlebars.compile('{$template}')"),
                                 ],
                                 'remote' => [
@@ -80,11 +80,11 @@ $this->registerLinkTag(['rel' => 'canonical', 'href' => Url::to(explode('?', Yii
                     ]);
                     ?>
                     <span class="input-group-append">
-                        <button class="btn btn-primary" type="submit">Найти</button>
+                        <button class="btn btn-primary" type="submit"><?= Yii::t('app', 'Find') ?></button>
                     </span>
                 </form>
                 <div class="pt-1 text-white-50 small d-none d-md-block" style="position: absolute;">
-                    Например: <a href="#" onclick="return $('#search').val($(this).text());">loxeal 30-23</a>
+                    <?= Yii::t('app', 'For example') ?>: <a href="#" onclick="return $('#search').val($(this).text());">loxeal 30-23</a>
                 </div>
             </div>
             <div class="col-6 col-md-4 text-right">
@@ -127,7 +127,7 @@ $this->registerLinkTag(['rel' => 'canonical', 'href' => Url::to(explode('?', Yii
 
                     $items = [
                         [
-                            'label' => 'Главная',
+                            'label' => Yii::t('app', 'Home'),
                             'url' => ['/'],
                             'active' => in_array(Yii::$app->controller->id, ['site']) && in_array(Yii::$app->controller->action->id, ['index']),
                             /*'linkOptions' => [
@@ -135,23 +135,23 @@ $this->registerLinkTag(['rel' => 'canonical', 'href' => Url::to(explode('?', Yii
                             ],*/
                         ],
                         [
-                            'label' => 'Каталог',
+                            'label' => Yii::t('app', 'Catalog'),
                             'url' => ['/category/index'],
                             'active' => in_array(Yii::$app->controller->id, ['category', 'product']),
                         ],
-                        ['label' => 'Подобрать продукт', 'url' => ['/podbor/index']],
-                        ['label' => 'Как заказать', 'url' => ['/site/how']],
-                        ['label' => 'Вопросы и ответы', 'url' => ['/site/questions']],
+                        ['label' => Yii::t('app', 'Find product'), 'url' => ['/podbor/index']],
+                        ['label' => Yii::t('app', 'How to order'), 'url' => ['/site/how']],
+                        ['label' => Yii::t('app', 'Questions and answers'), 'url' => ['/site/questions']],
                         [
-                            'label' => 'Информация для клиентов',
+                            'label' => Yii::t('app', 'Information for clients'),
                             'url' => ['/info/index'],
                             'items' => $info_menu,
                             'dropDownOptions' => [
                                 'class' => '',
                             ],
                         ],
-                        ['label' => 'Контакты', 'url' => ['/site/contacts']],
-                        ['label' => 'Отзывы', 'url' => ['/site/reviews']],
+                        ['label' => Yii::t('app', 'Contacts'), 'url' => ['/site/contacts']],
+                        ['label' => Yii::t('app', 'Reviews'), 'url' => ['/site/reviews']],
                     ];
                     echo Nav::widget([
                         'items' => $items,
@@ -179,7 +179,7 @@ $this->registerLinkTag(['rel' => 'canonical', 'href' => Url::to(explode('?', Yii
 
                         <nav class="navbar navbar-expand-md mb-3">
                             <button class="btn btn-dark btn-block d-md-none" type="button" data-toggle="collapse" data-target="#navbar-left" aria-controls="navbar-left" aria-expanded="false" aria-label="Toggle navigation">
-                                Каталог товаров
+                                <?= Yii::t('app', 'Product catalog') ?>
                             </button>
                             <div class="collapse navbar-collapse" id="navbar-left">
                                 <?php
@@ -245,7 +245,7 @@ $this->registerLinkTag(['rel' => 'canonical', 'href' => Url::to(explode('?', Yii
 
     <div class="card how my-4">
         <div class="card-body">
-            <div class="h1 text-center">Вопросы и ответы</div>
+            <div class="h1 text-center"><?= Yii::t('app', 'Questions and answers') ?></div>
             <?php
             $question = Question::find()
                 ->where(['status' => Question::STATUS_PUBLISHED])
@@ -267,7 +267,7 @@ $this->registerLinkTag(['rel' => 'canonical', 'href' => Url::to(explode('?', Yii
 
     <div class="card how my-4">
         <div class="card-body">
-            <div class="h1 text-center">Отзывы о компании</div>
+            <div class="h1 text-center"><?= Yii::t('app', 'Reviews about the company') ?></div>
             <?php
             $review = Review::find()
                 ->where(['status' => Review::STATUS_PUBLISHED])
@@ -294,10 +294,10 @@ $this->registerLinkTag(['rel' => 'canonical', 'href' => Url::to(explode('?', Yii
             <div class="col-sm-6 col-md-12">
                 <div class="card border border-primary border-strong block-link mb-3">
                     <a href="<?= Url::to(['/podbor/index']) ?>">
-                        <img class="card-img-top" src="/img/podbor.jpg" alt="Подобрать клей">
+                        <img class="card-img-top" src="/img/podbor.jpg" alt="<?= Yii::t('app', 'Find glue') ?>">
                     </a>
                     <div class="card-body text-center">
-                        <a href="<?= Url::to(['/podbor/index']) ?>" class="card-text h4">Подобрать продукт</a>
+                        <a href="<?= Url::to(['/podbor/index']) ?>" class="card-text h4"><?= Yii::t('app', 'Find product') ?></a>
                     </div>
                 </div>
             </div>
@@ -307,19 +307,6 @@ $this->registerLinkTag(['rel' => 'canonical', 'href' => Url::to(explode('?', Yii
                 echo Html::a('<small>' . $item->name . '</small>', ['/info/view', 'slug' => $item->slug], ['class' => 'btn btn-primary btn-lg btn-block mb-3']);
                 $item = $info[1];
                 echo Html::a('<small>' . $item->name . '</small>', ['/info/view', 'slug' => $item->slug], ['class' => 'btn btn-warning btn-lg btn-block mb-3']);
-                ?>
-                <?php
-                /*
-                ?>
-                <div class="list-group list-article my-3">
-                    <div class="list-group-item h4">Информация для клиентов</div>
-                    < ?php
-                    foreach ($info as $item) {
-                        echo Html::a($item->name, ['/info/view', 'slug' => $item->slug], ['class' => 'list-group-item']);
-                    }
-                    ? >
-                </div>
-                */
                 ?>
             </div>
         </div>
@@ -345,10 +332,10 @@ $this->registerLinkTag(['rel' => 'canonical', 'href' => Url::to(explode('?', Yii
                         <nav class="nav flex-column">
                             <?php
                             $items = [
-                                ['label' => 'Главная', 'url' => ['/']],
-                                ['label' => 'Каталог', 'url' => ['/category/index']],
-                                ['label' => 'Подобрать продукт', 'url' => ['/podbor/index']],
-                                ['label' => 'Как заказать', 'url' => ['/site/how']],
+                                ['label' => Yii::t('app', 'Home'), 'url' => ['/']],
+                                ['label' => Yii::t('app', 'Catalog'), 'url' => ['/category/index']],
+                                ['label' => Yii::t('app', 'Find product'), 'url' => ['/podbor/index']],
+                                ['label' => Yii::t('app', 'How to order'), 'url' => ['/site/how']],
                             ];
                             echo Nav::widget([
                                 'items' => $items,
@@ -361,10 +348,10 @@ $this->registerLinkTag(['rel' => 'canonical', 'href' => Url::to(explode('?', Yii
                         <nav class="nav flex-column">
                             <?php
                             $items = [
-                                ['label' => 'Вопросы и ответы', 'url' => ['/site/questions']],
-                                ['label' => 'Информация для клиентов', 'url' => ['/info/index']],
-                                ['label' => 'Контакты', 'url' => ['/site/contacts']],
-                                ['label' => 'Отзывы', 'url' => ['/site/reviews']],
+                                ['label' => Yii::t('app', 'Questions and answers'), 'url' => ['/site/questions']],
+                                ['label' => Yii::t('app', 'Information for clients'), 'url' => ['/info/index']],
+                                ['label' => Yii::t('app', 'Contacts'), 'url' => ['/site/contacts']],
+                                ['label' => Yii::t('app', 'Reviews'), 'url' => ['/site/reviews']],
                             ];
                             echo Nav::widget([
                                 'items' => $items,
@@ -377,7 +364,7 @@ $this->registerLinkTag(['rel' => 'canonical', 'href' => Url::to(explode('?', Yii
             </div>
         </div>
         <div class="text-white pb-4 text-center text-md-left">
-            <div class="my-3">Работа офиса и склада: <?= Yii::$app->params['work_time'] ?></div>
+            <div class="my-3"><?= Yii::t('app', 'Office and warehouse work') ?>: <?= Yii::$app->params['work_time'] ?></div>
             <div class="my-3"><?= Yii::$app->params['address'] ?></div>
             <div class="my-3"><?= Yii::$app->params['email'] ?></div>
         </div>

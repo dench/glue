@@ -28,7 +28,7 @@ class QuestionForm extends Model
             [['name', 'text', 'email'], 'required'],
             [['name', 'text', 'email'], 'string'],
             ['email', 'email'],
-            ['reCaptcha', ReCaptchaValidator::className(), 'uncheckedMessage' => Yii::t('app', 'Пожалуйста, подтвердите, что вы не бот.')],
+            ['reCaptcha', ReCaptchaValidator::className(), 'uncheckedMessage' => Yii::t('app', 'Please confirm that you are not a bot.')],
         ];
     }
 
@@ -38,9 +38,9 @@ class QuestionForm extends Model
     public function attributeLabels()
     {
         return [
-            'name' => 'Ваше имя',
-            'email' => 'Ваш E-mail',
-            'text' => 'Ваш вопрос',
+            'name' => Yii::t('app', 'Your name'),
+            'email' => Yii::t('app', 'Your E-mail'),
+            'text' => Yii::t('app', 'Your question'),
         ];
     }
 
@@ -50,7 +50,7 @@ class QuestionForm extends Model
     public function attributeHints()
     {
         return [
-            'email' => 'Этот E-mail адрес не будет опубликован',
+            'email' => Yii::t('app', 'This E-mail address will not be published'),
         ];
     }
 

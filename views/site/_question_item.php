@@ -17,7 +17,7 @@
     <?php if ($model->answer) : ?>
     <div class="media ml-5 p-2 mt-2 pb-0">
         <div class="media-body">
-            <div class="text-muted mb-1">Ответ компании, <span><?= Yii::$app->formatter->asDate($model->created_at) ?></span></div>
+            <div class="text-muted mb-1"><?= Yii::t('app', 'Company response') ?>, <span><?= Yii::$app->formatter->asDate($model->created_at) ?></span></div>
             <?= $model->answer ?>
         </div>
     </div>

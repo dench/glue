@@ -12,12 +12,14 @@ $this->params['breadcrumbs'][] = $page->name;
 
 $resultUrl = Url::to(['result']);
 
+$lang = Yii::t('app', 'Select option <br> from the dropdown list');
+
 $js = <<<JS
 function loadProducts(id) {
     $('#result').load('{$resultUrl}', { id: id });
 }
 
-var emptyHelp = 'Выберите вариант<br> из выпадающего списка';
+var emptyHelp = '{$lang}';
 
 $('[data-toggle="popover"]').popover({ html: true });
 
@@ -54,7 +56,7 @@ $this->registerJs($js);
 <?= $form->field($model, 'step[]')->dropDownList(Podbor::getParentList(), [
     'id' => 'step1',
     'prompt' => Yii::t('app', 'Select...'),
-])->label('Поставленная задача:'); ?>
+])->label(Yii::t('app', 'The task') . ':'); ?>
 
 <?= $form->field($model, 'step[]', ['options' => ['class' => 'form-group row d-none']])->widget(DepDrop::classname(), [
     'options' => ['id' => 'step2'],

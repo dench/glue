@@ -13,7 +13,7 @@ use yii\helpers\Url;
 ?>
 <?php if ($options) : ?>
     <div class="product-section">
-        <h2 class="product-section-title">Сопутствующие товары</h2>
+        <h2 class="product-section-title"><?= Yii::t('app', 'Related products') ?></h2>
         <div class="table-responsive">
             <table class="table table-condensed table-default table-width-auto">
                 <thead>

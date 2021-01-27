@@ -31,7 +31,7 @@ class ReviewForm extends Model
             [['name', 'text', 'email'], 'string'],
             [['rating', 'product_id'], 'integer'],
             [['email'], 'email'],
-            ['reCaptcha', ReCaptchaValidator::className(), 'uncheckedMessage' => Yii::t('app', 'Пожалуйста, подтвердите, что вы не бот.')],
+            ['reCaptcha', ReCaptchaValidator::className(), 'uncheckedMessage' => Yii::t('app', 'Please confirm that you are not a bot.')],
         ];
     }
 
@@ -41,10 +41,10 @@ class ReviewForm extends Model
     public function attributeLabels()
     {
         return [
-            'name' => 'Ваше имя',
-            'email' => 'Ваш E-mail',
-            'text' => 'Текст отзыва',
-            'rating' => 'Оценка',
+            'name' => Yii::t('app', 'Your name'),
+            'email' => Yii::t('app', 'Your E-mail'),
+            'text' => Yii::t('app', 'Review text'),
+            'rating' => Yii::t('app', 'Stars'),
         ];
     }
 
@@ -54,7 +54,7 @@ class ReviewForm extends Model
     public function attributeHints()
     {
         return [
-            'email' => 'Этот E-mail адрес не будет опубликован',
+            'email' => Yii::t('app', 'This E-mail address will not be published'),
         ];
     }
 

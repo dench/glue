@@ -126,7 +126,7 @@ echo '<div class="alert alert-' . (in_array($order->status, [Order::STATUS_COMPL
         'delivery',
         'created_at:datetime',
         [
-            'label' => Yii::t('app', 'Order\'s full name'),
+            'label' => Yii::t('app', 'Order full name'),
             'value' => $order->buyer->name,
         ],
         'phone',

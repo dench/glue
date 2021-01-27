@@ -8,7 +8,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use dench\image\helpers\ImageHelper;
 
-$this->params['breadcrumbs'][] = ['label' => 'Информация для клиентов', 'url' => ['/info/index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Information for clients'), 'url' => ['/info/index']];
 if ($page->parent->id !== 6 && $page->parent) {
     $this->params['breadcrumbs'][] = ['label' => $page->parent->name, 'url' => ['/info/view', 'slug' => $page->parent->slug]];
 }

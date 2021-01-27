@@ -31,10 +31,10 @@ $this->params['breadcrumbs'][] = $page->name;
 
 <div class="card mb-4" id="card-form">
     <div class="card-body">
-        <div class="h1 text-center">Задать вопрос</div>
+        <div class="h1 text-center"><?= Yii::t('app', 'Ask a question') ?></div>
         <?php if (Yii::$app->session->hasFlash('questionSubmitted')): ?>
             <div class="alert alert-success">
-                Сообщение успешно отправлено и скоро Вы получите ответ.
+                <?= Yii::t('app', 'The message has been successfully sent and you will receive a reply soon.') ?>
             </div>
         <?php else: ?>
             <div class="row justify-content-md-center">
@@ -50,7 +50,7 @@ $this->params['breadcrumbs'][] = $page->name;
                     <?= $form->field($model, 'reCaptcha')->widget(ReCaptcha::className())->label(false) ?>
 
                     <div class="form-group text-center">
-                        <?= Html::submitButton('Отправить', ['class' => 'btn btn-primary btn-lg']) ?>
+                        <?= Html::submitButton(Yii::t('app', 'Send'), ['class' => 'btn btn-primary btn-lg']) ?>
                     </div>
 
                     <?php ActiveForm::end(); ?>

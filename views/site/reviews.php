@@ -31,10 +31,10 @@ $this->params['breadcrumbs'][] = $page->name;
 
 <div class="card mb-4" id="card-form">
     <div class="card-body">
-        <div class="h1 text-center">Оставить отзыв</div>
+        <div class="h1 text-center"><?= Yii::t('app', 'Leave a review') ?></div>
         <?php if (Yii::$app->session->hasFlash('reviewSubmitted')): ?>
             <div class="alert alert-success">
-                Отзыв успешно добавлен и будет опубликован на сайте после проверки администратором.
+                <?= Yii::t('app', 'The review has been successfully added and will be published on the site after verification by the administrator.') ?>
             </div>
         <?php else: ?>
             <div class="row justify-content-md-center">
@@ -58,7 +58,7 @@ $this->params['breadcrumbs'][] = $page->name;
                     <?= $form->field($model, 'reCaptcha')->widget(ReCaptcha::className())->label(false) ?>
 
                     <div class="form-group text-center">
-                        <?= Html::submitButton('Отправить', ['class' => 'btn btn-primary btn-lg']) ?>
+                        <?= Html::submitButton(Yii::t('app', 'Send'), ['class' => 'btn btn-primary btn-lg']) ?>
                     </div>
 
                     <?php ActiveForm::end(); ?>
