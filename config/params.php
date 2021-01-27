@@ -1,7 +1,8 @@
 <?php
 
 return [
-    'address' => '',
+    'address_ru' => '',
+    'address_uk' => '',
     'map_link' => '',
 
     'fromEmail' => '',

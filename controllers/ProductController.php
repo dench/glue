@@ -59,11 +59,11 @@ class ProductController extends Controller
             $view = $model->view;
         }
 
-        if (!empty(Yii::$app->params['templateTitle'])) {
-            $model->title = str_replace('{0}', $model->h1, Yii::$app->params['templateTitle']);
+        if (!empty(Yii::$app->params['templateTitle_' . Yii::$app->language])) {
+            $model->title = str_replace('{0}', $model->h1, Yii::$app->params['templateTitle_' . Yii::$app->language]);
 
             if (empty($model->description)) {
-                $model->description = str_replace('{0}', $model->h1, Yii::$app->params['templateDescription']);
+                $model->description = str_replace('{0}', $model->h1, Yii::$app->params['templateDescription_' . Yii::$app->language]);
             }
 
             Yii::$app->view->title = $model->title;

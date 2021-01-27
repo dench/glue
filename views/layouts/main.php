@@ -365,7 +365,7 @@ $this->registerLinkTag(['rel' => 'canonical', 'href' => Url::to(explode('?', Yii
         </div>
         <div class="text-white pb-4 text-center text-md-left">
             <div class="my-3"><?= Yii::t('app', 'Office and warehouse work') ?>: <?= Yii::$app->params['work_time'] ?></div>
-            <div class="my-3"><?= Yii::$app->params['address'] ?></div>
+            <div class="my-3"><?= Yii::$app->params['address_' . Yii::$app->language] ?></div>
             <div class="my-3"><?= Yii::$app->params['email'] ?></div>
         </div>
     </div>
