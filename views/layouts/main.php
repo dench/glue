@@ -41,7 +41,7 @@ $this->registerLinkTag(['rel' => 'canonical', 'href' => Url::to(explode('?', Yii
     <div class="container">
         <div class="row pb-1 pb-md-3 pt-3">
             <div class="col-6 col-md-4">
-                <a href="/"><img src="/img/loxeal.png" class="logo"></a>
+                <a href="<?= Url::to(['/']) ?>"><img src="/img/loxeal.png" class="logo"></a>
             </div>
             <div class="search col-10 col-md-4 py-2 mt-1 mt-md-0">
                 <form action="<?= Url::to(['/search']) ?>" class="input-group">
@@ -364,7 +364,7 @@ $this->registerLinkTag(['rel' => 'canonical', 'href' => Url::to(explode('?', Yii
             </div>
         </div>
         <div class="text-white pb-4 text-center text-md-left">
-            <div class="my-3"><?= Yii::t('app', 'Office and warehouse work') ?>: <?= Yii::$app->params['work_time'] ?></div>
+            <div class="my-3"><?= Yii::t('app', 'Office and warehouse work') ?>: <?= Yii::$app->params['work_time_' . Yii::$app->language] ?></div>
             <div class="my-3"><?= Yii::$app->params['address_' . Yii::$app->language] ?></div>
             <div class="my-3"><?= Yii::$app->params['email'] ?></div>
         </div>
