@@ -8,7 +8,7 @@
 
 use dench\cart\models\Delivery;
 use dench\cart\models\Payment;
-use himiklab\yii2\recaptcha\ReCaptcha;
+use himiklab\yii2\recaptcha\ReCaptcha2;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 use yii\helpers\Url;
@@ -79,7 +79,7 @@ $this->registerCss($css);
                 ], ['class' => 'pt-2']) ?>
 
                 <?php if (!YII_DEBUG): ?>
-                    <?= $form->field($model, 'reCaptcha')->widget(ReCaptcha::class)->label(false) ?>
+                    <?= $form->field($model, 'reCaptcha')->widget(ReCaptcha2::class)->label(false) ?>
                 <?php endif; ?>
             </div>
         </div>

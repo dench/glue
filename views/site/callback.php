@@ -6,7 +6,7 @@
  */
 
 use app\components\ActiveForm;
-use himiklab\yii2\recaptcha\ReCaptcha;
+use himiklab\yii2\recaptcha\ReCaptcha2;
 use yii\helpers\Html;
 ?>
 <?php $form = ActiveForm::begin(['id' => $model->formName()]); ?>
@@ -15,7 +15,7 @@ use yii\helpers\Html;
 
 <?= $form->field($model, 'phone') ?>
 
-<?= $form->field($model, 'reCaptcha')->widget(ReCaptcha::class)->label(false) ?>
+<?= $form->field($model, 'reCaptcha')->widget(ReCaptcha2::class)->label(false) ?>
 
 <div class="form-group">
     <?= Html::submitButton(Yii::t('app', 'Submit'), ['class' => 'btn btn-primary', 'name' => 'callback-button']) ?>

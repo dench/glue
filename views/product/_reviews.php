@@ -3,7 +3,7 @@
 /* @var $model app\models\ReviewForm */
 
 use app\components\ActiveForm;
-use himiklab\yii2\recaptcha\ReCaptcha;
+use himiklab\yii2\recaptcha\ReCaptcha2;
 use yii\bootstrap\Html;
 use yii\widgets\ListView;
 
@@ -50,7 +50,7 @@ use yii\widgets\ListView;
 
                 <?= $form->field($model, 'text')->textarea(['rows' => 5]) ?>
 
-                <?= $form->field($model, 'reCaptcha')->widget(ReCaptcha::class)->label(false) ?>
+                <?= $form->field($model, 'reCaptcha')->widget(ReCaptcha2::class)->label(false) ?>
 
                 <div class="form-group text-center">
                     <?= Html::submitButton(Yii::t('app', 'Send'), ['class' => 'btn btn-primary btn-lg']) ?>

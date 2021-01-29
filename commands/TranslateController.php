@@ -6,14 +6,19 @@ use yii\helpers\FileHelper;
 
 class TranslateController extends Controller
 {
+    //const DIR = '/';
+    const DIR = '/runtime/yii2-cart/';
+
     public function actionIndex($lang = 'ru')
     {
         $categories = [
-            'app',
+            //'app',
+            'cart',
         ];
 
         $dirs = [
-            'behaviors',
+            //'behaviors',
+            'widgets',
             'components',
             'controllers',
             'models',
@@ -22,12 +27,12 @@ class TranslateController extends Controller
         ];
 
         foreach ($categories as $category) {
-            $file = __DIR__ . '/../messages/' . $lang . '/' . $category . '.php';
+            $file = __DIR__ . '/..' . self::DIR .'messages/' . $lang . '/' . $category . '.php';
             $old_messages = include $file;
 
             $messages = [];
             foreach ($dirs as $dir) {
-                $dir = __DIR__ . '/../' . $dir;
+                $dir = __DIR__ . '/..' . self::DIR . $dir;
 
                 $folders = FileHelper::findDirectories($dir);
                 $folders[] = $dir;
@@ -78,7 +83,7 @@ class TranslateController extends Controller
                 $info .= "\n/*\n--- OLD ---\n" . implode("\n", $old) . "\n*/\n";
             }
             $format = "<?php\n" . $info . "\nreturn [\n" . $format . "];";
-            $file = __DIR__ . '/../messages/' . $lang . '/' . $category . '.php';
+            $file = __DIR__ . '/..' . self::DIR .'messages/' . $lang . '/' . $category . '.php';
             file_put_contents($file, $format);
         }
     }

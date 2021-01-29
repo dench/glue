@@ -2,7 +2,7 @@
 
 namespace app\models;
 
-use himiklab\yii2\recaptcha\ReCaptchaValidator;
+use himiklab\yii2\recaptcha\ReCaptchaValidator2;
 use Yii;
 use yii\base\Model;
 
@@ -28,7 +28,7 @@ class ContactForm extends Model
             // email has to be a valid email address
             ['email', 'email'],
             // verifyCode needs to be entered correctly
-            [['reCaptcha'], ReCaptchaValidator::class, 'skipOnEmpty' => YII_DEBUG ? true : false,  'uncheckedMessage' => Yii::t('app', 'Please confirm that you are not a bot.')],
+            [['reCaptcha'], ReCaptchaValidator2::class, 'skipOnEmpty' => YII_DEBUG ? true : false,  'uncheckedMessage' => Yii::t('app', 'Please confirm that you are not a bot.')],
         ];
     }
 

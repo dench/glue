@@ -8,7 +8,7 @@
 
 namespace app\models;
 
-use himiklab\yii2\recaptcha\ReCaptchaValidator;
+use himiklab\yii2\recaptcha\ReCaptchaValidator2;
 use Yii;
 use yii\base\Model;
 
@@ -28,7 +28,7 @@ class QuestionForm extends Model
             [['name', 'text', 'email'], 'required'],
             [['name', 'text', 'email'], 'string'],
             ['email', 'email'],
-            ['reCaptcha', ReCaptchaValidator::className(), 'uncheckedMessage' => Yii::t('app', 'Please confirm that you are not a bot.')],
+            ['reCaptcha', ReCaptchaValidator2::class, 'uncheckedMessage' => Yii::t('app', 'Please confirm that you are not a bot.')],
         ];
     }
 

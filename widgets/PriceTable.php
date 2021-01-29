@@ -87,6 +87,8 @@ class PriceTable extends Widget
     {
         $url_add = Url::to($this->urlCartAdd);
 
+        $url_cart_modal = Url::to(['/cart/modal']);
+
         $js = <<< JS
 $('.table-price tr').each(function(){
     var obj = $(this).parents('table');
@@ -111,7 +113,7 @@ $('.table-price tr').each(function(){
 $('.btn-buy').mousedown(function(){
     var id = $('#' + $(this).attr('rel') + ' input:checked').val();
     $.get('{$url_add}', { id: id }, function(){
-        openModal('/cart/modal');
+        openModal('{$url_cart_modal}');
     });
 });
 JS;

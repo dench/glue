@@ -2,7 +2,7 @@
 
 namespace app\models;
 
-use himiklab\yii2\recaptcha\ReCaptchaValidator;
+use himiklab\yii2\recaptcha\ReCaptchaValidator2;
 use Yii;
 use yii\base\Model;
 
@@ -23,7 +23,7 @@ class CallbackForm extends Model
         return [
             [['name', 'phone'], 'required'],
             [['name', 'phone'], 'string'],
-            [['reCaptcha'], ReCaptchaValidator::class, 'uncheckedMessage' => Yii::t('app', 'Please confirm that you are not a bot.')],
+            [['reCaptcha'], ReCaptchaValidator2::class, 'uncheckedMessage' => Yii::t('app', 'Please confirm that you are not a bot.')],
         ];
     }
 
