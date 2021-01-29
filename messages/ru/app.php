@@ -122,4 +122,9 @@ return [
     'page {0}' => 'страница {0}',
     '{0, plural, =0{items not found} =1{item found} one{# items found} few{# items found} many{# items found} other{# items found} for these criteria' => 'По данным критериям {0, plural, =0{товаров не найдено} =1{найден один товар} one{найден # товар} few{найдено # товара} many{найдено # товаров} other{найдено # товаров}}',
     '{0, plural, =0{нет отзывов} =1{1 отзыв} one{# отзыв} few{# отзыва} many{# отзывов} other{# отзывов}}' => '{0, plural, =0{нет отзывов} =1{1 отзыв} one{# отзыв} few{# отзыва} many{# отзывов} other{# отзывов}}',
+
+    'Tips for use' => 'Советы по использованию',
+    'Process of polymerization' => 'Процесс полимеризации',
+    'Scope of application' => 'Сфера применения',
+    'Storage conditions' => 'Условия хранения',
 ];
