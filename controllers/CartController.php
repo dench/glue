@@ -110,7 +110,7 @@ class CartController extends Controller
                 'cart' => $cart,
             ]),
             'footer' => $footer,
-            'size' => 'modal-lg',
+            'dialog' => 'modal-lg',
         ];
 
         return Json::encode($data);
