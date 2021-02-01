@@ -285,7 +285,8 @@ footer {
     top: 56px;
   }
   .logo {
-    max-height: 40px;
+    margin-top: 0 !important;
+    max-height: 40px !important;
   }
   .navbar-dark {
     background: transparent !important;
@@ -294,7 +295,12 @@ footer {
     text-align: left !important;
   }
 }
-@include media-breakpoint-down(md) {}
+@include media-breakpoint-down(md) {
+  .logo {
+    max-height: 45px;
+    margin-top: 7px;
+  }
+}
 @include media-breakpoint-down(lg) {
   .container {
     max-width: 100%;

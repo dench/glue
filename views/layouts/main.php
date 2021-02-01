@@ -24,6 +24,10 @@ $asset = SiteAsset::register($this);
 FontAwesomeAsset::register($this);
 
 $this->registerLinkTag(['rel' => 'canonical', 'href' => Url::to(explode('?', Yii::$app->request->url)[0], true)]);
+
+$this->registerLinkTag(['rel' => 'alternate', 'hreflang' => 'ru-UA', 'href' => Url::current(['lang' => 'ru'], 'https')]);
+$this->registerLinkTag(['rel' => 'alternate', 'hreflang' => 'uk-UA', 'href' => Url::current(['lang' => 'uk'], 'https')]);
+
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -40,9 +44,10 @@ $this->registerLinkTag(['rel' => 'canonical', 'href' => Url::to(explode('?', Yii
 <header class="bg-gradient-secondary">
     <div class="container">
         <div class="row pb-1 pb-md-3 pt-3">
-            <div class="col-6 col-md-4">
+            <div class="col-auto">
                 <a href="<?= Url::to(['/']) ?>"><img src="/img/loxeal.png" class="logo"></a>
             </div>
+            <div class="col d-none d-lg-block"></div>
             <div class="search col-10 col-md-4 py-2 mt-1 mt-md-0">
                 <form action="<?= Url::to(['/search']) ?>" class="input-group">
                     <?php
@@ -87,7 +92,15 @@ $this->registerLinkTag(['rel' => 'canonical', 'href' => Url::to(explode('?', Yii
                     <?= Yii::t('app', 'For example') ?>: <a href="#" onclick="return $('#search').val($(this).text());">loxeal 30-23</a>
                 </div>
             </div>
-            <div class="col-6 col-md-4 text-right">
+            <div class="col d-none d-md-block my-n1 text-center">
+                <div class="mb-1">
+                    <?= Html::a('UA', Url::current(['lang' => 'uk']), ['class' => ['btn btn-sm', Yii::$app->language === 'uk' ? 'btn-primary' : 'btn-outline-primary'], 'hreflang' => 'uk-UA', 'rel' => 'nofollow']) ?>
+                </div>
+                <div>
+                    <?= Html::a('RU', Url::current(['lang' => 'ru']), ['class' => ['btn btn-sm', Yii::$app->language === 'ru' ? 'btn-primary' : 'btn-outline-primary'], 'hreflang' => 'ru-UA', 'rel' => 'nofollow']) ?>
+                </div>
+            </div>
+            <div class="col col-md-auto text-right">
                 <div class="phones">
                     <a href="tel:<?= Yii::$app->params['phone1'] ?>"><i class="fa fa-phone"></i> <?= Yii::$app->params['phone1f'] ?></a>
                     <a href="tel:<?= Yii::$app->params['phone2'] ?>"><i class="fa fa-phone"></i> <?= Yii::$app->params['phone2f'] ?></a>
@@ -161,6 +174,10 @@ $this->registerLinkTag(['rel' => 'canonical', 'href' => Url::to(explode('?', Yii
                         ],
                     ]);
                     ?>
+                        <div class="px-3 py-3 mb-2 d-md-none">
+                            <?= Html::a('UA', Url::current(['lang' => 'uk']), ['class' => ['btn btn-sm', Yii::$app->language === 'uk' ? 'btn-primary' : 'btn-outline-primary'], 'hreflang' => 'uk-UA', 'rel' => 'nofollow']) ?>
+                            <?= Html::a('RU', Url::current(['lang' => 'ru']), ['class' => ['btn btn-sm', Yii::$app->language === 'ru' ? 'btn-primary' : 'btn-outline-primary'], 'hreflang' => 'ru-UA', 'rel' => 'nofollow']) ?>
+                        </div>
                     </div>
                 </div>
             </div>
