@@ -36,8 +36,9 @@ function goLeft() {
 if (!getCookie('showphones')) {
     $('.fa-phone').each(function(){
         var obj = $(this).parent();
+        var lang = $('html').attr('lang') === 'uk' ? 'показати номер' : 'показать номер';
         obj.attr('data-tel', obj.text());
-        obj.html('<i class="fa fa-phone"></i> +380 <small>показать номер</small>');
+        obj.html('<i class="fa fa-phone"></i> +380 <small>' + lang + '</small>');
         obj.click(function(e){
             $('.fa-phone').parent().each(function(){
                 setCookie('showphones', 1);
