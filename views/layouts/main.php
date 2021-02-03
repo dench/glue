@@ -47,7 +47,7 @@ $this->registerLinkTag(['rel' => 'alternate', 'hreflang' => 'uk-UA', 'href' => U
             <div class="col-auto">
                 <a href="<?= Url::to(['/']) ?>"><img src="/img/loxeal.png" class="logo"></a>
             </div>
-            <div class="col d-none d-lg-block"></div>
+            <div class="col-1 d-none d-lg-block"></div>
             <div class="search col-10 col-md-4 py-2 mt-1 mt-md-0">
                 <form action="<?= Url::to(['/search']) ?>" class="input-group">
                     <?php
@@ -92,15 +92,11 @@ $this->registerLinkTag(['rel' => 'alternate', 'hreflang' => 'uk-UA', 'href' => U
                     <?= Yii::t('app', 'For example') ?>: <a href="#" onclick="return $('#search').val($(this).text());">loxeal 30-23</a>
                 </div>
             </div>
-            <div class="col d-none d-md-block my-n1 text-center">
-                <div class="mb-1">
-                    <?= Html::a('UA', Url::current(['lang' => 'uk']), ['class' => ['btn btn-sm', Yii::$app->language === 'uk' ? 'btn-primary' : 'btn-outline-primary'], 'hreflang' => 'uk-UA', 'rel' => 'nofollow']) ?>
-                </div>
-                <div>
-                    <?= Html::a('RU', Url::current(['lang' => 'ru']), ['class' => ['btn btn-sm', Yii::$app->language === 'ru' ? 'btn-primary' : 'btn-outline-primary'], 'hreflang' => 'ru-UA', 'rel' => 'nofollow']) ?>
-                </div>
+            <div class="col px-0 d-none d-md-block text-center my-sm-n1 my-md-2 text-nowrap">
+                <?= Html::a('UA', Url::current(['lang' => 'uk']), ['class' => ['mt-1 btn btn-sm', Yii::$app->language === 'uk' ? 'btn-primary' : 'btn-outline-primary'], 'hreflang' => 'uk-UA', 'rel' => 'nofollow']) ?>
+                <?= Html::a('RU', Url::current(['lang' => 'ru']), ['class' => ['mt-1 btn btn-sm', Yii::$app->language === 'ru' ? 'btn-primary' : 'btn-outline-primary'], 'hreflang' => 'ru-UA', 'rel' => 'nofollow']) ?>
             </div>
-            <div class="col col-md-auto text-right">
+            <div class="col col-md-auto text-right pl-1">
                 <div class="phones">
                     <a href="tel:<?= Yii::$app->params['phone1'] ?>"><i class="fa fa-phone"></i> <?= Yii::$app->params['phone1f'] ?></a>
                     <a href="tel:<?= Yii::$app->params['phone2'] ?>"><i class="fa fa-phone"></i> <?= Yii::$app->params['phone2f'] ?></a>
@@ -335,7 +331,7 @@ $this->registerLinkTag(['rel' => 'alternate', 'hreflang' => 'uk-UA', 'href' => U
     <div class="container">
         <div class="row py-4">
             <div class="col-6 col-sm">
-                <a href="/"><img src="/img/loxeal.png" class="logo"></a>
+                <a href="<?= Url::to(['/']) ?>"><img src="/img/loxeal.png" class="logo"></a>
             </div>
             <div class="col-6 col-sm order-sm-2 text-right">
                 <div class="phones">
