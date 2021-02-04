@@ -66,11 +66,11 @@ class CategoryController extends Controller
     {
         $page = Category::viewPage($slug);
 
-        if (!empty(Yii::$app->params['templateTitleCategory'])) {
-            $page->title = str_replace('{0}', $page->h1, Yii::$app->params['templateTitleCategory']);
+        if (!empty(Yii::$app->params['templateTitleCategory_' . Yii::$app->language])) {
+            $page->title = str_replace('{0}', $page->h1, Yii::$app->params['templateTitleCategory_' . Yii::$app->language]);
 
             if (empty($model->description)) {
-                $page->description = str_replace('{0}', $page->h1, Yii::$app->params['templateDescriptionCategory']);
+                $page->description = str_replace('{0}', $page->h1, Yii::$app->params['templateDescriptionCategory_' . Yii::$app->language]);
             }
 
             Yii::$app->view->title = $page->title;
