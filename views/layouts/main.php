@@ -383,7 +383,7 @@ $this->registerLinkTag(['rel' => 'alternate', 'hreflang' => 'uk-UA', 'href' => U
         </div>
     </div>
     <div class="text-center py-2 bg-gradient-secondary text-white">
-        2017 - <?= date('Y') ?> © <a href="/"><?= Yii::$app->name ?></a>
+        2017 - <?= date('Y') ?> © <a href="<?= Url::to(['/']) ?>"><?= Yii::$app->name ?></a>
     </div>
 </footer>
 <?= Modal::widget([
