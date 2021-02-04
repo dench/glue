@@ -55,7 +55,7 @@ class RssController extends Controller
 
         foreach ($products as $product) {
             if (empty($product->description)) {
-                $product->description = str_replace('{0}', $product->name, Yii::$app->params['templateDescription']);
+                $product->description = str_replace('{0}', $product->name, Yii::$app->params['templateDescription_ru']);
             }
 
             $available = $product->variants[0]->available;
