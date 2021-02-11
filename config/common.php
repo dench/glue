@@ -1,5 +1,8 @@
 <?php
 
+use yii\mutex\MysqlMutex;
+use yii\queue\Queue;
+
 $params = yii\helpers\ArrayHelper::merge(
     require(__DIR__ . '/params.php'),
     require(__DIR__ . '/params-local.php')
@@ -85,6 +88,13 @@ return [
                     'basePath' => '@vendor/dench/yii2-cart/messages',
                 ],
             ],
+        ],
+        'queue' => [
+            'class' => Queue::class,
+            'db' => 'db',
+            'tableName' => '{{%queue}}',
+            'channel' => 'default',
+            'mutex' => MysqlMutex::class,
         ],
     ],
     'params' => $params,

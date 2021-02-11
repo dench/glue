@@ -8,12 +8,14 @@ use dench\cart\models\Cart;
 use dench\cart\models\Order;
 use dench\cart\models\OrderForm;
 use dench\cart\widgets\CartWidget;
+use dench\image\helpers\ImageHelper;
 use dench\page\models\Page;
 use dench\products\models\Variant;
 use Yii;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\helpers\Json;
+use yii\helpers\Url;
 use yii\web\Controller;
 
 /**
@@ -77,6 +79,30 @@ class CartController extends Controller
                 'expire' => time() + 3600 * 24 * 7,
             ]));
             Yii::$app->session->setFlash('orderSubmitted');
+
+            if (isset(Yii::$app->params['sendSputnikOrder']) && $model->email && $order = Order::findOne($order_id)) {
+                $products = [];
+                foreach ($order->products as $product) {
+                    $products[] = [
+                        'imageUrl' => $product->image ? Url::to(ImageHelper::thumb($product->image->id, 'micro'), 'https') : null,
+                        'url' => Url::to(['/product/index', 'slug' => $product->product->slug], 'https'),
+                        'name' => (string)$order->cartItemName[$product->id],
+                        'cost' => (string)$order->cartItemPrice[$product->id],
+                        'quantity' => (string)$order->cartItemCount[$product->id],
+                    ];
+                }
+                Yii::$app->esputnik->event('zakaz', $order->email, [
+                    'externalOrderId' => (string)$order->id,
+                    'firstName' => (string)$order->buyer->name,
+                    'email' => (string)$order->email,
+                    'phone' => (string)$order->phone,
+                    'totalCost' => (string)$order->amount,
+                    'paymentMethod' => $order->payment_id ? (string)$order->paymentMethod->name : null,
+                    'deliveryMethod' => $order->delivery_id ? $order->deliveryMethod->name . ($order->delivery ? ', ' . Html::encode($order->delivery) : null) : null,
+                    'products' => $products,
+                ]);
+            }
+
             return $this->redirect(['/order', 'id' => $order_id, 'hash' => md5($order_id . Yii::$app->params['order_secret'])]);
         }
 

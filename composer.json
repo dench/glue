@@ -37,7 +37,9 @@
         "fortawesome/font-awesome": "~4.7",
         "powerkernel/yii2-photoswipe": "*",
         "kartik-v/yii2-widget-depdrop": "@dev",
-        "liqpay/liqpay": "^1.2"
+        "liqpay/liqpay": "^1.2",
+        "yiisoft/yii2-httpclient": "^2.0",
+        "yiisoft/yii2-queue": "^2.3"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
