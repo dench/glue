@@ -1,7 +1,7 @@
 <?php
 
 use yii\mutex\MysqlMutex;
-use yii\queue\Queue;
+use yii\queue\db\Queue;
 
 $params = yii\helpers\ArrayHelper::merge(
     require(__DIR__ . '/params.php'),
