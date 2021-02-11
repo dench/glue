@@ -80,7 +80,7 @@ class CartController extends Controller
             ]));
             Yii::$app->session->setFlash('orderSubmitted');
 
-            if (isset(Yii::$app->params['sendSputnikOrder']) && $model->email && $order = Order::findOne($order_id)) {
+            if (Yii::$app->params['sendSputnikOrder'] && $model->email && $order = Order::findOne($order_id)) {
                 $products = [];
                 foreach ($order->products as $product) {
                     $products[] = [
