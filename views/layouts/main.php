@@ -284,6 +284,7 @@ $this->registerLinkTag(['rel' => 'alternate', 'hreflang' => 'uk-UA', 'href' => U
             <?php
             $review = Review::find()
                 ->where(['status' => Review::STATUS_PUBLISHED])
+                ->andWhere(['product_id' => null])
                 ->orderBy(['id' => SORT_DESC])
                 ->limit(5)
                 ->all();
