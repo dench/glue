@@ -20,7 +20,7 @@ class ReviewSearch extends Review
     public function rules()
     {
         return [
-            [['id', 'rating', 'created_at', 'position', 'status'], 'integer'],
+            [['id', 'rating', 'created_at', 'position', 'status', 'product_id'], 'integer'],
             [['name', 'text', 'answer', 'email'], 'safe'],
         ];
     }
@@ -79,6 +79,7 @@ class ReviewSearch extends Review
             'created_at' => $this->created_at,
             'position' => $this->position,
             'status' => $this->status,
+            'product_id' => $this->product_id,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])

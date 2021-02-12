@@ -45,6 +45,16 @@ if (!Yii::$app->request->get('all') && $dataProvider->totalCount > $dataProvider
                     return Html::a($model->name, ['update', 'id' => $model->id]);
                 }
             ],
+            [
+                'attribute' => 'product_id',
+                'filterInputOptions' => [
+                    'placeholder' => 'Product ID',
+                    'class' => 'form-control',
+                ],
+                'content' => function(Review $model){
+                    return Html::a($model->product->name, ['/product/index', 'slug' => $model->product->slug]);
+                },
+            ],
             'created_at:date',
             [
                 'attribute' => 'answer',
