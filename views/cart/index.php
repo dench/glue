@@ -68,7 +68,7 @@ $this->registerCss($css);
                 <?= $form->field($model, 'name')->textInput(['placeholder' => Yii::t('app', 'Full name')]) ?>
 
                 <?= $form->field($model, 'phone')->widget(MaskedInput::class, [
-                    'mask' => '+38 (099) 999-99-99',
+                    'mask' => '+38 (999) 999-99-99',
                 ]) ?>
 
                 <?= $form->field($model, 'email')->textInput() ?>
