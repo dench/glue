@@ -116,7 +116,7 @@
             "version": "v3.4.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/twbs/bootstrap.git",
+                "url": "git@github.com:twbs/bootstrap.git",
                 "reference": "68b0d231a13201eb14acd3dc84e51543d16e5f7e"
             },
             "dist": {
@@ -467,12 +467,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dench/yii2-cart.git",
-                "reference": "c1ddc36cb21c0a8b5fd72679264f2a73adaa7729"
+                "reference": "5dff7d1ddf669f00990b95ee8899fe99d7718404"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dench/yii2-cart/zipball/c1ddc36cb21c0a8b5fd72679264f2a73adaa7729",
-                "reference": "c1ddc36cb21c0a8b5fd72679264f2a73adaa7729",
+                "url": "https://api.github.com/repos/dench/yii2-cart/zipball/5dff7d1ddf669f00990b95ee8899fe99d7718404",
+                "reference": "5dff7d1ddf669f00990b95ee8899fe99d7718404",
                 "shasum": ""
             },
             "require": {
@@ -508,7 +508,7 @@
                 "issues": "https://github.com/dench/yii2-cart/issues",
                 "source": "https://github.com/dench/yii2-cart/tree/master"
             },
-            "time": "2021-01-29T09:32:20+00:00"
+            "time": "2021-02-15T09:24:17+00:00"
         },
         {
             "name": "dench/yii2-image",
@@ -1834,22 +1834,23 @@
         },
         {
             "name": "luyadev/luya-core",
-            "version": "1.8.0",
+            "version": "1.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/luyadev/luya-core.git",
-                "reference": "1e7011ff014b7146d2be84a4a0605a4a9e6c3c26"
+                "reference": "6e65e510b598bc5e018a7b530936c7e32f383fe0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/luyadev/luya-core/zipball/1e7011ff014b7146d2be84a4a0605a4a9e6c3c26",
-                "reference": "1e7011ff014b7146d2be84a4a0605a4a9e6c3c26",
+                "url": "https://api.github.com/repos/luyadev/luya-core/zipball/6e65e510b598bc5e018a7b530936c7e32f383fe0",
+                "reference": "6e65e510b598bc5e018a7b530936c7e32f383fe0",
                 "shasum": ""
             },
             "require": {
                 "curl/curl": "^2.0 || ^1.0",
                 "giggsey/libphonenumber-for-php": "^8.11",
                 "luyadev/luya-composer": "^1.0",
+                "luyadev/yii-helpers": "^1.0",
                 "phpmailer/phpmailer": "^6.0",
                 "yiisoft/yii2": "~2.0.15"
             },
@@ -1857,11 +1858,6 @@
                 "bin/luya"
             ],
             "type": "luya-core",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "luya\\": ""
@@ -1890,9 +1886,52 @@
             ],
             "support": {
                 "issues": "https://github.com/luyadev/luya/issues",
-                "source": "https://github.com/luyadev/luya-core/tree/1.8.0"
+                "source": "https://github.com/luyadev/luya-core/tree/1.9.0"
             },
-            "time": "2020-11-24T10:22:12+00:00"
+            "time": "2021-02-11T10:14:59+00:00"
+        },
+        {
+            "name": "luyadev/yii-helpers",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/luyadev/yii-helpers.git",
+                "reference": "58d8725397188f207264f2c671a4eca96b1b7d29"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/luyadev/yii-helpers/zipball/58d8725397188f207264f2c671a4eca96b1b7d29",
+                "reference": "58d8725397188f207264f2c671a4eca96b1b7d29",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "^2.0"
+            },
+            "require-dev": {
+                "luyadev/luya-testsuite": "^2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "luya\\yii\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Basil Suter",
+                    "email": "git@nadar.io"
+                }
+            ],
+            "description": "Static helper methods in addition to the Yii Framework.",
+            "support": {
+                "issues": "https://github.com/luyadev/yii-helpers/issues",
+                "source": "https://github.com/luyadev/yii-helpers/tree/1.0.0"
+            },
+            "time": "2021-02-02T10:47:52+00:00"
         },
         {
             "name": "omgdef/yii2-multilingual-behavior",
