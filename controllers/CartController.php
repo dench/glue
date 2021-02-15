@@ -83,8 +83,14 @@ class CartController extends Controller
             if (Yii::$app->params['sendSputnikOrder'] && $model->email && $order = Order::findOne($order_id)) {
                 $products = [];
                 foreach ($order->products as $product) {
+                    $image = null;
+                    if ($product->image) {
+                        $image = Url::to(ImageHelper::thumb($product->image->id, 'micro'), 'https');
+                    } elseif ($product->product->image) {
+                        $image = Url::to(ImageHelper::thumb($product->product->image->id, 'micro'), 'https');
+                    }
                     $products[] = [
-                        'imageUrl' => $product->product->image ? Url::to(ImageHelper::thumb($product->product->image->id, 'micro'), 'https') : null,
+                        'imageUrl' => $image,
                         'url' => Url::to(['/product/index', 'slug' => $product->product->slug], 'https'),
                         'name' => (string)$order->cartItemName[$product->id],
                         'cost' => (string)$order->cartItemPrice[$product->id],
