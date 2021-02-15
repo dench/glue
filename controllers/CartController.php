@@ -84,7 +84,7 @@ class CartController extends Controller
                 $products = [];
                 foreach ($order->products as $product) {
                     $products[] = [
-                        'imageUrl' => $product->image ? Url::to(ImageHelper::thumb($product->image->id, 'micro'), 'https') : null,
+                        'imageUrl' => $product->product->image ? Url::to(ImageHelper::thumb($product->product->image->id, 'micro'), 'https') : null,
                         'url' => Url::to(['/product/index', 'slug' => $product->product->slug], 'https'),
                         'name' => (string)$order->cartItemName[$product->id],
                         'cost' => (string)$order->cartItemPrice[$product->id],
