@@ -7,6 +7,7 @@
  *
  * @var $model dench\products\models\Product
  * @var $link string
+ * @var $rating array
  */
 
 use app\widgets\PriceTable;
@@ -31,13 +32,31 @@ $variant = @$model->variants[0];
         <div>
             <?= $model->text_short ?>
         </div>
-        <?php if ($variant->available > 0): ?>
-            <div class="text-success my-2"><i class="fa fa-check"></i> <?= Yii::t('app', 'In stock') ?></div>
-        <?php elseif ($variant->available < 0): ?>
-            <div class="text-warning my-2"><i class="fa fa-clock-o"></i> <?= Yii::t('app', 'On order') ?></div>
-        <?php else: ?>
-            <div class="text-danger my-2"><i class="fa fa-times"></i> <?= Yii::t('app', 'Not available') ?></div>
-        <?php endif; ?>
+        <div class="row mt-2 mb-3">
+            <div class="col-auto">
+                <?php if ($variant->available > 0): ?>
+                    <div class="text-success"><i class="fa fa-check"></i> <?= Yii::t('app', 'In stock') ?></div>
+                <?php elseif ($variant->available < 0): ?>
+                    <div class="text-warning"><i class="fa fa-clock-o"></i> <?= Yii::t('app', 'On order') ?></div>
+                <?php else: ?>
+                    <div class="text-danger"><i class="fa fa-times"></i> <?= Yii::t('app', 'Not available') ?></div>
+                <?php endif; ?>
+            </div>
+            <div class="col text-nowrap">
+                <?php
+                $floor = floor($rating['value']);
+                for ($i = 0; $i < $floor; $i++) {
+                    echo '<i class="fa fa-star text-warning"></i> ';
+                }
+                if ($floor < $rating['value']) {
+                    echo '<i class="fa fa-star-half text-warning"></i> ';
+                }
+                ?>
+                <?php if ($floor): ?>
+                    <a href="<?= $link ?>#reviews" rel="nofollow" class="text-muted ml-2"><?= Yii::t('app', '{0, plural, =0{нет отзывов} =1{1 отзыв} one{# отзыв} few{# отзыва} many{# отзывов} other{# отзывов}}', $rating['count']); ?></a>
+                <?php endif; ?>
+            </div>
+        </div>
         <div class="row mt-2">
             <div class="col-sm-9">
                 <?= PriceTable::widget([
