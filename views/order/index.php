@@ -131,6 +131,7 @@ echo '<div class="alert alert-' . (in_array($order->status, [Order::STATUS_COMPL
         ],
         'phone',
         'email',
+        'comment',
     ],
 ]); ?>
 

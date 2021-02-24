@@ -78,6 +78,8 @@ $this->registerCss($css);
                     1 => Yii::t('app', 'Organization'),
                 ], ['class' => 'pt-2']) ?>
 
+                <?= $form->field($model, 'comment')->textarea() ?>
+
                 <?php if (!YII_DEBUG): ?>
                     <?= $form->field($model, 'reCaptcha')->widget(ReCaptcha2::class)->label(false) ?>
                 <?php endif; ?>
