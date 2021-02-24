@@ -39,18 +39,18 @@ class ProductController extends Controller
             'expire' => time()+3600*24*30
         ]));
         $viewed_ids = array_diff($viewed_ids, [$model->id]);
-        $similar = Product::find()->where(['id' => $viewed_ids])->all();
+        //$similar = Product::find()->where(['id' => $viewed_ids])->all();
         /* End - Save viewed products */
 
         /**
          * Similar products
          */
-        if (count($similar) < 1) {
+        //if (count($similar) < 1) {
             $viewed = 0;
-            $similar = Product::find()->joinWith(['categories'])->where(['product.enabled' => 1, 'category_id' => $model->category_ids[0]])->limit(6)->all();
-        } else {
-            $viewed = 1;
-        }
+            $similar = Product::find()->joinWith(['categories'])->where(['product.enabled' => 1, 'category_id' => $model->category_ids[0]])->andWhere(['!=', 'product.id', $model->id])->limit(6)->all();
+        //} else {
+        //    $viewed = 1;
+        //}
         /* Similar products */
 
         $view = 'index';
