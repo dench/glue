@@ -9,54 +9,23 @@
  * @var $viewed boolean
  */
 
-use dench\image\helpers\ImageHelper;
-use yii\helpers\Url;
+use app\widgets\ProductCard;
 
 ?>
 <?php if ($viewed): ?>
-    <h3><?= Yii::t('app', 'You looked through') ?></h3>
+    <div class="h1 text-center mt-4"><?= Yii::t('app', 'You looked through') ?></div>
 <?php else: ?>
-    <h3><?= Yii::t('app', 'Similar products') ?></h3>
+    <div class="h1 text-center mt-4"><?= Yii::t('app', 'Similar products') ?></div>
 <?php endif; ?>
-<div class="row">
+
+<div class="list-group mb-4">
     <?php foreach ($similar as $product) : ?>
-        <div class="<?php
-
-        $count = count($similar);
-
-        echo "col-xxs-6";
-
-        echo " col-xs-4";
-
-        if ($count == 4) {
-            echo " col-sm-3";
-        } else {
-            echo " col-sm-4";
-        }
-
-        if ($count <= 4) {
-            echo " col-md-3";
-        } else {
-            echo " col-md-2";
-        }
-
-        echo " col-lg-2";
-
-        ?>">
-            <div class="card block-link">
-                <div class="card-img">
-                    <?php if ($product->image) { ?>
-                        <img src="<?= ImageHelper::thumb($product->image->id, 'micro') ?>" class="img-responsive" alt="<?= $product->image->alt ? $product->image->alt : $product->name ?>" title="<?= $product->title ?>">
-                    <?php } else { ?>
-                        <img src="<?= Yii::$app->params['image']['none'] ?>" class="img-responsive" alt="">
-                    <?php } ?>
-                </div>
-                <div class="card-block">
-                    <h5 class="card-title">
-                        <a href="<?= Url::to(['product/index', 'slug' => $product->slug]) ?>"><?= $product->name ?></a>
-                    </h5>
-                </div>
-            </div>
+        <div class="list-group-item">
+            <?= ProductCard::widget([
+                'model' => $product,
+                'link' => ['product/index', 'slug' => $product->slug],
+            ]);
+            ?>
         </div>
     <?php endforeach; ?>
 </div>

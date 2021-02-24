@@ -143,6 +143,11 @@ $this->registerJs($js);
     </div>
 </div>
 
+<?= $this->render('_similar', [
+    'similar' => $similar,
+    'viewed' => $viewed,
+]) ?>
+
 <?= OrderScheme::widget(['baseUrl' => $this->theme ? $this->assetManager->getBundle(app\site\assets\SiteAsset::class)->baseUrl : null]) ?>
 
 <script type='application/ld+json'>
