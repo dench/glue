@@ -77,7 +77,7 @@ class CategoryController extends Controller
             Yii::$app->view->registerMetaTag([
                 'name' => 'description',
                 'content' => $page->description
-            ]);
+            ], 'description');
         }
 
         $this->view->params['category_ids'] = [$page->id];

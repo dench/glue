@@ -70,7 +70,7 @@ class ProductController extends Controller
             Yii::$app->view->registerMetaTag([
                 'name' => 'description',
                 'content' => $model->description
-            ]);
+            ], 'description');
         }
 
         $reviewForm = new ReviewForm();
