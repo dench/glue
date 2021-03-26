@@ -59,6 +59,8 @@ $config = [
                 'info/<slug:[0-9a-z\-]+>' => 'info/view',
                 'popcron' => 'cron/finance',
                 'sitemap.xml' => 'sitemap/index',
+                'sitemap_ua.xml' => 'sitemap/ua',
+                'sitemap_ru.xml' => 'sitemap/ru',
                 '<slug:[0-9a-z\-]+>.html' => 'site/page',
             ],
         ],

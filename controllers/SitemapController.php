@@ -17,10 +17,36 @@ class SitemapController extends Controller
         Yii::$app->response->format = Response::FORMAT_RAW;
         Yii::$app->response->headers->add('Content-Type', 'text/xml');
 
+        $site = Url::to(['/'], 'https');
+
+        return '<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<sitemap><loc>' . $site . 'sitemap_ru.xml</loc></sitemap>
+<sitemap><loc>' . $site . 'sitemap_ua.xml</loc></sitemap>
+</sitemapindex>';
+    }
+
+    public function actionUa()
+    {
+        return $this->actionLang('uk');
+    }
+
+    public function actionRu()
+    {
+        return $this->actionLang('ru');
+    }
+
+    public function actionLang($lang)
+    {
+        Yii::$app->response->format = Response::FORMAT_RAW;
+        Yii::$app->response->headers->add('Content-Type', 'text/xml');
+
+        Yii::$app->language = $lang;
+
         $urls = [];
 
         $urls[] = [
-            'loc' => Url::home('https'),
+            'loc' => Url::to(['/'], 'https'),
         ];
 
         $site = [
