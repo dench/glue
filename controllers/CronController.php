@@ -16,7 +16,7 @@ class CronController extends Controller
         $data = json_decode($json);
 
         $currency = Currency::find()->where(['enabled' => 1])->orderBy(['position' => SORT_ASC])->one();
-        $currencyDef = Currency::findOne(Yii::$app->params['currency_id']);
+        $currencyDef = Currency::find()->where(['id' => Yii::$app->params['currency_id']])->one();
 
         /*foreach ($data as $item) {
             if ($item->ccy == $currency->code) {
@@ -43,7 +43,7 @@ class CronController extends Controller
                         $rate = @$item->saleRateNB;
                 }
                 $currencyDef->rate = $rate;
-                $currencyDef->save();
+                $currencyDef->save(false);
                 break;
             }
         }
