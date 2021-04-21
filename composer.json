@@ -14,7 +14,7 @@
     },
     "minimum-stability": "stable",
     "require": {
-        "php": ">=5.6",
+        "php": ">=7.2.5",
         "yiisoft/yii2": "2.0.38",
         "yiisoft/yii2-bootstrap": "~2.0.0",
         "yiisoft/yii2-swiftmailer": "~2.0.0",
@@ -52,7 +52,7 @@
             "enabled": false
         },
         "platform": {
-            "php": "5.6.5"
+            "php": "7.2.5"
         },
         "preferred-install": "dist"
     },
