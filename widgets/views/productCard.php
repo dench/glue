@@ -14,6 +14,21 @@ use app\widgets\PriceTable;
 use dench\image\helpers\ImageHelper;
 
 $variant = @$model->variants[0];
+
+if (@$model->variants[0]->price) {
+    $available = 0;
+    foreach ($model->variants as $variant) {
+        if ($variant->enabled) {
+            if ($variant->available < 0) {
+                $available = -1;
+            }
+            if ($variant->available > 0) {
+                $available = 1;
+                break;
+            }
+        }
+    }
+}
 ?>
 <div class="row">
     <div class="col-sm-3 col-md-3 text-center">
@@ -33,7 +48,7 @@ $variant = @$model->variants[0];
             <?= $model->text_short ?>
         </div>
         <div class="row mt-2 mb-3">
-            <div class="col-auto">
+            <div class="col-auto stock">
                 <?php if ($variant->available > 0): ?>
                     <div class="text-success"><i class="fa fa-check"></i> <?= Yii::t('app', 'In stock') ?></div>
                 <?php elseif ($variant->available < 0): ?>
@@ -65,6 +80,7 @@ $variant = @$model->variants[0];
                     'options' => [
                         'class' => 'table-sm',
                     ],
+                    'available' => $available,
                 ]) ?>
             </div>
             <div class="col-sm-3">

@@ -12,6 +12,20 @@
 
 use app\widgets\PriceTable;
 
+if (@$model->variants[0]->price) {
+    $available = 0;
+    foreach ($model->variants as $variant) {
+        if ($variant->enabled) {
+            if ($variant->available < 0) {
+                $available = -1;
+            }
+            if ($variant->available > 0) {
+                $available = 1;
+                break;
+            }
+        }
+    }
+}
 ?>
 <div class="row">
 <?php if (@$model->variants[0]->price) { ?>
@@ -31,23 +45,26 @@ use app\widgets\PriceTable;
             <a href="#reviews" class="text-muted ml-2"><?= Yii::t('app', '{0, plural, =0{нет отзывов} =1{1 отзыв} one{# отзыв} few{# отзыва} many{# отзывов} other{# отзывов}}', $rating['count']); ?></a>
         </div>
 
-        <?php if ($model->variants[0]->available > 0): ?>
-            <div class="text-success my-3"><i class="fa fa-check"></i> <?= Yii::t('app', 'In stock') ?></div>
-        <?php elseif ($model->variants[0]->available < 0): ?>
-            <div class="text-warning my-3"><i class="fa fa-clock-o"></i> <?= Yii::t('app', 'On order') ?></div>
-        <?php else: ?>
-            <div class="text-danger my-3"><i class="fa fa-times"></i> <?= Yii::t('app', 'Not available') ?></div>
-        <?php endif; ?>
+        <div class="stock my-3">
+            <?php if ($available > 0): ?>
+                <div class="text-success"><i class="fa fa-check"></i> <?= Yii::t('app', 'In stock') ?></div>
+            <?php elseif ($available < 0): ?>
+                <div class="text-warning"><i class="fa fa-clock-o"></i> <?= Yii::t('app', 'On order') ?></div>
+            <?php else: ?>
+                <div class="text-danger"><i class="fa fa-times"></i> <?= Yii::t('app', 'Not available') ?></div>
+            <?php endif; ?>
+        </div>
 
         <?= PriceTable::widget([
             'id' => 'price' . $model->id,
             'variants' => $model->variants,
+            'available' => $available,
         ]) ?>
 
         <div class="row">
             <div class="col">
-                <?php if ($model->variants[0]->available !== 0): ?>
-                    <button class="btn btn-primary btn-block btn-buy" rel="price<?= $model->id ?>"><?= $model->variants[0]->available > 0 ? Yii::t('app', 'Buy') : Yii::t('app', 'To order') ?></button>
+                <?php if ($available !== 0): ?>
+                    <button class="btn btn-primary btn-block btn-buy" rel="price<?= $model->id ?>"><?= $available > 0 ? Yii::t('app', 'Buy') : Yii::t('app', 'To order') ?></button>
                 <?php endif; ?>
             </div>
             <div class="col">
