@@ -72,8 +72,6 @@ class PodborController extends \yii\web\Controller
             ]);
         }
 
-        return $podbor->getProducts()->count();
-
         $dataProvider = new ActiveDataProvider([
             'query' => $podbor->getProducts(),
             'sort'=> [
@@ -83,7 +81,7 @@ class PodborController extends \yii\web\Controller
             ],
         ]);
 
-        if ($dataProvider->totalCount == 1) {
+        /*if ($dataProvider->totalCount == 1) {
             $model = current($dataProvider->models);
 
             $view = 'index';
@@ -97,7 +95,7 @@ class PodborController extends \yii\web\Controller
                 'viewed' => null,
                 'similar' => null,
             ]);
-        }
+        }*/
 
         return $this->renderAjax('_result_list', [
             'dataProvider' => $dataProvider,
