@@ -7,6 +7,7 @@ use app\models\PodborForm;
 use dench\page\models\Page;
 use dench\products\models\Product;
 use Yii;
+use yii\bootstrap\Alert;
 use yii\data\ActiveDataProvider;
 use yii\helpers\Json;
 
@@ -62,15 +63,20 @@ class PodborController extends \yii\web\Controller
 
         $id = Yii::$app->request->post('id');
 
-        $podbor = Podbor::findOneEnabled($id);
-
-        $podbor->product_ids;
+        if (!$podbor = Podbor::findOneEnabled($id)) {
+            return Alert::widget([
+                'body' => Yii::t('yii', 'No results found.'),
+                'options' => [
+                    'class' => 'alert-danger',
+                ],
+            ]);
+        }
 
         $dataProvider = new ActiveDataProvider([
             'query' => Product::find()->where(['id' => $podbor->product_ids]),
             'sort'=> [
                 'defaultOrder' => [
-                    'position'=>SORT_ASC,
+                    'position' => SORT_ASC,
                 ],
             ],
         ]);
@@ -89,10 +95,10 @@ class PodborController extends \yii\web\Controller
                 'viewed' => null,
                 'similar' => null,
             ]);
-        } else {
-            return $this->renderAjax('_result_list', [
-                'dataProvider' => $dataProvider,
-            ]);
         }
+
+        return $this->renderAjax('_result_list', [
+            'dataProvider' => $dataProvider,
+        ]);
     }
 }
