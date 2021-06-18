@@ -72,6 +72,8 @@ class PodborController extends \yii\web\Controller
             ]);
         }
 
+        return $podbor->getProducts()->count();
+
         $dataProvider = new ActiveDataProvider([
             'query' => $podbor->getProducts(),
             'sort'=> [
