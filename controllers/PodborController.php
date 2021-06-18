@@ -73,7 +73,7 @@ class PodborController extends \yii\web\Controller
         }
 
         $dataProvider = new ActiveDataProvider([
-            'query' => Product::find()->where(['id' => $podbor->product_ids]),
+            'query' => $podbor->getProducts(),
             'sort'=> [
                 'defaultOrder' => [
                     'position' => SORT_ASC,
