@@ -57,7 +57,7 @@ class CallbackForm extends Model
                     ->setTextBody($text)
                     ->send();
             } catch (Exception $e) {
-                Yii::$app->mailer->compose()
+                Yii::$app->mailer2->compose()
                     ->setTo($email)
                     ->setFrom([Yii::$app->params['fromEmail'] => Yii::$app->name])
                     ->setSubject('Ошибка отправки почты. ' . Yii::t('app', 'Callback'))
