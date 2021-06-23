@@ -64,6 +64,9 @@ return [
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
         ],
+        'mailer2' => [
+            'class' => 'yii\swiftmailer\Mailer',
+        ],
         'cache' => [
             'class' => 'yii\caching\DummyCache',
         ],

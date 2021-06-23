@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use Exception;
 use himiklab\yii2\recaptcha\ReCaptchaValidator2;
 use Yii;
 use yii\base\Model;
@@ -48,13 +49,21 @@ class CallbackForm extends Model
         $text = $this->name . ' ' . $this->phone;
 
         if ($this->validate()) {
-            Yii::$app->mailer->compose()
-                ->setTo($email)
-                ->setFrom([Yii::$app->params['fromEmail'] => Yii::$app->name])
-                ->setSubject(Yii::t('app', 'Callback'))
-                ->setTextBody($text)
-                ->send();
-
+            try {
+                Yii::$app->mailer->compose()
+                    ->setTo($email)
+                    ->setFrom([Yii::$app->params['fromEmail'] => Yii::$app->name])
+                    ->setSubject(Yii::t('app', 'Callback'))
+                    ->setTextBody($text)
+                    ->send();
+            } catch (Exception $e) {
+                Yii::$app->mailer->compose()
+                    ->setTo($email)
+                    ->setFrom([Yii::$app->params['fromEmail'] => Yii::$app->name])
+                    ->setSubject('Ошибка отправки почты. ' . Yii::t('app', 'Callback'))
+                    ->setTextBody('Ошибка отправки почты, сообщите разработчику. ' . $text)
+                    ->send();
+            }
             return true;
         }
         return false;

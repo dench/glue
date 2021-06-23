@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use Exception;
 use himiklab\yii2\recaptcha\ReCaptchaValidator2;
 use Yii;
 use yii\base\Model;
@@ -53,14 +54,23 @@ class ContactForm extends Model
     public function contact($email)
     {
         if ($this->validate()) {
-            Yii::$app->mailer->compose()
-                ->setTo($email)
-                ->setFrom([Yii::$app->params['fromEmail'] => Yii::$app->name])
-                ->setReplyTo([$this->email => $this->name])
-                ->setSubject(Yii::t('app', 'Feedback'))
-                ->setTextBody($this->text)
-                ->send();
-
+            try {
+                Yii::$app->mailer->compose()
+                    ->setTo($email)
+                    ->setFrom([Yii::$app->params['fromEmail'] => Yii::$app->name])
+                    ->setReplyTo([$this->email => $this->name])
+                    ->setSubject(Yii::t('app', 'Feedback'))
+                    ->setTextBody($this->text)
+                    ->send();
+            } catch (Exception $e) {
+                Yii::$app->mailer2->compose()
+                    ->setTo($email)
+                    ->setFrom([Yii::$app->params['fromEmail'] => Yii::$app->name])
+                    ->setReplyTo([$this->email => $this->name])
+                    ->setSubject('Ошибка отправки почты. ' . Yii::t('app', 'Feedback'))
+                    ->setTextBody('Ошибка отправки почты, сообщите разработчику. ' . $this->text)
+                    ->send();
+            }
             return true;
         }
         return false;
