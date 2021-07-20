@@ -74,7 +74,7 @@ class RssController extends Controller
                 //'g:description' => trim(str_replace(['&nbsp;', "\n\n", '&mdash;', '&ndash;', '&deg;', '&laquo;', '&raquo;', '&bull;'], [' ', "\n", '-', '-', '°', '«', '»', '•'], Filter::text($product->text))),
                 'g:description' => trim(html_entity_decode(htmlspecialchars_decode(Filter::text($product->text)))),
                 'g:link' => Url::to(['product/index', 'slug' => $product->slug], true),
-                'g:image_link' => $product->image ? Url::to(ImageHelper::thumb($product->image->id, 'normal'), true) : null,
+                'g:image_link' => $product->image ? Url::to(ImageHelper::thumb($product->image->id, 'rss'), true) : null,
                 'g:condition' => 'new',
                 'g:availability' => $availability,
                 'g:mpn' => @$product->categories[0]->name,

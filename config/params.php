@@ -88,6 +88,13 @@ return [
                     'width' => 130,
                 ],
             ],
+            'rss' => [
+                'width' => 450,
+                'height' => 450,
+                'method' => 'fill',
+                'bg' => '#FFFFFF',
+                'watermark' => false,
+            ],
             'small' => [
                 'width' => 240,
                 'height' => 240,
