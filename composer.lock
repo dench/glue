@@ -709,12 +709,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dench/yii2-products.git",
-                "reference": "eca5a4fabf9629a4af454f8afd8cf2a3e090620c"
+                "reference": "9f611f3a6230874a0af85768ce3f7fedfaac5630"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dench/yii2-products/zipball/eca5a4fabf9629a4af454f8afd8cf2a3e090620c",
-                "reference": "eca5a4fabf9629a4af454f8afd8cf2a3e090620c",
+                "url": "https://api.github.com/repos/dench/yii2-products/zipball/9f611f3a6230874a0af85768ce3f7fedfaac5630",
+                "reference": "9f611f3a6230874a0af85768ce3f7fedfaac5630",
                 "shasum": ""
             },
             "require": {
@@ -753,7 +753,7 @@
                 "issues": "https://github.com/dench/yii2-products/issues",
                 "source": "https://github.com/dench/yii2-products/tree/master"
             },
-            "time": "2021-07-20T13:40:16+00:00"
+            "time": "2021-07-20T14:07:02+00:00"
         },
         {
             "name": "dench/yii2-sortable",
