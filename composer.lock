@@ -158,7 +158,7 @@
             "version": "3.5.1",
             "source": {
                 "type": "git",
-                "url": "git@github.com:jquery/jquery-dist.git",
+                "url": "https://github.com/jquery/jquery-dist.git",
                 "reference": "4c0e4becb8263bb5b3e6dadc448d8e7305ef8215"
             },
             "dist": {
@@ -709,12 +709,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dench/yii2-products.git",
-                "reference": "9f611f3a6230874a0af85768ce3f7fedfaac5630"
+                "reference": "cb548c9c08f2414cd0fb6c1859a430cf7bc72194"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dench/yii2-products/zipball/9f611f3a6230874a0af85768ce3f7fedfaac5630",
-                "reference": "9f611f3a6230874a0af85768ce3f7fedfaac5630",
+                "url": "https://api.github.com/repos/dench/yii2-products/zipball/cb548c9c08f2414cd0fb6c1859a430cf7bc72194",
+                "reference": "cb548c9c08f2414cd0fb6c1859a430cf7bc72194",
                 "shasum": ""
             },
             "require": {
@@ -753,7 +753,7 @@
                 "issues": "https://github.com/dench/yii2-products/issues",
                 "source": "https://github.com/dench/yii2-products/tree/master"
             },
-            "time": "2021-07-20T14:07:02+00:00"
+            "time": "2021-07-21T07:57:05+00:00"
         },
         {
             "name": "dench/yii2-sortable",
