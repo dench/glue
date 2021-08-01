@@ -97,9 +97,8 @@ $this->registerLinkTag(['rel' => 'alternate', 'hreflang' => 'uk-UA', 'href' => U
                 <?= Html::a('RU', Url::current(['lang' => 'ru']), ['class' => ['mt-1 btn btn-sm', Yii::$app->language === 'ru' ? 'btn-primary' : 'btn-outline-primary'], 'hreflang' => 'ru-UA', 'rel' => 'nofollow']) ?>
             </div>
             <div class="col col-md-auto text-right pl-1">
-                <div class="phones">
+                <div class="phones mt-2 mt-md-3">
                     <a href="tel:<?= Yii::$app->params['phone1'] ?>"><i class="fa fa-phone"></i> <?= Yii::$app->params['phone1f'] ?></a>
-                    <a href="tel:<?= Yii::$app->params['phone2'] ?>"><i class="fa fa-phone"></i> <?= Yii::$app->params['phone2f'] ?></a>
                 </div>
             </div>
         </div>
@@ -337,7 +336,6 @@ $this->registerLinkTag(['rel' => 'alternate', 'hreflang' => 'uk-UA', 'href' => U
             <div class="col-6 col-sm order-sm-2 text-right">
                 <div class="phones">
                     <a href="tel:<?= Yii::$app->params['phone1'] ?>"><i class="fa fa-phone"></i> <?= Yii::$app->params['phone1f'] ?></a>
-                    <a href="tel:<?= Yii::$app->params['phone1'] ?>"><i class="fa fa-phone"></i> <?= Yii::$app->params['phone2f'] ?></a>
                 </div>
             </div>
             <div class="col-sm order-sm-1 mt-3 mt-sm-0 clearfix">
