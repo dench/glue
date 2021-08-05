@@ -118,7 +118,7 @@ return [
     'Your name' => 'Ваше имя',
     'Your phone' => 'Ваш телефон',
     'Your question' => 'Ваш вопрос',
-    'city *{3,32}, number of Nova Poshta № 9{1,4}' => 'город *{3,32}, отделение новой почты № 9{1,4}',
+    'city @{3,32}, number of Nova Poshta № 9{1,4}' => 'город @{3,32}, отделение новой почты № 9{1,4}',
     'page {0}' => 'страница {0}',
     '{0, plural, =0{items not found} =1{item found} one{# items found} few{# items found} many{# items found} other{# items found} for these criteria' => 'По данным критериям {0, plural, =0{товаров не найдено} =1{найден один товар} one{найден # товар} few{найдено # товара} many{найдено # товаров} other{найдено # товаров}}',
     '{0, plural, =0{нет отзывов} =1{1 отзыв} one{# отзыв} few{# отзыва} many{# отзывов} other{# отзывов}}' => '{0, plural, =0{нет отзывов} =1{1 отзыв} one{# отзыв} few{# отзыва} many{# отзывов} other{# отзывов}}',

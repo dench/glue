@@ -118,7 +118,7 @@ return [
     'Your name' => 'Ваше им\'я',
     'Your phone' => 'Ваш телефон',
     'Your question' => 'Ваше запитання',
-    'city *{3,32}, number of Nova Poshta № 9{1,4}' => 'місто *{3,32}, відділення Нової Пошти № 9{1,4}',
+    'city @{3,32}, number of Nova Poshta № 9{1,4}' => 'місто @{3,32}, відділення Нової Пошти № 9{1,4}',
     'page {0}' => 'сторінка {0}',
     '{0, plural, =0{items not found} =1{item found} one{# items found} few{# items found} many{# items found} other{# items found} for these criteria' => 'За даними критеріями {0, plural, =0{товарів не знайдено} =1{знайдено один товар} one{знайдено # товар} few{знайдено # товара} many{знайдено # товарів} other{знайдено # товарів}}',
     '{0, plural, =0{нет отзывов} =1{1 отзыв} one{# отзыв} few{# отзыва} many{# отзывов} other{# отзывов}}' => '{0, plural, =0{немає відгуків} =1{1 відгук} one{# відгук} few{# відгука} many{# відгуків} other{# відгуків}}',
