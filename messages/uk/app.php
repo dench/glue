@@ -128,4 +128,5 @@ return [
     'Process of polymerization' => 'Процес полімеризації',
     'Scope of application' => 'Сфера застосування',
     'Storage conditions' => 'Умови зберігання',
+    'city @{3,32}, street @{3,32}, house &{1,10}' => 'місто @{3,32}, вулиця @{3,32}, будинок &{1,10}',
 ];
