@@ -11,7 +11,7 @@ echo MaskedInput::widget([
             'validator' => '[А-Яа-яA-Za-z ]',
         ],
         '&' => [
-            'validator' => '[0-9/ ]',
+            'validator' => '[0-9/]',
         ],
     ],
     'options' => [
