@@ -72,7 +72,8 @@ AdminAsset::register($this);
             ['label' => Yii::t('app', 'Questions') . $unread_question, 'url' => ['/admin/question/index']],
             ['label' => Yii::t('app', 'Reviews') . $unread_review, 'url' => ['/admin/review/index']],
             ['label' => Yii::t('app', 'Selection'), 'url' => ['/admin/podbor/index']],
-            ['label' => Yii::t('app', 'Other'), 'url' => '#', 'items' => [
+            ['label' => Yii::t('app', 'Others'), 'url' => '#', 'items' => [
+                ['label' => Yii::t('app', 'Upload price'), 'url' => ['/admin/excel/index']],
                 ['label' => Yii::t('app', 'Blocks'), 'url' => ['/admin/block/default/index']],
                 ['label' => Yii::t('app', 'Menu'), 'url' => ['/admin/menu/index']],
                 ['label' => Yii::t('app', 'Brands'), 'url' => ['/admin/products/brand/index']],

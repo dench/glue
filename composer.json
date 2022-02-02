@@ -40,7 +40,8 @@
         "liqpay/liqpay": "^1.2",
         "yiisoft/yii2-httpclient": "^2.0",
         "yiisoft/yii2-queue": "^2.3",
-        "phpmailer/phpmailer": "~6.5.0"
+        "phpmailer/phpmailer": "~6.5.0",
+        "phpoffice/phpspreadsheet": "^1.19"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
@@ -55,7 +56,11 @@
         "platform": {
             "php": "7.2.5"
         },
-        "preferred-install": "dist"
+        "preferred-install": "dist",
+        "allow-plugins": {
+            "yiisoft/yii2-composer": true,
+            "luyadev/luya-composer": true
+        }
     },
     "scripts": {
         "post-create-project-cmd": [

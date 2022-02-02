@@ -6,18 +6,19 @@ use yii\helpers\FileHelper;
 
 class TranslateController extends Controller
 {
-    //const DIR = '/';
-    const DIR = '/runtime/yii2-cart/';
+    const DIR = '/';
+    //const DIR = '/runtime/yii2-cart/';
 
     public function actionIndex($lang = 'ru')
     {
         $categories = [
-            //'app',
-            'cart',
+            'app',
+            //'cart',
         ];
 
         $dirs = [
-            //'behaviors',
+            'admin',
+            'behaviors',
             'widgets',
             'components',
             'controllers',
