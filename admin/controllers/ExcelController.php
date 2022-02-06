@@ -28,14 +28,14 @@ class ExcelController extends Controller
                 $cells = $row->getCellIterator();
                 $id = $cells->current()->getValue();
                 $cells->next();
-                $code = $cells->current()->getValue();
+                //$code = $cells->current()->getValue();
                 $cells->next();
                 $cells->next();
                 $cells->next();
                 $price = $cells->current()->getValue();
                 if ($variant = Variant::findOne($id)) {
                     $variant->price = $price;
-                    $variant->code = $code;
+                    //$variant->code = $code;
                     $variant->save();
                     foreach (Language::find()->select('id')->column() as $lang) {
                         Yii::$app->cache->delete('_product_card-' . $variant->product_id . '-' . $lang);
