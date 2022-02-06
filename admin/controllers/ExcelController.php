@@ -28,11 +28,14 @@ class ExcelController extends Controller
                 $cells = $row->getCellIterator();
                 $id = $cells->current()->getValue();
                 $cells->next();
+                $code = $cells->current()->getValue();
+                $cells->next();
                 $cells->next();
                 $cells->next();
                 $price = $cells->current()->getValue();
                 if ($variant = Variant::findOne($id)) {
                     $variant->price = $price;
+                    $variant->code = $code;
                     $variant->save();
                     foreach (Language::find()->select('id')->column() as $lang) {
                         Yii::$app->cache->delete('_product_card-' . $variant->product_id . '-' . $lang);
@@ -60,9 +63,10 @@ class ExcelController extends Controller
         $i = 1;
         foreach ($variants as $variant) {
             $sheet->setCellValueByColumnAndRow(1, $i, $variant->id);
-            $sheet->setCellValueByColumnAndRow(2, $i, $variant->product->name);
-            $sheet->setCellValueByColumnAndRow(3, $i, $variant->name);
-            $sheet->setCellValueByColumnAndRow(4, $i, $variant->price);
+            $sheet->setCellValueByColumnAndRow(2, $i, $variant->code);
+            $sheet->setCellValueByColumnAndRow(3, $i, $variant->product->name);
+            $sheet->setCellValueByColumnAndRow(4, $i, $variant->name);
+            $sheet->setCellValueByColumnAndRow(5, $i, $variant->price);
             $i++;
         }
 
